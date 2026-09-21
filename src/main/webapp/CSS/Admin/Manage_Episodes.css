@@ -1,0 +1,578 @@
+body {
+    background: #06101d;
+    color: white;
+}
+
+
+/* =========================
+   MAIN PAGE
+   ========================= */
+
+.manage-episodes-page {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.episode-content {
+    flex: 1;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   PAGE HEADER
+   ========================= */
+
+.episode-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.episode-title {
+    text-align: center;
+    margin-left: 100px;
+}
+
+.episode-title h1 {
+    margin: 0;
+    color: white;
+    font-size: 32px;
+}
+
+.episode-title p {
+    margin: 8px 0 0;
+    color: #d0d7df;
+    font-size: 15px;
+}
+
+
+/* Back Button */
+
+.episode-header > button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    background: transparent;
+    color: #ff4d5a;
+
+    border: 1px solid #ff4d5a;
+    border-radius: 6px;
+
+    padding: 10px 18px;
+
+    font-size: 14px;
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.episode-header > button:hover {
+    background: #ff4d5a;
+    color: white;
+}
+
+
+/* =========================
+   SERIES INFO CARD
+   ========================= */
+
+.series-info-card {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+
+    background: #0d2033;
+    border: 1px solid #173754;
+    border-radius: 8px;
+
+    padding: 18px;
+    margin-bottom: 20px;
+
+    box-sizing: border-box;
+}
+
+.series-poster img {
+    display: block;
+
+    width: 165px;
+    height: 155px;
+
+    object-fit: cover;
+    border-radius: 7px;
+}
+
+.series-details h2 {
+    margin: 0 0 15px;
+
+    color: #ff5a63;
+    font-size: 28px;
+}
+
+.series-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: #d5dce5;
+    font-size: 15px;
+}
+
+
+/* =========================
+   SEASON SECTION
+   ========================= */
+
+.season-section {
+    background: #0d2033;
+
+    border: 1px solid #173754;
+    border-radius: 8px;
+
+    margin-bottom: 18px;
+
+    overflow: hidden;
+}
+
+
+/* Season Header */
+
+.season-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 12px 18px;
+
+    background: #102941;
+}
+
+.season-header h3 {
+    margin: 0;
+
+    color: white;
+    font-size: 20px;
+}
+
+
+/* Add Episode Button */
+
+.add-episode-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    background: #ff5964;
+    color: white;
+
+    border: none;
+    border-radius: 6px;
+
+    padding: 9px 16px;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.add-episode-btn:hover {
+    background: #ff414e;
+}
+
+.add-episode-btn i {
+    font-size: 13px;
+}
+
+
+/* =========================
+   EPISODES TABLE
+   ========================= */
+
+.episodes-table {
+    width: 100%;
+}
+
+
+/* Every row */
+
+.episode-row {
+    display: grid;
+
+    grid-template-columns: 80px 1fr 180px 220px;
+
+    align-items: center;
+
+    min-height: 48px;
+
+    padding: 0 18px;
+
+    box-sizing: border-box;
+
+    border-top: 1px solid #173754;
+
+    color: #e2e8ef;
+
+    font-size: 14px;
+}
+
+
+/* Table Header */
+
+.episode-heading {
+    min-height: 42px;
+
+    background: #132f49;
+
+    border-top: none;
+
+    color: #dce5ee;
+
+    font-weight: bold;
+}
+
+
+/* Empty state */
+
+.no-episodes {
+    padding: 20px;
+
+    text-align: center;
+
+    color: #8496a8;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   EPISODE ACTIONS
+   ========================= */
+
+.episode-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/* Action buttons */
+
+.episode-actions button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    padding: 6px 14px;
+
+    background: transparent;
+
+    border-radius: 5px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+/* Edit */
+
+.episode-actions button:first-child {
+    color: #49d5ff;
+    border: 1px solid #49d5ff;
+}
+
+.episode-actions button:first-child:hover {
+    background: #49d5ff;
+    color: #071522;
+}
+
+
+/* Delete */
+
+.episode-actions button:last-child {
+    color: #ff4d5a;
+    border: 1px solid #ff4d5a;
+}
+
+.episode-actions button:last-child:hover {
+    background: #ff4d5a;
+    color: white;
+}
+
+
+/* =========================
+   ADD EPISODE SIDEBAR
+   ========================= */
+
+.add-episode-sidebar {
+    position: fixed;
+
+    top: 0;
+    right: 0;
+
+    width: 350px;
+    height: 100vh;
+
+    padding: 25px;
+
+    box-sizing: border-box;
+
+    background: #0b1d2e;
+
+    border-left: 1px solid #173754;
+
+    z-index: 1000;
+
+    overflow-y: auto;
+
+    transform: translateX(100%);
+
+    transition: transform 0.3s ease;
+}
+
+
+/* Sidebar Open */
+
+.add-episode-sidebar.active {
+    transform: translateX(0);
+}
+
+
+/* =========================
+   SIDEBAR HEADER
+   ========================= */
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.sidebar-header h2 {
+    margin: 0;
+
+    color: white;
+
+    font-size: 24px;
+}
+
+.sidebar-header button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    background: transparent;
+
+    border: none;
+
+    color: #a9bfd4;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.sidebar-header button:hover {
+    color: white;
+}
+
+
+/* =========================
+   SIDEBAR SERIES INFO
+   ========================= */
+
+.sidebar-series-info {
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+}
+
+.sidebar-poster img {
+    display: block;
+
+    width: 80px;
+    height: 100px;
+
+    object-fit: cover;
+
+    border-radius: 6px;
+}
+
+.sidebar-series-details h3 {
+    margin: 0 0 8px;
+
+    color: #ff5964;
+
+    font-size: 18px;
+}
+
+.sidebar-series-details p {
+    margin: 0;
+
+    color: #d3dce5;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   FORM
+   ========================= */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #e5ebf1;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.form-group label span {
+    color: #ff5964;
+}
+
+
+/* Inputs + Select */
+
+.form-group input,
+.form-group select {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 11px 12px;
+
+    background: #102940;
+
+    color: white;
+
+    border: 1px solid #214766;
+
+    border-radius: 5px;
+
+    outline: none;
+
+    font-size: 14px;
+
+    transition: border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #49d5ff;
+}
+
+
+/* Select option */
+
+.form-group select option {
+    background: #102940;
+    color: white;
+}
+
+
+/* =========================
+   SIDEBAR ACTIONS
+   ========================= */
+
+.sidebar-actions {
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 30px;
+}
+
+.sidebar-actions button {
+    flex: 1;
+
+    padding: 12px;
+
+    border-radius: 6px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+/* Cancel */
+
+.sidebar-actions button:first-child {
+    background: transparent;
+
+    color: #dce5ee;
+
+    border: 1px solid #214766;
+}
+
+.sidebar-actions button:first-child:hover {
+    background: #214766;
+}
+
+
+/* Save */
+
+.sidebar-actions button:last-child {
+    background: #ff5964;
+
+    color: white;
+
+    border: 1px solid #ff5964;
+}
+
+.sidebar-actions button:last-child:hover {
+    background: #ff414e;
+}
+
+
+/* =========================
+   SCROLLBAR
+   ========================= */
+
+.add-episode-sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.add-episode-sidebar::-webkit-scrollbar-track {
+    background: #081724;
+}
+
+.add-episode-sidebar::-webkit-scrollbar-thumb {
+    background: #214766;
+    border-radius: 10px;
+}

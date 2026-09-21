@@ -1,0 +1,133 @@
+.hamburger {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+
+    padding: 10px;
+    transition: 0.5s ease;
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    height: 100vh;
+    width: 250px;
+
+    background-color: rgb(56, 56, 79);
+
+    transform: translateX(-100%);
+    transition: 0.3s ease;
+
+    z-index: 1001;
+
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.menu.active {
+    transform: translateX(0);
+}
+
+.closeMenu {
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 20px;
+}
+
+.dashboard {
+    transition: 0.3s ease;
+}
+
+.dashboard.move {
+    margin-left: 250px;
+}
+
+.hamburger i {
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
+}
+
+.head{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.head h3{
+    margin: 0;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.movieButton{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    color: white;
+    padding: 20px;
+}
+
+.down{
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.movieButton:hover .down {
+    opacity: 1;
+}
+
+.movieOptions{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.movieOptions.active{
+    max-height: 150px;
+}
+
+.movieOptionsInner {
+    padding: 7px 0;
+}
+
+.movieOptions a {
+    padding: 12px 20px 12px 40px;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+.movieOptions a:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 0 5px white;
+}
+
+
+
+
+
+
+
+
+
+
+
+.button{
+    transition: 0.3s ease;
+}
+
+.button:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 0 5px white;
+}

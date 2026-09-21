@@ -1,0 +1,458 @@
+body {
+    color: white;
+}
+
+/* =========================
+   MOVIE PAGE
+   ========================= */
+
+.movie-page {
+    margin-left: 80px;
+    margin-right: 50px;
+    padding: 28px;
+    min-height: 100vh;
+    background: #080f1c;
+    box-sizing: border-box;
+}
+
+/* =========================
+   HEADER
+   ========================= */
+
+.movie-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+.movie-header h1 {
+    margin: 0 0 8px;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.movie-header p {
+    margin: 8px 0 0;
+    color: #8b95a7;
+    font-size: 15px;
+}
+
+.add-movie-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    border: none;
+    border-radius: 7px;
+    background: #08b9eb;
+    color: #06101c;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.add-movie-btn:hover {
+    background: #20c8f5;
+    transform: translateY(-1px);
+}
+
+.add-movie-btn i {
+    font-size: 1rem;
+}
+
+/* =========================
+   CONTROLS
+   ========================= */
+
+.movie-controls {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 320px;
+    padding: 11px 14px;
+    border: 1px solid #34445a;
+    border-radius: 6px;
+    background: #111c2b;
+}
+
+.search-box i {
+    color: #9aa8bb;
+}
+
+.search-box input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: white;
+    font-size: 0.95rem;
+}
+
+.search-box input::placeholder {
+    color: #8b98aa;
+}
+
+.genre-filter {
+    width: 253px;
+}
+
+#genreFilter {
+    width: 100%;
+    height: 44px;
+    padding: 0 15px;
+    border: 1px solid #1d2a3d;
+    border-radius: 7px;
+    background: #111b2b;
+    color: #dce3ed;
+    font-size: 0.95rem;
+    outline: none;
+    cursor: pointer;
+}
+
+#genreFilter:focus {
+    border-color: #08b9eb;
+}
+
+/* =========================
+   TABLE
+   ========================= */
+
+.movie-table-container {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid #182538;
+    border-radius: 7px;
+    background: #0a1320;
+}
+
+.movie-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto;
+}
+
+.movie-table thead {
+    background: #111c2b;
+}
+
+.movie-table th {
+    height: 45px;
+    padding: 0 30px;
+    color: #dce3ed;
+    text-align: left;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-bottom: 1px solid #1c293b;
+}
+
+.movie-table td {
+    height: 74px;
+    padding: 8px 14px;
+    color: #d9e0e9;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #172334;
+}
+
+.movie-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.movie-table tbody tr:hover {
+    background: #152c42;
+}
+
+/* Column widths */
+
+.movie-table th:nth-child(1), .movie-table td:nth-child(1) {
+    width: 50px;
+    text-align: center;
+}
+
+.movie-table th:nth-child(2), .movie-table td:nth-child(2) {
+    width: 80px;
+    text-align: center;
+}
+
+.movie-table th:nth-child(3), .movie-table td:nth-child(3) {
+    min-width: 180px;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.movie-table th:nth-child(4), .movie-table td:nth-child(4) {
+    min-width: 150px;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.movie-table th:nth-child(5), .movie-table td:nth-child(5) {
+    width: 100px;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.movie-table th:nth-child(6), .movie-table td:nth-child(6) {
+    width: 128px;
+    text-align: center;
+}
+
+.movie-table th:nth-child(7), .movie-table td:nth-child(7) {
+    width: 245px;
+    text-align: center;
+}
+
+/* =========================
+   MOVIE POSTER
+   ========================= */
+
+.movie-poster {
+    display: block;
+    width: 43px;
+    height: 61px;
+    object-fit: cover;
+    border-radius: 3px;
+    margin: auto;
+}
+
+/* =========================
+   RATING
+   ========================= */
+
+.movie-rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.movie-rating i {
+    color: #ffb51b;
+    font-size: 0.9rem;
+}
+
+/* =========================
+   ACTIONS
+   ========================= */
+
+.movie-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.edit-btn, .delete-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 75px;
+    height: 39px;
+    padding: 0 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.edit-btn {
+    background: #102b4d;
+    color: #54baff;
+}
+
+.edit-btn:hover {
+    background: #173b66;
+}
+
+.delete-btn {
+    background: #4a1e28;
+    color: #ff6975;
+}
+
+.delete-btn:hover {
+    background: #642632;
+}
+
+.edit-btn i, .delete-btn i {
+    font-size: 0.8rem;
+}
+
+/* =========================
+   ADD / EDIT DRAWER
+   ========================= */
+
+.add-movie-drawer {
+    position: fixed;
+    top: 0;
+    right: -500px;
+    width: 400px;
+    height: 100vh;
+    box-sizing: border-box;
+    background: #0d1827;
+    border-left: 1px solid #243246;
+    z-index: 1000;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+}
+
+/* =========================
+   DRAWER HEADER
+   ========================= */
+
+.drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 28px 24px 22px;
+    border-bottom: 1px solid #1c293b;
+}
+
+.drawer-header h2 {
+    margin: 0 0 7px;
+    font-size: 1.45rem;
+    font-weight: 700;
+}
+
+.drawer-header p {
+    margin: 0;
+    color: #8996a8;
+    font-size: 0.85rem;
+}
+
+.close-drawer {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    color: #dce3ed;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.close-drawer:hover {
+    color: white;
+}
+
+/* =========================
+   DRAWER FORM
+   ========================= */
+
+.drawer-form {
+    padding: 24px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #e3e9f1;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 13px;
+    border: 1px solid #26354a;
+    border-radius: 6px;
+    background: #111d2d;
+    color: white;
+    font-family: inherit;
+    font-size: 0.9rem;
+    outline: none;
+}
+
+.form-group input {
+    height: 44px;
+}
+
+.form-group select {
+    height: 44px;
+    cursor: pointer;
+}
+
+.form-group textarea {
+    min-height: 125px;
+    resize: vertical;
+}
+
+.form-group input::placeholder, .form-group textarea::placeholder {
+    color: #718096;
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: #08b9eb;
+}
+
+/* =========================
+   DRAWER ACTIONS
+   ========================= */
+
+.drawer-actions {
+    display: flex;
+    gap: 14px;
+    margin-top: 28px;
+}
+
+.reset-btn, .save-movie-btn {
+    flex: 1;
+    height: 48px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.reset-btn {
+    border: 1px solid #29384d;
+    background: transparent;
+    color: #d6deea;
+}
+
+.reset-btn:hover {
+    background: #142133;
+}
+
+.save-movie-btn {
+    border: none;
+    background: #08b9eb;
+    color: #06101c;
+}
+
+.save-movie-btn:hover {
+    background: #20c8f5;
+}
+
+/* =========================
+   SCROLLBAR
+   ========================= */
+
+.add-movie-drawer::-webkit-scrollbar, .movie-table-container::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.add-movie-drawer::-webkit-scrollbar-track, .movie-table-container::-webkit-scrollbar-track {
+    background: #0a1320;
+}
+
+.add-movie-drawer::-webkit-scrollbar-thumb, .movie-table-container::-webkit-scrollbar-thumb {
+    background: #26364b;
+    border-radius: 10px;
+}

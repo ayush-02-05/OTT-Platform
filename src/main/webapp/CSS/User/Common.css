@@ -1,0 +1,54 @@
+.nav{
+    background-color:rgb(16, 16, 37);
+    color: antiquewhite;
+
+    display: flex;
+    gap: 25px;
+
+    padding: 0 25px;
+}
+
+.nav h3{
+    font-size: 1.5rem;
+}
+
+.nav ul{
+    display: flex;
+    margin-top: 18px;
+    font-size: 0.9rem;
+    gap: 60px;
+    margin-left: auto;
+    margin-right: 10%;
+}
+
+.nav li{
+    list-style: none;
+}
+
+.nav span{
+    margin-top: 18px;
+    font-size: 0.9rem;
+    margin-left: 40px;
+}
+
+.search-btn {
+    background: transparent;
+    border: none;
+    padding: 0;
+
+    width: 30px;
+    height: 30px;
+
+    cursor: pointer;
+
+    margin-top: 12px;
+}
+
+.search-btn img{
+    width: 18px;
+    height: 18px;
+    
+    filter: invert(1);
+}
+
+

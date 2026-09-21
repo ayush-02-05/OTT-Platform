@@ -1,0 +1,26 @@
+package com.OTT_Platform.Controller.Admin;
+
+import com.OTT_Platform.Service.DashboardService;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class DashboardController {
+    private final DashboardService dashboardService;
+    public DashboardController(DashboardService dashboardService) {
+        this.dashboardService = dashboardService;
+    }
+
+    @GetMapping({"/admin", "/admin/dashboard"})
+    public String dashboard(Model model){
+        model.addAttribute("totalMovies", dashboardService.getTotalMovies());
+        model.addAttribute("totalSeries", dashboardService.getTotalSeries());
+        model.addAttribute("totalEpisodes", dashboardService.getTotalEpisodes());
+
+        model.addAttribute("recentMovies", dashboardService.getRecentMovies());
+        model.addAttribute("recentSeries", dashboardService.getRecentSeries());
+
+        return "Admin/Dashboard";
+    }
+}
