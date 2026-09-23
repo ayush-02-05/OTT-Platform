@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>CineVAULT - Series</title>
+
+        <link rel="stylesheet" href="/CSS/sidebar.css">
+        <link rel="stylesheet" href="/CSS/series.css">
+        <link rel="stylesheet" href="/CSS/header.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    </head>
+
+    <body>
+
+        <div id="sidebar-container"></div>
+        <div id="header-container"></div>
+
+        <main class="series-page">
+            <div class="series-top">
+                <div class="series-heading">
+                    <h1>Series</h1>
+                    <p>Explore unforgettable stories, one episode at a time.</p>
+                </div>
+
+                <div class="series-filters">
+                    <select id="genre-filter"><option value="">All Genres</option></select>
+                    <select id="year-filter"><option value="">All Years</option></select>
+                    <select id="sort-filter"><option value="">Sort by</option></select>
+                </div>
+            </div>
+            <div class="series-grid" id="series-grid"></div>
+        </main>
+
+
+        <script src="/JavaScript/series.js"></script>
+        <script src="/JavaScript/sidebar.js"></script>
+
+    </body>
+</html>

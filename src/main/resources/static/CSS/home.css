@@ -1,3 +1,7 @@
+/* =========================
+   GLOBAL
+========================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -10,256 +14,816 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* HEADER */
 
-header {
-    height: 75px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 30px;
-    padding: 0 90px;
-}
-
-.search-box {
-    width: 400px;
-    height: 42px;
-    display: flex;
-    align-items: center;
-    padding: 0 15px;
-    border: 1px solid #1d2634;
-    border-radius: 8px;
-    background: #111722;
-}
-
-.search-box i {
-    margin-right: 12px;
-    color: #7f8998;
-}
-
-.search-box input {
-    width: 100%;
-    border: 0;
-    outline: 0;
-    background: transparent;
-    color: white;
-}
-
-.search-box input::placeholder {
-    color: #707a89;
-}
-
-.profile {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-}
-
-.profile-image {
-    width: 38px;
-    height: 38px;
-    display: grid;
-    place-items: center;
-    border-radius: 50%;
-    background: #1d2634;
-    font-weight: 700;
-}
-
-.profile i {
-    font-size: 11px;
-    color: #8d96a4;
-}
-
-/* HERO */
+/* =========================
+   HERO
+========================= */
 
 .hero-page {
     height: 720px;
-    margin: 25px 85px 25px 110px;
+
+    /*
+        Sidebar closed = 80px
+        Extra breathing space = 25px
+    */
+    margin: 25px 85px 25px 105px;
+
     overflow: hidden;
+
     border-radius: 18px;
+
     background: #080c14;
 }
 
 .hero-slider {
     width: 100%;
     height: 100%;
+
     overflow: hidden;
 }
 
 .hero-track {
     height: 100%;
+
     display: flex;
+
     gap: 20px;
-    transition: transform .9s cubic-bezier(.4,0,.2,1);
+
+    transition: transform .9s cubic-bezier(.4, 0, .2, 1);
 }
 
 .hero-slide {
     position: relative;
+
     flex: 0 0 70%;
+
     height: 100%;
+
     border-radius: 18px;
+
     background-size: cover;
     background-position: center -100px;
     background-repeat: no-repeat;
+
     opacity: .4;
+
     filter: blur(6px);
+
     transform: scale(.94);
+
     transition: .9s ease;
 }
 
 .hero-slide.active {
     opacity: 1;
+
     filter: none;
+
     transform: scale(1);
 }
 
-/* DARK OVERLAY */
+
+/* =========================
+   HERO OVERLAY
+========================= */
 
 .hero-slide::before {
     content: "";
+
     position: absolute;
+
     inset: 0;
+
     border-radius: inherit;
+
     background:
-        linear-gradient(90deg, rgba(8,12,20,.98), rgba(8,12,20,.85) 25%, rgba(8,12,20,.45) 55%, rgba(8,12,20,.1)),
-        linear-gradient(0deg, rgba(8,12,20,.85), transparent 45%);
+        linear-gradient(
+            90deg,
+            rgba(8, 12, 20, .98),
+            rgba(8, 12, 20, .85) 25%,
+            rgba(8, 12, 20, .45) 55%,
+            rgba(8, 12, 20, .1)
+        ),
+        linear-gradient(
+            0deg,
+            rgba(8, 12, 20, .85),
+            transparent 45%
+        );
 }
 
-/* CONTENT */
+
+/* =========================
+   HERO CONTENT
+========================= */
 
 .hero-content {
     position: absolute;
+
     z-index: 2;
+
     left: 60px;
     bottom: 50px;
+
     width: 55%;
     max-width: 700px;
 }
 
 .hero-type {
     margin-bottom: 14px;
+
     color: #b8c0cc;
+
     font-size: 14px;
     font-weight: 700;
+
     letter-spacing: 2px;
+
     text-transform: uppercase;
 }
 
 .hero-title {
     margin-bottom: 16px;
-    font-size: clamp(42px,5vw,68px);
+
+    font-size: clamp(42px, 5vw, 68px);
+
     line-height: 1.05;
 }
 
 .hero-info {
     margin-bottom: 18px;
+
     color: #d5d9df;
 }
 
 .hero-description {
     max-width: 620px;
+
     margin-bottom: 30px;
+
     color: #c7ccd4;
+
     line-height: 1.65;
 }
 
+
+/* =========================
+   HERO BUTTONS
+========================= */
+
 .hero-buttons {
     display: flex;
+
     gap: 14px;
 }
 
 .hero-buttons button {
     padding: 13px 24px;
+
     border: 0;
+
     border-radius: 8px;
+
     font-weight: 600;
+
     cursor: pointer;
+
     transition: .25s;
 }
 
 .hero-buttons button:first-child {
     background: white;
+
     color: #11151c;
 }
 
-.hero-buttons button:last-child {
-    background: rgba(255,255,255,.12);
-    color: white;
-    border: 1px solid rgba(255,255,255,.25);
+.hero-buttons button:first-child:hover {
+    background: #36b9ff;
+
+    color: #ffffff;
 }
 
-/* LOOP RESET */
+.hero-buttons button:last-child {
+    background: rgba(255, 255, 255, .12);
+
+    color: white;
+
+    border: 1px solid rgba(255, 255, 255, .25);
+}
+
+.hero-buttons button:last-child:hover {
+    background: rgba(255, 255, 255, .2);
+}
+
+
+/* =========================
+   HERO LOOP RESET
+========================= */
 
 .hero-track.no-slide-transition .hero-slide {
     transition: none !important;
 }
 
-/* RESPONSIVE */
 
-@media (max-width: 900px) {
-    header { 
-        padding: 0 25px; 
-    }
+/* =========================
+   MOVIES SECTION
+========================= */
 
-    .search-box { 
-        width: 300px; 
-    }
+.movies {
+    margin: 45px 85px 0 105px;
+}
+
+
+/* =========================
+   SECTION HEADER
+========================= */
+
+.section-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 26px;
+
+    font-weight: 700;
+}
+
+.section-header a {
+    color: #36b9ff;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition: .2s ease;
+}
+
+.section-header a:hover {
+    color: #ffffff;
+}
+
+
+/* =========================
+   MOVIE GRID
+========================= */
+
+.movie-data {
+    display: grid;
+
+    grid-template-columns: repeat(5, 1fr);
+
+    gap: 20px;
+}
+
+
+/* =========================
+   MOVIE CARD
+========================= */
+
+.movie-card {
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    background: #101722;
+
+    border: 1px solid #1b293a;
+
+    transition: .25s;
+
+    cursor: pointer;
+}
+
+.movie-card:hover {
+    transform: translateY(-6px);
+
+    border-color: #36b9ff;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .35);
+}
+
+
+/* MOVIE POSTER */
+
+.movie-card img {
+    width: 100%;
+
+    height: 300px;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+
+/* MOVIE TITLE */
+
+.movie-card h3 {
+    margin: 12px 12px 6px;
+
+    overflow: hidden;
+
+    color: #ffffff;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+}
+
+
+/* MOVIE META */
+
+.movie-meta {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin: 0 12px 14px;
+
+    color: #9aaabd;
+
+    font-size: 13px;
+}
+
+.movie-meta i {
+    color: #f5c518;
+
+    font-size: 11px;
+}
+
+
+/* RATING */
+
+.rating {
+    display: flex;
+
+    align-items: center;
+
+    gap: 4px;
+}
+
+.rating span {
+    transform: translateY(1px);
+}
+
+
+/* =========================
+   SERIES SECTION
+========================= */
+
+.series {
+    margin: 45px 85px 0 105px;
+}
+
+.series .section-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   SERIES GRID
+========================= */
+
+.series-data {
+    display: grid;
+
+    grid-template-columns: repeat(5, 1fr);
+
+    gap: 20px;
+}
+
+
+/* =========================
+   SERIES CARD
+========================= */
+
+.series-card {
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    background: #101722;
+
+    border: 1px solid #1b293a;
+
+    transition: .25s;
+
+    cursor: pointer;
+}
+
+.series-card:hover {
+    transform: translateY(-6px);
+
+    border-color: #36b9ff;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .35);
+}
+
+
+/* SERIES POSTER */
+
+.series-card img {
+    width: 100%;
+
+    height: 300px;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+
+/* SERIES TITLE */
+
+.series-card h3 {
+    margin: 12px 12px 6px;
+
+    overflow: hidden;
+
+    color: #ffffff;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+}
+
+
+/* SERIES META */
+
+.series-meta {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin: 0 12px 14px;
+
+    color: #9aaabd;
+
+    font-size: 13px;
+}
+
+
+/* SERIES RATING */
+
+.series-meta .rating {
+    display: flex;
+
+    align-items: center;
+
+    gap: 4px;
+}
+
+.series-meta .rating i {
+    color: #f5c518;
+
+    font-size: 11px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+
+/* =========================
+   1200px
+========================= */
+
+@media (max-width: 1200px) {
 
     .hero-page {
-        height: 550px;
-        margin: 20px;
+        margin-right: 50px;
+        margin-left: 95px;
     }
 
-    .hero-slide { 
-        flex-basis: 80%; 
+    .movies,
+    .series {
+        margin-right: 50px;
+        margin-left: 95px;
     }
 
-    .hero-content {
-        width: 70%;
-        padding: 50px 40px;
+    .movie-data,
+    .series-data {
+        grid-template-columns: repeat(4, 1fr);
     }
 
-    .hero-title { 
-        font-size: 45px; 
+    .movie-card img,
+    .series-card img {
+        height: 280px;
     }
 }
 
-@media (max-width: 600px) {
-    header { 
-        padding: 0 15px; 
-    }
 
-    .search-box { 
-        width: 220px; 
-    }
+/* =========================
+   1000px
+========================= */
 
-    .username { display: none; }
+@media (max-width: 1000px) {
 
     .hero-page {
-        height: 500px;
-        margin: 15px;
-    }
+        height: 620px;
 
-    .hero-slide { 
-        flex-basis: 90%; 
+        margin-right: 35px;
+        margin-left: 95px;
     }
 
     .hero-content {
-        width: 100%;
-        padding: 35px 25px;
+        left: 45px;
+        bottom: 40px;
+
+        width: 60%;
     }
 
-    .hero-title { 
-        font-size: 38px; 
+    .hero-title {
+        font-size: clamp(38px, 5vw, 58px);
     }
 
-    .hero-description { 
-        font-size: 14px; 
+    .movies,
+    .series {
+        margin-right: 35px;
+        margin-left: 95px;
+    }
+
+    .movie-data,
+    .series-data {
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: 18px;
+    }
+
+    .movie-card img,
+    .series-card img {
+        height: 280px;
+    }
+}
+
+
+/* =========================
+   750px
+========================= */
+
+@media (max-width: 750px) {
+
+    .hero-page {
+        height: 560px;
+
+        margin-top: 20px;
+        margin-right: 20px;
+        margin-left: 90px;
+
+        border-radius: 14px;
+    }
+
+    .hero-slide {
+        flex-basis: 90%;
+
+        border-radius: 14px;
+    }
+
+    .hero-content {
+        left: 35px;
+        bottom: 35px;
+
+        width: 70%;
+    }
+
+    .hero-type {
+        font-size: 12px;
+
+        letter-spacing: 1.5px;
+    }
+
+    .hero-title {
+        margin-bottom: 12px;
+
+        font-size: 42px;
+    }
+
+    .hero-info {
+        margin-bottom: 14px;
+
+        font-size: 14px;
+    }
+
+    .hero-description {
+        margin-bottom: 22px;
+
+        font-size: 14px;
+
+        line-height: 1.5;
+    }
+
+    .hero-buttons {
+        gap: 10px;
     }
 
     .hero-buttons button {
         padding: 11px 18px;
+
+        font-size: 13px;
+    }
+
+
+    /* MOVIES + SERIES */
+
+    .movies,
+    .series {
+        margin-right: 20px;
+        margin-left: 90px;
+    }
+
+    .section-header {
+        margin-bottom: 16px;
+    }
+
+    .section-header h2 {
+        font-size: 22px;
+    }
+
+    .section-header a {
+        font-size: 13px;
+    }
+
+    .movie-data,
+    .series-data {
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 15px;
+    }
+
+    .movie-card img,
+    .series-card img {
+        height: 260px;
+    }
+}
+
+
+/* =========================
+   550px
+========================= */
+
+@media (max-width: 550px) {
+
+    .hero-page {
+        height: 500px;
+
+        margin-top: 15px;
+        margin-right: 15px;
+        margin-left: 85px;
+
+        border-radius: 12px;
+    }
+
+    .hero-slide {
+        flex-basis: 100%;
+
+        border-radius: 12px;
+    }
+
+    .hero-content {
+        left: 25px;
+        bottom: 25px;
+
+        width: 78%;
+    }
+
+    .hero-title {
+        font-size: 34px;
+    }
+
+    .hero-info {
+        font-size: 13px;
+    }
+
+    .hero-description {
+        font-size: 13px;
+
+        line-height: 1.45;
+    }
+
+    .hero-buttons button {
+        padding: 10px 15px;
+
+        font-size: 12px;
+    }
+
+
+    /* MOVIES + SERIES */
+
+    .movies,
+    .series {
+        margin-right: 15px;
+        margin-left: 85px;
+    }
+
+    .section-header h2 {
+        font-size: 20px;
+    }
+
+    .movie-data,
+    .series-data {
+        gap: 12px;
+    }
+
+    .movie-card img,
+    .series-card img {
+        height: 230px;
+    }
+
+    .movie-card h3,
+    .series-card h3 {
         font-size: 14px;
+    }
+
+    .movie-meta,
+    .series-meta {
+        font-size: 12px;
+    }
+}
+
+
+/* =========================
+   400px
+========================= */
+
+@media (max-width: 400px) {
+
+    .hero-page {
+        height: 450px;
+
+        margin-left: 82px;
+        margin-right: 10px;
+    }
+
+    .hero-content {
+        left: 20px;
+        bottom: 20px;
+
+        width: 82%;
+    }
+
+    .hero-title {
+        font-size: 29px;
+    }
+
+    .hero-description {
+        font-size: 12px;
+
+        margin-bottom: 18px;
+    }
+
+    .hero-buttons {
+        gap: 7px;
+    }
+
+    .hero-buttons button {
+        padding: 9px 12px;
+
+        font-size: 11px;
+    }
+
+    .movies,
+    .series {
+        margin-left: 82px;
+        margin-right: 10px;
+    }
+
+    .movie-data,
+    .series-data {
+        grid-template-columns: 1fr;
+    }
+
+    .movie-card img,
+    .series-card img {
+        height: 300px;
     }
 }

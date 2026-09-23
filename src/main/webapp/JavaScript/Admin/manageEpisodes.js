@@ -35,7 +35,7 @@ addEpisodeButtons.forEach(button => {
 
         // Form action
         addEpisodeForm.action =
-            `/dashboard/manageEpisodes/${seriesId}/addEpisode`;
+            `/admin/dashboard/manageEpisodes/${seriesId}/addEpisode`;
 
         // Clear previous data
         episodeNumberInput.value = "";
@@ -82,7 +82,7 @@ editEpisodeButtons.forEach(button => {
 
 
         // Form action
-        addEpisodeForm.action =`/dashboard/manageEpisodes/${seriesId}/updateEpisode/${episodeId}`;
+        addEpisodeForm.action =`/admin/dashboard/manageEpisodes/${seriesId}/updateEpisode/${episodeId}`;
 
 
         // Open same sidebar
@@ -126,7 +126,7 @@ deleteEpisodeButtons.forEach(button => {
         // Create temporary form
         const form = document.createElement("form");
         form.method = "post";
-        form.action = `/dashboard/manageEpisodes/${seriesId}/deleteEpisode/${episodeId}`;
+        form.action = `/admin/dashboard/manageEpisodes/${seriesId}/deleteEpisode/${episodeId}`;
         document.body.appendChild(form);
         form.submit();
     });

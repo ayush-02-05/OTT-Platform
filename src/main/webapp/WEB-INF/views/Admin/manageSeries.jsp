@@ -153,8 +153,10 @@
                             <option value="Adventure">Adventure</option>
                             <option value="Comedy">Comedy</option>
                             <option value="Drama">Drama</option>
+                            <option value="Biography">Biography</option>
                             <option value="Sci-Fi">Sci-Fi</option>
                             <option value="Thriller">Thriller</option>
+                            <option value="Romance">Romance</option>
                         </select>
                         <form:errors path="genre" cssClass="error"/>
                     </div>

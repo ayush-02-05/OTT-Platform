@@ -137,7 +137,7 @@
             <div class="drawer-form">
 
                 <form:form action="/admin/dashboard/movies" method="post" modelAttribute="movie">
-                    <input type="hidden" id="movieId" name="movieId">
+                    <form:hidden path="movieId"/>
                     <div class="form-group">
                         <label for="movieTitle">Movie Title</label>
                         <input type="text" id="movieTitle" name="title" placeholder="Enter movie title">
@@ -152,9 +152,10 @@
                             <option value="Adventure">Adventure</option>
                             <option value="Comedy">Comedy</option>
                             <option value="Drama">Drama</option>
-                            <option value="Fantasy">Fantasy</option>
+                            <option value="Biography">Biography</option>
                             <option value="Sci-Fi">Sci-Fi</option>
                             <option value="Thriller">Thriller</option>
+                            <option value="Romance">Romance</option>
                         </select>
                         <form:errors path="genre"/>
                     </div>

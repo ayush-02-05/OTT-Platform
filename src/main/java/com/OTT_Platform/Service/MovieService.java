@@ -9,8 +9,6 @@ import java.util.List;
 @Service
 public class MovieService {
     private final MovieRepository movieRepository;
-
-
     public MovieService(MovieRepository movieRepository) {
         this.movieRepository = movieRepository;
     }
@@ -25,5 +23,13 @@ public class MovieService {
 
     public void deleteMovie(int movieId){
         movieRepository.deleteById(movieId);
+    }
+
+    public List<Movie> latestRelease(){
+        return movieRepository.findTop5ByOrderByMovieIdDesc();
+    }
+
+    public Movie movieDetails(int movieId){
+        return movieRepository.findById(movieId).orElseThrow(() -> new RuntimeException("Movie not found"));
     }
 }

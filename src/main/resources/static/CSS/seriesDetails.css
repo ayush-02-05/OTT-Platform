@@ -1,0 +1,326 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+
+    background: #080c14;
+}
+
+
+/* =========================
+   SERIES DETAILS
+========================= */
+
+.series-details-page {
+    margin-left: 80px;
+    padding: 35px;
+    background: #080c14;
+    color: white;
+}
+
+
+/* =========================
+   SERIES INFO
+========================= */
+
+.series-info {
+    display: flex;
+    gap: 35px;
+    max-width: 1200px;
+}
+
+
+/* POSTER */
+
+.series-poster img {
+    width: 300px;
+    height: 450px;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+}
+
+
+/* CONTENT */
+
+.series-content {
+    padding-top: 15px;
+    max-width: 750px;
+}
+
+.series-content h1 {
+    margin: 0 0 15px;
+
+    font-size: 45px;
+    font-weight: 700;
+}
+
+
+/* META */
+
+.series-meta {
+    display: flex;
+    gap: 12px;
+
+    margin-bottom: 18px;
+
+    color: #9ba6b5;
+}
+
+.separator {
+    color: #4b5665;
+}
+
+
+/* RATING */
+
+.series-rating {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 20px;
+}
+
+.imdb {
+    padding: 4px 6px;
+
+    background: #f5c518;
+    color: #000;
+
+    border-radius: 3px;
+
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+/* SYNOPSIS */
+
+#series-synopsis {
+    margin-bottom: 25px;
+
+    color: #aab4c3;
+
+    line-height: 1.6;
+}
+
+
+/* BUTTONS */
+
+.series-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.watch-btn,
+.my-list-btn {
+    padding: 12px 20px;
+
+    border-radius: 5px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.watch-btn {
+    background: #087cff;
+    color: white;
+    border: none;
+}
+
+.my-list-btn {
+    background: #182231;
+    color: white;
+
+    border: 1px solid #2b3748;
+}
+
+
+/* =========================
+   TABS
+========================= */
+
+.series-tabs {
+    display: flex;
+    gap: 30px;
+
+    margin-top: 45px;
+
+    border-bottom: 1px solid #202a38;
+}
+
+.tab-btn {
+    padding: 14px 0;
+
+    background: none;
+    border: none;
+
+    color: #7f8b9d;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.tab-btn.active {
+    color: white;
+
+    border-bottom: 2px solid #087cff;
+}
+
+
+/* =========================
+   TAB CONTENT
+========================= */
+
+.tab-content {
+    display: none;
+
+    max-width: 1200px;
+
+    margin-top: 30px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+
+/* =========================
+   SEASON
+========================= */
+
+.season-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+}
+
+.season-header h2 {
+    margin: 0;
+}
+
+#season-select {
+    padding: 9px 12px;
+
+    background: #111925;
+    color: white;
+
+    border: 1px solid #2b3748;
+    border-radius: 5px;
+}
+
+
+/* =========================
+   EPISODES
+========================= */
+
+.episode-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+.episode-card {
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 14px;
+
+    background: #0e1520;
+
+    border: 1px solid #1d2735;
+
+    border-radius: 7px;
+}
+
+
+/* EPISODE THUMBNAIL */
+
+.episode-thumbnail {
+    width: 180px;
+    height: 100px;
+
+    flex-shrink: 0;
+
+    border-radius: 5px;
+
+    overflow: hidden;
+}
+
+.episode-thumbnail img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* EPISODE INFO */
+
+.episode-info {
+    flex: 1;
+}
+
+.episode-info h3 {
+    margin: 0 0 7px;
+
+    font-size: 16px;
+}
+
+.episode-info p {
+    margin: 0;
+
+    color: #8793a5;
+
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* DURATION */
+
+.episode-duration {
+    color: #8d99aa;
+
+    font-size: 13px;
+}
+
+
+/* PLAY */
+
+.episode-play {
+    width: 40px;
+    height: 40px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #087cff;
+    color: white;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+#about-synopsis {
+    max-width: 800px;
+
+    color: #9ba6b6;
+
+    line-height: 1.6;
+}

@@ -15,10 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class SeriesController {
+public class AdminSeriesController {
     private final SeriesService seriesService;
     private final EpisodeService episodeService;
-    public SeriesController(SeriesService seriesService, EpisodeService episodeService) {
+    public AdminSeriesController(SeriesService seriesService, EpisodeService episodeService) {
         this.seriesService = seriesService;
         this.episodeService = episodeService;
     }
@@ -65,7 +65,7 @@ public class SeriesController {
             //Edit
             seriesService.updateSeries(series,numberOfSeasons, seasonReleaseYears);
         }
-        return "redirect:/dashboard/manageSeries";
+        return "redirect:/admin/dashboard/manageSeries";
     }
 
     @DeleteMapping("/admin/dashboard/manageSeries/{id}")

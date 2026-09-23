@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>CineVAULT - Series Details</title>
+
+        <link rel="stylesheet" href="/CSS/sidebar.css">
+        <link rel="stylesheet" href="/CSS/header.css">
+        <link rel="stylesheet" href="/CSS/seriesDetails.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    </head>
+
+    <body>
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <div id="sidebar-container"></div>
+
+
+        <!-- ================= HEADER ================= -->
+
+        <div id="header-container"></div>
+
+
+        <!-- ================= MAIN ================= -->
+
+        <main class="series-details-page">
+
+            <!-- SERIES TOP SECTION -->
+
+            <section class="series-info">
+
+                <!-- Poster -->
+
+                <div class="series-poster">
+                    <img
+                        id="series-poster"
+                        src=""
+                        alt="Series Poster"
+                    >
+                </div>
+
+
+                <!-- Details -->
+
+                <div class="series-content">
+
+                    <h1 id="series-title">Series Title</h1>
+
+                    <div class="series-meta">
+
+                        <span id="series-year">2026</span>
+
+                        <span class="separator">•</span>
+
+                        <span id="series-genre">Drama</span>
+
+                        <span class="separator">•</span>
+
+                        <span id="series-seasons">2 Seasons</span>
+
+                    </div>
+
+
+                    <!-- Rating -->
+
+                    <div class="series-rating">
+
+                        <span class="imdb">IMDb</span>
+
+                        <span id="series-rating">8.5</span>
+
+                    </div>
+
+
+                    <!-- Synopsis -->
+
+                    <p id="series-synopsis">
+                        Series synopsis will appear here.
+                    </p>
+
+
+                    <!-- Buttons -->
+
+                    <div class="series-actions">
+
+                        <button class="watch-btn">
+                            ▶ Watch Now
+                        </button>
+
+                        <button class="my-list-btn">
+                            ＋ My List
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= TABS ================= -->
+
+            <section class="series-tabs">
+
+                <button class="tab-btn active" data-tab="episodes">
+                    Episodes
+                </button>
+
+                <button class="tab-btn" data-tab="about">
+                    About
+                </button>
+
+                <button class="tab-btn" data-tab="cast">
+                    Cast
+                </button>
+
+            </section>
+
+
+            <!-- ================= EPISODES ================= -->
+
+            <section id="episodes-tab" class="tab-content active">
+
+                <!-- Season Selector -->
+
+                <div class="season-header">
+
+                    <h2>Episodes</h2>
+
+                    <select id="season-select">
+                        <!-- JS will populate seasons -->
+
+                        <option value="">
+                            Select Season
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Episode List -->
+
+                <div id="episode-list" class="episode-list">
+
+                    <!-- JS will dynamically create episodes -->
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= ABOUT ================= -->
+
+            <section id="about-tab" class="tab-content">
+
+                <h2>About</h2>
+
+                <p id="about-synopsis">
+                    Series information will appear here.
+                </p>
+
+            </section>
+
+
+            <!-- ================= CAST ================= -->
+
+            <section id="cast-tab" class="tab-content">
+
+                <h2>Cast</h2>
+
+                <div id="cast-list" class="cast-list">
+
+                    <!-- Cast will be added later -->
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <script src="/JavaScript/sidebar.js"></script>
+        <script src="/JavaScript/seriesDetails.js"></script>
+
+    </body>
+</html>

@@ -1,5 +1,6 @@
 package com.OTT_Platform.Service;
 
+import com.OTT_Platform.DTO.SeriesDTO;
 import com.OTT_Platform.Model.Season;
 import com.OTT_Platform.Model.Series;
 import com.OTT_Platform.Repository.SeriesRepository;
@@ -58,5 +59,59 @@ public class SeriesService {
 
     public void deleteSeries(int seriesId) {
         seriesRepository.deleteById(seriesId);
+    }
+
+    public List<SeriesDTO> latestRelease() {
+        return seriesRepository.findTop5ByOrderBySeriesIdDesc().stream()
+                .map(series -> {
+                    SeriesDTO dto = new SeriesDTO();
+
+                    dto.setSeriesId(series.getSeriesId());
+                    dto.setTitle(series.getTitle());
+                    dto.setGenre(series.getGenre());
+                    dto.setRating(series.getRating());
+                    dto.setPosterURL(series.getPosterURL());
+                    dto.setSynopsis(series.getSynopsis());
+                    dto.setReleaseYear(series.getSeasons().get(0).getReleaseYear());
+
+                    return dto;
+                })
+                .toList();
+    }
+
+    public List<SeriesDTO> getAllSeriesDTO() {
+        return seriesRepository.findAll().stream()
+                .map(series -> {
+                    SeriesDTO dto = new SeriesDTO();
+
+                    dto.setSeriesId(series.getSeriesId());
+                    dto.setTitle(series.getTitle());
+                    dto.setGenre(series.getGenre());
+                    dto.setRating(series.getRating());
+                    dto.setPosterURL(series.getPosterURL());
+                    dto.setSynopsis(series.getSynopsis());
+                    if (!series.getSeasons().isEmpty()) {
+                        dto.setReleaseYear(series.getSeasons().get(0).getReleaseYear());
+                    }
+                    return dto;
+                }).toList();
+    }
+
+    public SeriesDTO seriesDetails(int seriesId){
+        Series series = seriesRepository.findById(seriesId).orElseThrow(() -> new RuntimeException("Series not found"));
+
+        SeriesDTO dto = new SeriesDTO();
+
+        dto.setSeriesId(series.getSeriesId());
+        dto.setTitle(series.getTitle());
+        dto.setGenre(series.getGenre());
+        dto.setRating(series.getRating());
+        if (!series.getSeasons().isEmpty()) {
+            dto.setReleaseYear(series.getSeasons().get(0).getReleaseYear());
+        }
+        dto.setPosterURL(series.getPosterURL());
+        dto.setSynopsis(series.getSynopsis());
+
+        return dto;
     }
 }

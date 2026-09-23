@@ -7,39 +7,21 @@
     <title>Home</title>
 
     <link rel="stylesheet" href="../CSS/home.css">
+    <link rel="stylesheet" href="../CSS/sidebar.css">
+    <link rel="stylesheet" href="../CSS/header.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body>
 
-<!-- Sidebar -->
+<!-- SIDEBAR -->
 <div id="sidebar-container"></div>
 
-
-<!-- Header -->
-<header>
-    <h1 class="logo"><span>OTT</span>FLIX</h1>
-    <div class="header-right">
-        <div class="search-box">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder="Search for movies, series..." name="search">
-        </div>
-
-        <div class="header-actions">
-            <div class="profile">
-                <div class="profile-image">
-                    A
-                </div>
-                <span class="username">Ayush</span>
-                <i class="fa-solid fa-chevron-down"></i>
-            </div>
-        </div>
-    </div>
-</header>
+<!-- HEADER -->
+<div id="header-container"></div>
 
 
 <!-- HERO SLIDER -->
-
 <section class="hero-page">
     <div class="hero-slider">
         <div class="hero-track">
@@ -48,8 +30,27 @@
     </div>
 </section>
 
+<!-- MOVIES -->
+<section class="movies">
+    <div class="section-header">
+        <h2>Movies</h2>
+        <a href="/movies">View All</a>
+    </div>
+    <div class="movie-data"></div>
+</section>
+
+<!-- SERIES -->
+<section class="series">
+    <div class="section-header">
+        <h2>Series</h2>
+        <a href="/series">View All</a>
+    </div>
+    <div class="series-data"></div>
+</section>
+
 
 <script src="../JavaScript/home.js"></script>
+<script src="../JavaScript/sidebar.js"></script>
 
 </body>
 </html>

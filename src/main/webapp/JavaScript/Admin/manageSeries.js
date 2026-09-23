@@ -158,13 +158,13 @@ deleteButtons.forEach(function (button) {
 
         if (!confirmDelete) return;
 
-        fetch(`/dashboard/manageSeries/${seriesId}`, {
+        fetch(`/admin/dashboard/manageSeries/${seriesId}`, {
             method: "DELETE"
         }) .then(function (response) {
             if (!response.ok) throw new Error("Failed to delete series");
             return response.text();
         }) .then(function () {
-            window.location.href = "/dashboard/manageSeries";
+            window.location.href = "/admin/dashboard/manageSeries";
         }) .catch(function (error) {
             console.error(error);
             alert("Failed to delete series.");

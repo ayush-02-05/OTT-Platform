@@ -1,0 +1,369 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+
+    background: #080c14;
+
+    overflow-x: hidden;
+}
+
+/* =========================
+   MOVIE DETAILS PAGE
+========================= */
+
+.movie-details-page {
+    margin-left: 80px;
+
+    padding: 35px 34px 60px;
+
+    min-height: calc(100vh - 90px);
+
+    background: #080c14;
+    color: #ffffff;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   MAIN DETAILS
+========================= */
+
+.movie-details {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 35px;
+
+    width: 100%;
+}
+
+
+/* =========================
+   POSTER
+========================= */
+
+.movie-poster-container {
+    width: 305px;
+    min-width: 305px;
+}
+
+.movie-poster {
+    width: 305px;
+    height: 470px;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 10px;
+
+    border: 1px solid #263449;
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+}
+
+
+/* =========================
+   MOVIE INFO
+========================= */
+
+.movie-info {
+    padding-top: 5px;
+
+    max-width: 850px;
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+.movie-info h1 {
+    margin: 0 0 14px;
+
+    font-size: 48px;
+    line-height: 1.1;
+
+    font-weight: 700;
+
+    color: #ffffff;
+}
+
+
+/* =========================
+   META
+========================= */
+
+.movie-meta {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 26px;
+
+    font-size: 17px;
+
+    color: #aebbd0;
+}
+
+
+/* =========================
+   RATING
+========================= */
+
+.movie-rating {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 9px 13px;
+
+    margin-bottom: 27px;
+
+    background: #101b2c;
+
+    border: 1px solid #20324b;
+
+    border-radius: 8px;
+
+    color: #ffffff;
+
+    font-size: 16px;
+}
+
+.movie-rating i {
+    color: #ffc107;
+
+    font-size: 20px;
+}
+
+.movie-rating #movie-rating {
+    font-size: 18px;
+
+    font-weight: 700;
+}
+
+.movie-rating .imdb {
+    color: #8291a8;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   SYNOPSIS
+========================= */
+
+.movie-synopsis {
+    max-width: 850px;
+
+    margin: 0 0 30px;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+
+    color: #d2d9e5;
+}
+
+
+/* =========================
+   ACTIONS
+========================= */
+
+.movie-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 17px;
+
+    margin-bottom: 30px;
+}
+
+
+/* COMMON */
+
+.movie-actions button {
+    height: 58px;
+
+    border-radius: 10px;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+/* =========================
+   WATCH NOW
+========================= */
+
+.watch-btn {
+    padding: 0 28px;
+
+    border: none;
+
+    background: #087cff;
+
+    color: #ffffff;
+}
+
+.watch-btn i {
+    margin-right: 9px;
+}
+
+.watch-btn:hover {
+    background: #006de5;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   MY LIST
+========================= */
+
+.list-btn {
+    padding: 0 25px;
+
+    border: 1px solid #29405d;
+
+    background: #101b2c;
+
+    color: #dce5f2;
+}
+
+.list-btn i {
+    margin-right: 8px;
+}
+
+.list-btn:hover {
+    background: #17263b;
+
+    border-color: #3b5575;
+}
+
+
+/* =========================
+   FAVORITE
+========================= */
+
+.favorite-btn {
+    width: 58px;
+
+    border: 1px solid #29405d;
+
+    background: #101b2c;
+
+    color: #dce5f2;
+}
+
+.favorite-btn i {
+    font-size: 21px;
+}
+
+.favorite-btn:hover {
+    background: #17263b;
+
+    border-color: #3b5575;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .movie-details-page {
+        margin-left: 80px;
+
+        padding: 30px 25px 50px;
+    }
+
+    .movie-details {
+        gap: 25px;
+    }
+
+    .movie-poster-container {
+        width: 260px;
+        min-width: 260px;
+    }
+
+    .movie-poster {
+        width: 260px;
+        height: 400px;
+    }
+
+    .movie-info h1 {
+        font-size: 40px;
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .movie-details-page {
+        margin-left: 0;
+
+        padding: 30px 20px 40px;
+    }
+
+    .movie-details {
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+    .movie-poster-container {
+        width: 240px;
+        min-width: 240px;
+    }
+
+    .movie-poster {
+        width: 240px;
+        height: 360px;
+    }
+
+    .movie-info {
+        width: 100%;
+
+        max-width: 100%;
+
+        text-align: center;
+    }
+
+    .movie-info h1 {
+        font-size: 34px;
+    }
+
+    .movie-meta {
+        justify-content: center;
+
+        flex-wrap: wrap;
+    }
+
+    .movie-synopsis {
+        font-size: 15px;
+    }
+
+    .movie-actions {
+        justify-content: center;
+
+        flex-wrap: wrap;
+    }
+}

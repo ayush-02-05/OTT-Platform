@@ -1,0 +1,290 @@
+header {
+    height: 90px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 30px;
+
+    background: #080c14;
+
+    margin-left: 80px;
+}
+
+
+/* ================================
+   LOGO
+================================ */
+
+.logo {
+    margin-left: 55px;
+
+    font-size: 30px;
+    font-weight: 800;
+
+    letter-spacing: -1px;
+
+    color: #ffffff;
+
+    white-space: nowrap;
+}
+
+.logo span {
+    color: #36b9ff;
+}
+
+
+/* ================================
+   RIGHT SIDE
+================================ */
+
+.header-right {
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+
+    gap: 30px;
+}
+
+
+/* ================================
+   SEARCH
+================================ */
+
+.search-box {
+    width: 400px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 15px;
+
+    border-radius: 8px;
+
+    background: #111722;
+
+    border: 1px solid #1d2634;
+
+    color: #7f91a9;
+}
+
+.search-box i {
+    margin-right: 12px;
+
+    font-size: 18px;
+}
+
+.search-box input {
+    width: 100%;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 15px;
+}
+
+.search-box input::placeholder {
+    color: #718198;
+}
+
+
+/* ================================
+   PROFILE
+================================ */
+
+.profile {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    color: white;
+}
+
+.profile-image {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #1a2638;
+
+    color: white;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.username {
+    font-size: 16px;
+}
+
+.profile i {
+    margin-left: 3px;
+
+    font-size: 13px;
+
+    color: #8b9ab0;
+}
+
+
+/* ================================
+   950px
+================================ */
+
+@media (max-width: 950px) {
+
+    header {
+        padding: 0 20px;
+    }
+
+    .logo {
+        margin-left: 45px;
+
+        font-size: 26px;
+    }
+
+    .header-right {
+        gap: 20px;
+    }
+
+    .search-box {
+        width: 300px;
+    }
+
+    .profile-image {
+        width: 42px;
+        height: 42px;
+    }
+
+    .username {
+        font-size: 14px;
+    }
+}
+
+
+/* ================================
+   768px
+================================ */
+
+@media (max-width: 768px) {
+
+    header {
+        height: 75px;
+
+        padding: 0 15px;
+    }
+
+    .logo {
+        margin-left: 40px;
+
+        font-size: 23px;
+    }
+
+    .header-right {
+        gap: 15px;
+    }
+
+    .search-box {
+        width: 220px;
+        height: 38px;
+    }
+
+    .search-box i {
+        margin-right: 8px;
+
+        font-size: 16px;
+    }
+
+    .search-box input {
+        font-size: 13px;
+    }
+
+    .profile {
+        gap: 7px;
+    }
+
+    .profile-image {
+        width: 38px;
+        height: 38px;
+
+        font-size: 15px;
+    }
+
+    .username {
+        display: none;
+    }
+}
+
+
+/* ================================
+   480px - PHONE
+================================ */
+
+@media (max-width: 480px) {
+
+    header {
+        height: 70px;
+
+        padding: 0 10px;
+
+        /* Sidebar is overlay on phone */
+        margin-left: 0;
+    }
+
+    .logo {
+        margin-left: 40px;
+
+        font-size: 20px;
+    }
+
+    .header-right {
+        gap: 8px;
+    }
+
+    .search-box {
+        width: 150px;
+        height: 38px;
+
+        padding: 0 10px;
+    }
+
+    .search-box i {
+        margin-right: 7px;
+
+        font-size: 15px;
+    }
+
+    .search-box input {
+        font-size: 12px;
+    }
+
+    .profile {
+        gap: 0;
+    }
+
+    .profile-image {
+        width: 35px;
+        height: 35px;
+
+        font-size: 14px;
+    }
+
+    .profile i {
+        display: none;
+    }
+
+    .username {
+        display: none;
+    }
+}

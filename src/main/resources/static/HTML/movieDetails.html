@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CineVAULT - Movie</title>
+
+    <link rel="stylesheet" href="/CSS/sidebar.css">
+    <link rel="stylesheet" href="/CSS/movieDetails.css">
+    <link rel="stylesheet" href="/CSS/header.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <div id="sidebar-container"></div>
+    <div id="header-container"></div>
+
+
+    <!-- MOVIE DETAILS -->
+
+    <main class="movie-details-page">
+
+        <section class="movie-details">
+
+            <!-- POSTER -->
+            <div class="movie-poster-container">
+                <img id="movie-poster" class="movie-poster" alt="Movie Poster">
+            </div>
+
+
+            <!-- MOVIE INFO -->
+            <div class="movie-info">
+                <h1 id="movie-title"></h1>
+                <div class="movie-meta">
+                    <span id="movie-year"></span>
+                    <span>•</span>
+                    <span id="movie-genre"></span>
+                </div>
+
+
+                <!-- RATING -->
+                <div class="movie-rating">
+                    <i class="fa-solid fa-star"></i>
+
+                    <span id="movie-rating"></span>
+                    <span>/10</span>
+                    <span class="imdb">IMDb</span>
+                </div>
+
+
+                <!-- SYNOPSIS -->
+                <p id="movie-synopsis" class="movie-synopsis"></p>
+
+
+                <!-- ACTIONS -->
+                <div class="movie-actions">
+
+                    <button class="watch-btn">
+                        <i class="fa-solid fa-play"></i>
+                        Watch Now
+                    </button>
+
+                    <button class="list-btn">
+                        <i class="fa-solid fa-plus"></i>
+                        My List
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="/JavaScript/movieDetails.js"></script>
+    <script src="/JavaScript/sidebar.js"></script>
+
+</body>
+
+</html>

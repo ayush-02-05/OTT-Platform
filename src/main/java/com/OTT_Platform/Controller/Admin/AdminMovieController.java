@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @Controller
-public class MovieController {
+public class AdminMovieController {
     private final MovieService movieService;
 
-    public MovieController(MovieService movieService) {
+    public AdminMovieController(MovieService movieService) {
         this.movieService = movieService;
     }
 
@@ -30,19 +30,21 @@ public class MovieController {
     }
 
     @PostMapping("/admin/dashboard/movies")
-    public String addMovie(@Valid @ModelAttribute("movie") Movie movie, BindingResult result) {
+    public String addMovie(@Valid @ModelAttribute("movie") Movie movie, BindingResult result, Model model) {
         if (result.hasErrors()) {
+            result.getAllErrors().forEach(error ->
+                    System.out.println("VALIDATION ERROR: " + error)
+            );
+            model.addAttribute("movies", movieService.getAllMovies());
             return "Admin/Movies";
         }
         movieService.saveMovie(movie);
-        return "redirect:/dashboard/movies";
+        return "redirect:/admin/dashboard/movies";
     }
 
     @PostMapping("/admin/dashboard/movies/delete")
     public String deleteMovie(@RequestParam int movieId) {
         movieService.deleteMovie(movieId);
-        return "redirect:/dashboard/movies";
+        return "redirect:/admin/dashboard/movies";
     }
-
-
 }
