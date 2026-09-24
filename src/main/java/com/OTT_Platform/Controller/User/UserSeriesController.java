@@ -1,5 +1,7 @@
 package com.OTT_Platform.Controller.User;
 
+import com.OTT_Platform.DTO.EpisodeDTO;
+import com.OTT_Platform.DTO.SeasonDTO;
 import com.OTT_Platform.DTO.SeriesDTO;
 import com.OTT_Platform.Model.Movie;
 import com.OTT_Platform.Service.SeriesService;
@@ -26,6 +28,14 @@ public class UserSeriesController {
         return seriesService.seriesDetails(seriesId);
     }
 
-    @GetMapping("/api/series/${seriesId}/seasons")
+    @GetMapping("/api/series/{seriesId}/seasons")
+    public List<SeasonDTO> seasons(@PathVariable int seriesId) {
+        return seriesService.getSeasons(seriesId);
+    }
+
+    @GetMapping("/api/seasons/{seasonId}/episodes")
+    public List<EpisodeDTO> episodes(@PathVariable int seasonId) {
+        return seriesService.getEpisodes(seasonId);
+    }
 
 }

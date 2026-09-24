@@ -163,6 +163,9 @@ fetch("/home/series")
                     <span class="rating"><i class="fa-solid fa-star"></i> ${s.rating}</span>
                 </div>
             `;
+            card.addEventListener("click", () => {
+                window.location.href = `/series/${s.seriesId}`;
+            });
             seriesData.appendChild(card);
         })
     })

@@ -10,4 +10,5 @@ public class OttPlatformApplication {
 		SpringApplication.run(OttPlatformApplication.class, args);
 		System.out.println("Hi");
 	}
+
 }

@@ -36,7 +36,6 @@ fetch(`/api/series/${seriesId}`)
 
         document.getElementById("series-synopsis").textContent = series.synopsis;
 
-        document.getElementById("about-synopsis").textContent = series.synopsis;
     });
 
 
@@ -61,11 +60,13 @@ fetch(`/api/series/${seriesId}/seasons`)
             option.textContent = `Season ${season.seasonNumber}`;
 
             seasonSelect.appendChild(option);
+
         });
 
         if (seasons.length > 0) {
             loadEpisodes(seasons[0].seasonId);
         }
+
     });
 
 
@@ -116,8 +117,11 @@ function loadEpisodes(seasonId) {
                     </div>
 
                 `;
+
             });
+
         });
+
 }
 
 
@@ -130,42 +134,5 @@ seasonSelect.addEventListener("change", function () {
     const seasonId = this.value;
 
     loadEpisodes(seasonId);
-
-});
-
-
-/* =========================
-   TABS
-========================= */
-
-const tabButtons = document.querySelectorAll(".tab-btn");
-
-const tabContents = document.querySelectorAll(".tab-content");
-
-
-tabButtons.forEach(button => {
-
-    button.addEventListener("click", function () {
-
-        const tab = this.dataset.tab;
-
-
-        tabButtons.forEach(btn => {
-            btn.classList.remove("active");
-        });
-
-
-        tabContents.forEach(content => {
-            content.classList.remove("active");
-        });
-
-
-        this.classList.add("active");
-
-        document
-            .getElementById(`${tab}-tab`)
-            .classList.add("active");
-
-    });
 
 });

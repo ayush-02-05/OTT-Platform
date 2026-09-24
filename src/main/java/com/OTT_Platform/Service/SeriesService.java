@@ -1,5 +1,7 @@
 package com.OTT_Platform.Service;
 
+import com.OTT_Platform.DTO.EpisodeDTO;
+import com.OTT_Platform.DTO.SeasonDTO;
 import com.OTT_Platform.DTO.SeriesDTO;
 import com.OTT_Platform.Model.Season;
 import com.OTT_Platform.Model.Series;
@@ -113,5 +115,49 @@ public class SeriesService {
         dto.setSynopsis(series.getSynopsis());
 
         return dto;
+    }
+
+
+
+
+    public List<SeasonDTO> getSeasons(int seriesId){
+        Series series = seriesRepository.findById(seriesId).orElseThrow(() -> new RuntimeException("Series Not Found"));
+        return series.getSeasons()
+                .stream()
+                .map(season -> {
+
+                    SeasonDTO dto = new SeasonDTO();
+
+                    dto.setSeasonId(season.getSeasonId());
+                    dto.setSeasonNumber(season.getSeasonNumber());
+                    dto.setReleaseYear(season.getReleaseYear());
+
+                    return dto;
+                })
+                .toList();
+    }
+
+
+
+
+    public List<EpisodeDTO> getEpisodes(int seasonId) {
+        for (Series series : seriesRepository.findAll()) {
+            for (Season season : series.getSeasons()) {
+                if (season.getSeasonId() == seasonId) {
+                    return season.getEpisodes()
+                            .stream()
+                            .map(episode -> {
+                                EpisodeDTO dto = new EpisodeDTO();
+                                dto.setEpisodeId(episode.getEpisodeId());
+                                dto.setEpisodeNumber(episode.getEpisodeNumber());
+                                dto.setEpisodeTitle(episode.getEpisodeTitle());
+                                dto.setDuration(episode.getDuration());
+                                return dto;
+                            })
+                            .toList();
+                }
+            }
+        }
+        throw new RuntimeException("Season not found");
     }
 }

@@ -29,53 +29,32 @@ const sortFilter =
 // ==================== DISPLAY SERIES ====================
 
 function displaySeries(seriesList) {
-
-    const seriesGrid =
-        document.getElementById("series-grid");
-
+    const seriesGrid = document.getElementById("series-grid");
     seriesGrid.innerHTML = "";
-
-
     seriesList.forEach(show => {
-
         seriesGrid.innerHTML += `
-
-            <div class="series-card">
-
-                <img
-                    src="${show.posterURL}"
-                    alt="${show.title}"
-                >
-
-
+            <div class="series-card" data-series-id="${show.seriesId}">
+                <img src="${show.posterURL}" alt="${show.title}">
                 <div class="series-info">
-
                     <h3>${show.title}</h3>
-
                     <p>${show.genre}</p>
-
-
                     <div class="series-bottom">
-
-                        <span class="series-year">
-                            ${show.releaseYear}
-                        </span>
-
-
-                        <span class="series-rating">
-                            ⭐ ${show.rating}
-                        </span>
-
+                        <span class="series-year">${show.releaseYear}</span>
+                        <span class="series-rating">⭐ ${show.rating}</span>
                     </div>
-
                 </div>
-
             </div>
-
         `;
     });
 }
 
+const seriesGrid = document.getElementById("series-grid");
+seriesGrid.addEventListener("click", (event) => {
+    const card = event.target.closest(".series-card");
+    if (!card) return;
+    const seriesId = card.dataset.seriesId;
+    window.location.href = `/series/${seriesId}`;
+});
 
 // ==================== FETCH SERIES ====================
 

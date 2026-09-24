@@ -43,15 +43,10 @@ function displayMovies(movieList) {
 
 
 const movieGrid = document.getElementById("movie-grid");
-
 movieGrid.addEventListener("click", (event) => {
-
     const card = event.target.closest(".movie-card");
-
     if (!card) return;
-
     const movieId = card.dataset.movieId;
-
     window.location.href = `/movies/${movieId}`;
 });
 
