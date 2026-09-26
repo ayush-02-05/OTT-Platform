@@ -1,14 +1,3 @@
-// ==================== LOAD HEADER ====================
-
-fetch("/HTML/header.html")
-    .then(response => response.text())
-    .then(data => {
-
-        document.getElementById("header-container").innerHTML = data;
-
-    });
-
-
 // ==================== SERIES DATA ====================
 
 let series = [];

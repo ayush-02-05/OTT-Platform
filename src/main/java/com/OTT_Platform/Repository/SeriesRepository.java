@@ -11,4 +11,6 @@ public interface SeriesRepository extends JpaRepository<Series, Integer> {
     List<Series> findTop5ByOrderBySeriesIdDesc();
 
     List<Series> findByRatingGreaterThan(float Rating);
+
+    List<Series> findByTitleContainingIgnoreCase(String title);
 }

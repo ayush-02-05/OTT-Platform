@@ -6,6 +6,7 @@ import com.OTT_Platform.Model.Series;
 import com.OTT_Platform.Repository.MovieRepository;
 import com.OTT_Platform.Repository.SeriesRepository;
 import com.OTT_Platform.Repository.EpisodeRepository;
+import com.OTT_Platform.Repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,11 +16,13 @@ public class DashboardService {
     private final MovieRepository movieRepository;
     private final SeriesRepository seriesRepository;
     private final EpisodeRepository episodesRepository;
+    private final UserRepository userRepository;
 
-    public DashboardService(MovieRepository movieRepository, SeriesRepository seriesRepository, EpisodeRepository episodesRepository) {
+    public DashboardService(MovieRepository movieRepository, SeriesRepository seriesRepository, EpisodeRepository episodesRepository, UserRepository userRepository) {
         this.movieRepository = movieRepository;
         this.seriesRepository = seriesRepository;
         this.episodesRepository = episodesRepository;
+        this.userRepository = userRepository;
     }
 
     public long getTotalMovies() {
@@ -50,5 +53,9 @@ public class DashboardService {
             }
         }
         return count;
+    }
+
+    public long getTotalUsers() {
+        return userRepository.count();
     }
 }

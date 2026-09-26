@@ -8,6 +8,7 @@ import java.util.List;
 
 
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id
@@ -62,5 +63,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

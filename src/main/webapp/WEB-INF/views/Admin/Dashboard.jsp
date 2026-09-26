@@ -61,7 +61,7 @@
 
                     <div class="stat-details">
                         <p>Total Users</p>
-                        <h2>25</h2>
+                        <h2>${totalUsers}</h2>
                     </div>
                 </div>
 
@@ -84,7 +84,7 @@
                 <div class="recent-movie">
                     <div class="section-header">
                         <h2>Recent Movies</h2>
-                        <a href="/admin/dashboard/movies">View All</a>
+                        <a href="/admin/movies">View All</a>
                     </div>
 
                     <div class="movie-list">
@@ -121,7 +121,7 @@
 
                     <div class="section-header">
                         <h2>Recent Series</h2>
-                        <a href="/admin/dashboard/manageSeries">View All</a>
+                        <a href="/admin/series">View All</a>
                     </div>
 
                     <div class="series-list">

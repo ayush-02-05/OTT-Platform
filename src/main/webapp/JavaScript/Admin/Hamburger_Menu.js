@@ -1,31 +1,30 @@
-const hamburger = document.querySelector(".hamburger");
-const hamburgerIcon = document.querySelector(".hamburger i");
+const sidebar = document.getElementById("sidebar");
+const closeSidebar = document.getElementById("closeSidebar");
 
-const menu = document.querySelector(".menu");
-const dashboard = document.querySelector(".dashboard");
+// ====================
+// TOGGLE SIDEBAR
+// ====================
 
-hamburger.addEventListener("click", () => {
-    menu.classList.add("active");
-    dashboard.classList.add("move");
-});
-
-closeMenu.addEventListener("click", () => {
-    menu.classList.remove("active");
-    dashboard.classList.remove("move");
+closeSidebar.addEventListener("click", () => {
+    sidebar.classList.toggle("closed");
 });
 
 
+// ====================
+// ACTIVE PAGE
+// ====================
 
-const movieButtons = document.querySelectorAll(".movieButton");
+const links = sidebar.querySelectorAll(".sidebar-menu a");
+const currentPath = window.location.pathname;
 
-movieButtons.forEach(button => {
+links.forEach(link => {
 
-    button.addEventListener("click", () => {
+    link.classList.remove("active");
 
-        const movieOptions = button.nextElementSibling;
+    const linkPath = new URL(link.href).pathname;
 
-        movieOptions.classList.toggle("active");
-
-    });
+    if (linkPath === currentPath) {
+        link.classList.add("active");
+    }
 
 });

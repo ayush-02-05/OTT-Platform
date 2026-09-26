@@ -31,5 +31,24 @@ public class PageController {
         return "forward:/HTML/seriesDetails.html";
     }
 
+    @GetMapping("/MyList")
+    public String myList() {
+        return "forward:/HTML/myList.html";
+    }
+
+    @GetMapping("/login")
+    public String login() {
+        return "forward:/HTML/login.html";
+    }
+
+    @GetMapping("/register")
+    public String register() {
+        return "forward:/HTML/register.html";
+    }
+
+    @GetMapping("/profile")
+    public String profile() {
+        return "forward:/HTML/profile.html";
+    }
 
 }

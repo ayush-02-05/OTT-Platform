@@ -21,7 +21,7 @@ public class AdminMovieController {
         this.movieService = movieService;
     }
 
-    @GetMapping("/admin/dashboard/movies")
+    @GetMapping("/admin/movies")
     public String Movies(Model model){
         List<Movie> movies = movieService.getAllMovies();
         model.addAttribute("movies", movies);//database wali movies
@@ -29,7 +29,7 @@ public class AdminMovieController {
         return "Admin/Movies";
     }
 
-    @PostMapping("/admin/dashboard/movies")
+    @PostMapping("/admin/movies")
     public String addMovie(@Valid @ModelAttribute("movie") Movie movie, BindingResult result, Model model) {
         if (result.hasErrors()) {
             result.getAllErrors().forEach(error ->
@@ -39,12 +39,12 @@ public class AdminMovieController {
             return "Admin/Movies";
         }
         movieService.saveMovie(movie);
-        return "redirect:/admin/dashboard/movies";
+        return "redirect:/admin/movies";
     }
 
-    @PostMapping("/admin/dashboard/movies/delete")
+    @PostMapping("/admin/movies/delete")
     public String deleteMovie(@RequestParam int movieId) {
         movieService.deleteMovie(movieId);
-        return "redirect:/admin/dashboard/movies";
+        return "redirect:/admin/movies";
     }
 }

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>My List</title>
+
+        <link rel="stylesheet" href="../CSS/MyList.css">
+        <link rel="stylesheet" href="../CSS/sidebar.css">
+        <link rel="stylesheet" href="../CSS/header.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    </head>
+
+    <body>
+
+        <!-- SIDEBAR -->
+        <div id="sidebar-container"></div>
+        <!-- HEADER -->
+        <div id="header-container"></div>
+
+
+        <!-- ================= MAIN CONTENT ================= -->
+
+        <main class="my-list-page">
+
+            <!-- Heading Section -->
+            <section class="my-list-header">
+
+                <div class="my-list-title">
+
+                    <h1>My List</h1>
+
+                    <p>Your saved movies and series</p>
+
+                </div>
+
+
+                <!-- Dynamic Count -->
+                <div class="list-count">
+
+                    <span id="list-count">0</span>
+
+                    <p>Titles</p>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= FILTER SECTION ================= -->
+
+            <section class="my-list-controls">
+
+                <div class="content-filters">
+
+                    <button
+                        class="filter-btn active"
+                        data-type="ALL">
+                        All
+                    </button>
+
+                    <button
+                        class="filter-btn"
+                        data-type="MOVIE">
+                        Movies
+                    </button>
+
+                    <button
+                        class="filter-btn"
+                        data-type="SERIES">
+                        Series
+                    </button>
+
+                </div>
+
+
+                <!-- Sort -->
+                <div class="sort-container">
+
+                    <select id="sort-filter">
+
+                        <option value="recent">
+                            Recently Added
+                        </option>
+
+                        <option value="oldest">
+                            Oldest Added
+                        </option>
+
+                        <option value="title">
+                            Title
+                        </option>
+
+                        <option value="rating">
+                            Rating
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= MY LIST CARDS ================= -->
+
+            <section class="my-list-content">
+
+                <!--
+                    Cards will be generated dynamically
+                    using JavaScript.
+                -->
+
+                <div
+                    id="my-list-grid"
+                    class="my-list-grid">
+                </div>
+
+
+                <!-- Empty State -->
+
+                <div
+                    id="empty-list"
+                    class="empty-list"
+                    style="display: none;">
+
+                    <div class="empty-icon">
+                        🔖
+                    </div>
+
+                    <h2>Your list is empty</h2>
+
+                    <p>
+                        Add movies and series to your list
+                        and they will appear here.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+
+        <script src="../JavaScript/MyList.js"></script>
+        <script src="../JavaScript/sidebar.js"></script>
+        <script src="../JavaScript/header.js"></script>
+
+    </body>
+</html>

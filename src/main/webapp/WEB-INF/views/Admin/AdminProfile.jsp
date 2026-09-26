@@ -1,0 +1,338 @@
+<%@ page language="java" %>
+
+<html>
+
+    <head>
+
+        <title>Admin Profile - CineVAULT</title>
+
+        <link rel="stylesheet" href="/CSS/Admin/Hamburger_Menu.css">
+        <link rel="stylesheet" href="/CSS/Admin/AdminProfile.css">
+
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    </head>
+
+    <body>
+
+        <%@ include file="Hamburger_Menu.jsp" %>
+
+        <main class="profile-page">
+
+            <!-- =========================
+                 PAGE HEADER
+            ========================= -->
+
+            <div class="profile-heading">
+
+                <h1>Profile</h1>
+
+                <p>Manage your account details.</p>
+
+            </div>
+
+
+            <!-- =========================
+                 PROFILE CONTENT
+            ========================= -->
+
+            <div class="profile-content">
+
+                <!-- =========================
+                     PROFILE SUMMARY
+                ========================= -->
+
+                <section class="profile-summary">
+
+                    <div class="profile-avatar">
+                        <span id="profile-initial">A</span>
+                    </div>
+
+                    <h2 id="profile-name">Loading...</h2>
+
+                    <p id="profile-email">Loading...</p>
+
+
+                    <div class="profile-divider"></div>
+
+
+                    <!-- PROFILE INFORMATION -->
+
+                    <button class="profile-menu-btn active"
+                            id="profile-info-btn"
+                            type="button">
+
+                        <i class="fa-regular fa-user"></i>
+
+                        <span>Profile Information</span>
+
+                        <i class="fa-solid fa-chevron-right"></i>
+
+                    </button>
+
+
+                    <!-- CHANGE PASSWORD -->
+
+                    <button class="profile-menu-btn"
+                            id="change-password-btn"
+                            type="button">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <span>Change Password</span>
+
+                        <i class="fa-solid fa-chevron-right"></i>
+
+                    </button>
+
+
+                    <!-- MY LIST -->
+
+                    <button class="profile-menu-btn"
+                            id="my-list-btn"
+                            type="button">
+
+                        <i class="fa-regular fa-bookmark"></i>
+
+                        <span>My List</span>
+
+                        <i class="fa-solid fa-chevron-right"></i>
+
+                    </button>
+
+
+                    <!-- LOGOUT -->
+
+                    <button class="profile-menu-btn logout-btn"
+                            id="logout-btn"
+                            type="button">
+
+                        <i class="fa-solid fa-right-from-bracket"></i>
+
+                        <span>Logout</span>
+
+                    </button>
+
+                </section>
+
+
+                <!-- =========================
+                     PROFILE INFORMATION
+                ========================= -->
+
+                <section class="profile-information"
+                         id="profile-information">
+
+                    <div class="section-heading">
+
+                        <div>
+
+                            <h2>Profile Information</h2>
+
+                            <p>
+                                Update your basic account information.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="profile-form">
+
+                        <!-- NAME -->
+
+                        <div class="form-group">
+
+                            <label for="name">
+
+                                <i class="fa-regular fa-user"></i>
+
+                                Name
+
+                            </label>
+
+                            <input type="text"
+                                   id="name"
+                                   placeholder="Enter your name">
+
+                        </div>
+
+
+                        <!-- EMAIL -->
+
+                        <div class="form-group">
+
+                            <label for="email">
+
+                                <i class="fa-regular fa-envelope"></i>
+
+                                Email
+
+                            </label>
+
+                            <input type="email"
+                                   id="email"
+                                   placeholder="Enter your email">
+
+                        </div>
+
+
+                        <!-- ACTIONS -->
+
+                        <div class="form-actions">
+
+                            <button type="button"
+                                    id="cancel-btn"
+                                    class="cancel-btn">
+
+                                Cancel
+
+                            </button>
+
+
+                            <button type="button"
+                                    id="save-profile-btn"
+                                    class="save-btn">
+
+                                <i class="fa-solid fa-floppy-disk"></i>
+
+                                Save Changes
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================
+                     CHANGE PASSWORD
+                ========================= -->
+
+                <section class="change-password-section"
+                         id="change-password-section">
+
+                    <div class="section-heading">
+
+                        <div>
+
+                            <h2>Change Password</h2>
+
+                            <p>
+                                Update your account password.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="password-form">
+
+
+                        <!-- CURRENT PASSWORD -->
+
+                        <div class="form-group">
+
+                            <label for="current-password">
+
+                                <i class="fa-solid fa-lock"></i>
+
+                                Current Password
+
+                            </label>
+
+                            <input type="password"
+                                   id="current-password"
+                                   placeholder="Enter current password">
+
+                        </div>
+
+
+                        <!-- NEW PASSWORD -->
+
+                        <div class="form-group">
+
+                            <label for="new-password">
+
+                                <i class="fa-solid fa-key"></i>
+
+                                New Password
+
+                            </label>
+
+                            <input type="password"
+                                   id="new-password"
+                                   placeholder="Enter new password">
+
+                        </div>
+
+
+                        <!-- CONFIRM PASSWORD -->
+
+                        <div class="form-group">
+
+                            <label for="confirm-password">
+
+                                <i class="fa-solid fa-key"></i>
+
+                                Confirm New Password
+
+                            </label>
+
+                            <input type="password"
+                                   id="confirm-password"
+                                   placeholder="Confirm new password">
+
+                        </div>
+
+
+                        <!-- ACTIONS -->
+
+                        <div class="form-actions">
+
+                            <button type="button"
+                                    id="cancel-password-btn"
+                                    class="cancel-btn">
+
+                                Cancel
+
+                            </button>
+
+
+                            <button type="button"
+                                    id="change-password-submit"
+                                    class="save-btn">
+
+                                <i class="fa-solid fa-lock"></i>
+
+                                Change Password
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </main>
+
+
+        <!-- =========================
+             JAVASCRIPT
+        ========================= -->
+
+        <script src="/JavaScript/Admin/AdminProfile.js"></script>
+
+        <script src="/JavaScript/Admin/Hamburger_Menu.js"></script>
+
+    </body>
+
+</html>

@@ -5,6 +5,15 @@ const addMovieDrawer = document.querySelector(".add-movie-drawer");
 const editButtons = document.querySelectorAll(".edit-btn");
 
 openAddMovie.addEventListener("click", function () {
+
+    document.getElementById("movieId").value = "";
+    document.getElementById("movieTitle").value = "";
+    document.getElementById("movieGenre").value = "";
+    document.getElementById("movieRating").value = "";
+    document.getElementById("releaseYear").value = "";
+    document.getElementById("movieSynopsis").value = "";
+    document.getElementById("moviePoster").value = "";
+
     document.getElementById("drawerTitle").innerText = "Add Movie";
     document.getElementById("drawerSubmit").innerText = "Add Movie";
     addMovieDrawer.style.right = "0";

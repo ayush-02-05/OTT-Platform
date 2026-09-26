@@ -112,7 +112,7 @@
                                             <i class="fa-solid fa-trash"></i>
                                             Delete
                                         </button>
-                                        <a href="/admin/dashboard/manageEpisodes/<%= series.getSeriesId() %>" class="episodes-btn">
+                                        <a href="/admin/episodes/<%= series.getSeriesId() %>" class="episodes-btn">
                                             <i class="fa-solid fa-list"></i>
                                         </a>
                                     </div>

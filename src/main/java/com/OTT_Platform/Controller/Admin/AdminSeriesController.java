@@ -23,7 +23,7 @@ public class AdminSeriesController {
         this.episodeService = episodeService;
     }
 
-    @GetMapping("/admin/dashboard/manageSeries")
+    @GetMapping("/admin/series")
     public String manageSeries(Model model) {
         List<Series> seriesList = seriesService.getAllSeries();
         model.addAttribute("seriesList", seriesList);
@@ -31,7 +31,7 @@ public class AdminSeriesController {
         return "Admin/manageSeries";
     }
 
-    @GetMapping("/admin/dashboard/manageSeries/{id}")
+    @GetMapping("/admin/series/{id}")
     public String manageSeries(@PathVariable int id, Model model) {
         Series series = episodeService.getSeriesDetails(id);
         List<Episode> episodes =  episodeService.getEpisodeDetails(id);
@@ -40,7 +40,7 @@ public class AdminSeriesController {
         return "/Admin/manageEpisodes";
     }
 
-    @PostMapping("/admin/dashboard/manageSeries")
+    @PostMapping("/admin/series")
     public String saveSeries(@Valid @ModelAttribute("series") Series series, BindingResult result, @RequestParam int numberOfSeasons, @RequestParam List<Integer> seasonReleaseYears, Model model) {
         if (result.hasErrors()) return "Admin/manageSeries";
 
@@ -65,10 +65,10 @@ public class AdminSeriesController {
             //Edit
             seriesService.updateSeries(series,numberOfSeasons, seasonReleaseYears);
         }
-        return "redirect:/admin/dashboard/manageSeries";
+        return "redirect:/admin/series";
     }
 
-    @DeleteMapping("/admin/dashboard/manageSeries/{id}")
+    @DeleteMapping("/admin/series/{id}")
     @ResponseBody
     public String deleteSeries(@PathVariable int id) {
         seriesService.deleteSeries(id);

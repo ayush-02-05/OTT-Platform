@@ -1,0 +1,250 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: #080c14;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+/* =========================
+   LOGIN CONTAINER
+========================= */
+
+.login-container {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+/* =========================
+   LOGIN BOX
+========================= */
+
+.login-box {
+    width: 400px;
+    padding: 40px;
+
+    background: #111827;
+
+    border: 1px solid #1e293b;
+    border-radius: 14px;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+
+    transition: 0.3s ease;
+}
+
+.login-box:hover {
+    border-color: #2563eb;
+
+    box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.6),
+        0 0 20px rgba(37, 99, 235, 0.15);
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.login-box h1 {
+    text-align: center;
+
+    margin-bottom: 10px;
+
+    color: #3b82f6;
+
+    font-size: 34px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+/* =========================
+   SUBTITLE
+========================= */
+
+.login-subtitle {
+    text-align: center;
+
+    color: #94a3b8;
+
+    margin-bottom: 30px;
+
+    font-size: 14px;
+}
+
+/* =========================
+   FORM GROUP
+========================= */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #e2e8f0;
+
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* =========================
+   INPUT
+========================= */
+
+.form-group input {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    border: 1px solid #334155;
+    border-radius: 7px;
+
+    outline: none;
+
+    background: #0f172a;
+
+    color: white;
+
+    font-size: 15px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.form-group input:hover {
+    border-color: #475569;
+}
+
+.form-group input:focus {
+    border-color: #3b82f6;
+
+    background: #0b1220;
+
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+}
+
+.form-group input::placeholder {
+    color: #64748b;
+
+    transition: 0.2s ease;
+}
+
+.form-group input:focus::placeholder {
+    color: #475569;
+}
+
+/* =========================
+   LOGIN BUTTON
+========================= */
+
+.login-btn {
+    width: 100%;
+
+    padding: 13px;
+
+    margin-top: 5px;
+
+    border: none;
+    border-radius: 7px;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.15s ease,
+        box-shadow 0.2s ease;
+}
+
+.login-btn:hover {
+    background: #1d4ed8;
+
+    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.3);
+
+    transform: translateY(-1px);
+}
+
+.login-btn:active {
+    background: #1e40af;
+
+    transform: translateY(1px);
+
+    box-shadow: none;
+}
+
+/* =========================
+   REGISTER LINK
+========================= */
+
+.register-link {
+    text-align: center;
+
+    margin-top: 22px;
+
+    color: #94a3b8;
+
+    font-size: 14px;
+}
+
+.register-link a {
+    color: #3b82f6;
+
+    text-decoration: none;
+
+    font-weight: 500;
+
+    transition:
+        color 0.2s ease,
+        text-shadow 0.2s ease;
+}
+
+.register-link a:hover {
+    color: #60a5fa;
+
+    text-decoration: underline;
+
+    text-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 500px) {
+
+    .login-container {
+        padding: 15px;
+    }
+
+    .login-box {
+        width: 100%;
+
+        padding: 30px 25px;
+    }
+
+    .login-box h1 {
+        font-size: 30px;
+    }
+}

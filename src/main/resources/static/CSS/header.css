@@ -1,13 +1,17 @@
+/* ================================
+   HEADER
+================================ */
+
 header {
-    height: 90px;
+    height: 80px;
+    padding: 0 30px;
 
     display: flex;
     align-items: center;
-
-    padding: 0 30px;
+    justify-content: space-between;
 
     background: #080c14;
-
+    color: white;
     margin-left: 80px;
 }
 
@@ -17,39 +21,41 @@ header {
 ================================ */
 
 .logo {
-    margin-left: 55px;
+    margin: 0;
 
     font-size: 30px;
-    font-weight: 800;
-
-    letter-spacing: -1px;
-
-    color: #ffffff;
-
-    white-space: nowrap;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
+
 .logo span {
-    color: #36b9ff;
+    color: #2196f3;
 }
 
 
 /* ================================
-   RIGHT SIDE
+   HEADER RIGHT
 ================================ */
 
 .header-right {
-    margin-left: auto;
-
     display: flex;
     align-items: center;
-
     gap: 30px;
 }
 
 
 /* ================================
-   SEARCH
+   SEARCH WRAPPER
+================================ */
+
+.search-wrapper {
+    position: relative;
+}
+
+
+/* ================================
+   SEARCH BOX
 ================================ */
 
 .search-box {
@@ -61,20 +67,19 @@ header {
 
     padding: 0 15px;
 
+    background: #111827;
+    border: 1px solid #1f2937;
     border-radius: 8px;
-
-    background: #111722;
-
-    border: 1px solid #1d2634;
-
-    color: #7f91a9;
 }
+
 
 .search-box i {
-    margin-right: 12px;
+    margin-right: 10px;
 
-    font-size: 18px;
+    color: #8b9ab0;
+    font-size: 17px;
 }
+
 
 .search-box input {
     width: 100%;
@@ -83,14 +88,130 @@ header {
     outline: none;
 
     background: transparent;
+    color: white;
+
+    font-size: 14px;
+}
+
+
+.search-box input::placeholder {
+    color: #718096;
+}
+
+
+/* ================================
+   CLEAR BUTTON
+================================ */
+
+.search-clear {
+    cursor: pointer;
+    margin-right: 0 !important;
+
+    display: none;
+}
+
+
+.search-box:focus-within .search-clear {
+    display: block;
+}
+
+
+/* ================================
+   SEARCH RESULTS
+================================ */
+
+.search-results {
+    position: absolute;
+
+    top: 48px;
+    left: 0;
+
+    width: 400px;
+
+    background: #111827;
+
+    border: 1px solid #1f2937;
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    display: none;
+
+    z-index: 1000;
+}
+
+
+/* ================================
+   SEARCH RESULT
+================================ */
+
+.search-result {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 10px;
+
+    cursor: pointer;
+
+    border-bottom: 1px solid #1f2937;
+}
+
+
+.search-result:last-child {
+    border-bottom: none;
+}
+
+
+.search-result:hover {
+    background: #1a2638;
+}
+
+
+/* ================================
+   RESULT POSTER
+================================ */
+
+.search-result img {
+    width: 45px;
+    height: 60px;
+
+    object-fit: cover;
+
+    border-radius: 5px;
+}
+
+
+/* ================================
+   RESULT INFO
+================================ */
+
+.search-result-info {
+    min-width: 0;
+}
+
+
+.search-result-info h4 {
+    margin: 0 0 5px;
 
     color: white;
 
-    font-size: 15px;
+    font-size: 14px;
+    font-weight: 600;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.search-box input::placeholder {
-    color: #718198;
+
+.search-result-info p {
+    margin: 0;
+
+    color: #8b9ab0;
+
+    font-size: 12px;
 }
 
 
@@ -98,14 +219,25 @@ header {
    PROFILE
 ================================ */
 
+.header-actions {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+}
+
+
 .profile {
     display: flex;
     align-items: center;
 
     gap: 10px;
 
-    color: white;
+    cursor: pointer;
+
+    user-select: none;
 }
+
 
 .profile-image {
     width: 48px;
@@ -123,18 +255,122 @@ header {
 
     font-size: 18px;
     font-weight: 700;
+
+    transition: .2s ease;
 }
+
+
+.profile:hover .profile-image {
+    background: #2196f3;
+}
+
 
 .username {
     font-size: 16px;
 }
 
-.profile i {
+
+.profile-arrow {
     margin-left: 3px;
 
     font-size: 13px;
 
     color: #8b9ab0;
+
+    transition: transform .2s ease;
+}
+
+
+/* ================================
+   PROFILE MENU
+================================ */
+
+.profile-menu {
+    position: absolute;
+
+    top: 58px;
+    right: 0;
+
+    width: 160px;
+
+    padding: 8px;
+
+    background: #111827;
+
+    border: 1px solid #1f2937;
+
+    border-radius: 8px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .4);
+
+    display: none;
+
+    z-index: 2000;
+}
+
+
+/* OPEN MENU */
+
+.profile-menu.show {
+    display: block;
+}
+
+
+/* ARROW WHEN OPEN */
+
+.profile.active .profile-arrow {
+    transform: rotate(180deg);
+}
+
+
+/* ================================
+   LOGOUT BUTTON
+================================ */
+
+#logout-btn {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 10px 12px;
+
+    border: none;
+    border-radius: 6px;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition: .2s ease;
+}
+
+
+#logout-btn i {
+    font-size: 14px;
+
+    color: #8b9ab0;
+}
+
+
+#logout-btn:hover {
+    background: #1a2638;
+
+    color: #36b9ff;
+}
+
+
+#logout-btn:hover i {
+    color: #36b9ff;
 }
 
 
@@ -148,28 +384,38 @@ header {
         padding: 0 20px;
     }
 
+
     .logo {
         margin-left: 45px;
-
         font-size: 26px;
     }
+
 
     .header-right {
         gap: 20px;
     }
 
+
     .search-box {
         width: 300px;
     }
+
+
+    .search-results {
+        width: 300px;
+    }
+
 
     .profile-image {
         width: 42px;
         height: 42px;
     }
 
+
     .username {
         font-size: 14px;
     }
+
 }
 
 
@@ -181,49 +427,65 @@ header {
 
     header {
         height: 75px;
-
         padding: 0 15px;
     }
 
+
     .logo {
         margin-left: 40px;
-
         font-size: 23px;
     }
+
 
     .header-right {
         gap: 15px;
     }
+
 
     .search-box {
         width: 220px;
         height: 38px;
     }
 
+
+    .search-results {
+        width: 220px;
+        top: 44px;
+    }
+
+
     .search-box i {
         margin-right: 8px;
-
         font-size: 16px;
     }
+
 
     .search-box input {
         font-size: 13px;
     }
 
+
     .profile {
         gap: 7px;
     }
 
+
     .profile-image {
         width: 38px;
         height: 38px;
-
         font-size: 15px;
     }
+
 
     .username {
         display: none;
     }
+
+
+    .profile-menu {
+        top: 50px;
+    }
+
 }
 
 
@@ -235,22 +497,22 @@ header {
 
     header {
         height: 70px;
-
         padding: 0 10px;
 
-        /* Sidebar is overlay on phone */
         margin-left: 0;
     }
 
+
     .logo {
         margin-left: 40px;
-
         font-size: 20px;
     }
+
 
     .header-right {
         gap: 8px;
     }
+
 
     .search-box {
         width: 150px;
@@ -259,32 +521,58 @@ header {
         padding: 0 10px;
     }
 
+
+    .search-results {
+        width: 250px;
+        left: auto;
+        right: 0;
+        top: 44px;
+    }
+
+
     .search-box i {
         margin-right: 7px;
-
         font-size: 15px;
     }
+
 
     .search-box input {
         font-size: 12px;
     }
 
+
     .profile {
         gap: 0;
     }
 
+
     .profile-image {
         width: 35px;
         height: 35px;
-
         font-size: 14px;
     }
 
-    .profile i {
+
+    .profile-arrow {
         display: none;
     }
+
 
     .username {
         display: none;
     }
+
+
+    .profile-menu {
+        top: 45px;
+        right: 0;
+        width: 145px;
+    }
+
+
+    #logout-btn {
+        padding: 9px 10px;
+        font-size: 13px;
+    }
+
 }

@@ -13,4 +13,27 @@ fetch("../HTML/sidebar.html")
             sidebar.classList.toggle("closed");
         });
 
+
+        // ==================== ACTIVE PAGE ====================
+
+        const links = sidebar.querySelectorAll(".sidebar-menu a");
+
+        const currentPath = window.location.pathname;
+
+        links.forEach(link => {
+
+            link.classList.remove("active");
+
+            if (link.getAttribute("href") === "#") {
+                return;
+            }
+
+            const linkPath = new URL(link.href).pathname;
+
+            if (linkPath === currentPath) {
+                link.classList.add("active");
+            }
+
+        });
+
     });

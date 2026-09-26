@@ -1,133 +1,475 @@
-.hamburger {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 1000;
+/* ================================
+   SIDEBAR
+================================ */
 
-    padding: 10px;
-    transition: 0.5s ease;
-}
-
-.menu {
+.sidebar {
     position: fixed;
+
     top: 0;
     left: 0;
 
+    z-index: 1000;
+
+    width: 240px;
     height: 100vh;
-    width: 250px;
 
-    background-color: rgb(56, 56, 79);
+    box-sizing: border-box;
 
-    transform: translateX(-100%);
-    transition: 0.3s ease;
+    padding: 20px 14px;
 
-    z-index: 1001;
+    background: #080f1b;
+    border-right: 1px solid #172334;
 
-    border-right: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.menu.active {
-    transform: translateX(0);
-}
-
-.closeMenu {
-    color: white;
-    font-size: 30px;
-    cursor: pointer;
-}
-
-.menu a {
-    color: white;
-    text-decoration: none;
-    display: block;
-    padding: 20px;
-}
-
-.dashboard {
-    transition: 0.3s ease;
-}
-
-.dashboard.move {
-    margin-left: 250px;
-}
-
-.hamburger i {
-    color: white;
-    font-size: 35px;
-    cursor: pointer;
-}
-
-.head{
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-}
+    flex-direction: column;
 
-.head h3{
-    margin: 0;
-    font-size: 1.5rem;
-    color: white;
-}
+    transition: width 0.3s ease;
 
-.movieButton{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    color: white;
-    padding: 20px;
-}
-
-.down{
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.movieButton:hover .down {
-    opacity: 1;
-}
-
-.movieOptions{
-    max-height: 0;
     overflow: hidden;
-    transition: max-height 0.4s ease;
-}
-
-.movieOptions.active{
-    max-height: 150px;
-}
-
-.movieOptionsInner {
-    padding: 7px 0;
-}
-
-.movieOptions a {
-    padding: 12px 20px 12px 40px;
-    font-size: 14px;
-    transition: 0.3s ease;
-}
-
-.movieOptions a:hover{
-    transform: translateY(-2px);
-    box-shadow: 0 0 5px white;
 }
 
 
+/* ================================
+   SIDEBAR HEADER
+================================ */
 
+.sidebar-header {
+    height: 45px;
 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
+    padding: 0 8px;
 
+    margin-bottom: 25px;
 
-
-
-
-
-.button{
-    transition: 0.3s ease;
+    flex-shrink: 0;
 }
 
-.button:hover{
-    transform: translateY(-5px);
-    box-shadow: 0 0 5px white;
+
+/* LOGO */
+
+.sidebar-header h2 {
+    margin: 0;
+
+    font-size: 22px;
+    font-weight: 800;
+
+    letter-spacing: -0.5px;
+
+    color: #ffffff;
+
+    white-space: nowrap;
+
+    transition: opacity 0.2s ease;
+}
+
+.sidebar-header h2 span {
+    color: #36b9ff;
+}
+
+
+/* ================================
+   HAMBURGER
+================================ */
+
+.sidebar-header button {
+    flex-shrink: 0;
+
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 1px solid #243348;
+    border-radius: 6px;
+
+    background: #101c2c;
+
+    color: #9eb0c8;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.sidebar-header button:hover {
+    background: #16283d;
+
+    border-color: #36b9ff;
+
+    color: #36b9ff;
+}
+
+
+/* ================================
+   MENU
+================================ */
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+
+/* MENU LINKS */
+
+.sidebar-menu a,
+.logout {
+    position: relative;
+
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 0 16px;
+
+    border-radius: 8px;
+
+    color: #b9c5d7;
+
+    text-decoration: none;
+
+    white-space: nowrap;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+
+/* ICON */
+
+.sidebar-menu a i,
+.logout i {
+    width: 20px;
+
+    flex-shrink: 0;
+
+    text-align: center;
+
+    font-size: 19px;
+}
+
+
+/* TEXT */
+
+.sidebar-menu a span,
+.logout span {
+    transition: opacity 0.15s ease;
+}
+
+
+/* HOVER */
+
+.sidebar-menu a:hover,
+.logout:hover {
+    background: #10243a;
+
+    color: #ffffff;
+}
+
+
+/* ================================
+   ACTIVE
+================================ */
+
+.sidebar-menu a.active {
+    background: #0b4f82;
+
+    color: #36b9ff;
+}
+
+
+/* ACTIVE BLUE INDICATOR */
+
+.sidebar-menu a.active::before {
+    content: "";
+
+    position: absolute;
+
+    left: -14px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 3px;
+    height: 28px;
+
+    border-radius: 0 4px 4px 0;
+
+    background: #36b9ff;
+}
+
+
+/* ================================
+   DIVIDER
+================================ */
+
+.sidebar-divider {
+    height: 1px;
+
+    margin: 25px 10px;
+
+    background: #1b2a3c;
+
+    flex-shrink: 0;
+}
+
+
+/* ================================
+   ACCOUNT TITLE
+================================ */
+
+.sidebar-title {
+    margin: 0 10px 10px;
+
+    color: #8190a5;
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+
+    white-space: nowrap;
+}
+
+
+/* ================================
+   LOGOUT
+================================ */
+
+.logout {
+    margin-top: auto;
+
+    flex-shrink: 0;
+}
+
+
+/* ================================
+   CLOSED STATE
+================================ */
+
+.sidebar.closed {
+    width: 80px;
+
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+/* HEADER CLOSED */
+
+.sidebar.closed .sidebar-header {
+    justify-content: center;
+
+    padding: 0;
+}
+
+
+/* HIDE LOGO */
+
+.sidebar.closed .sidebar-header h2 {
+    display: none;
+}
+
+
+/* MENU CLOSED */
+
+.sidebar.closed .sidebar-menu a,
+.sidebar.closed .logout {
+    justify-content: center;
+
+    gap: 0;
+
+    padding: 0;
+}
+
+
+/* ICON CLOSED */
+
+.sidebar.closed .sidebar-menu a i,
+.sidebar.closed .logout i {
+    width: auto;
+
+    font-size: 19px;
+}
+
+
+/* HIDE TEXT */
+
+.sidebar.closed .sidebar-menu a span,
+.sidebar.closed .logout span {
+    display: none;
+}
+
+
+/* ACCOUNT TITLE CLOSED */
+
+.sidebar.closed .sidebar-title {
+    display: none;
+}
+
+
+/* DIVIDER CLOSED */
+
+.sidebar.closed .sidebar-divider {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+/* ACTIVE INDICATOR CLOSED */
+
+.sidebar.closed .sidebar-menu a.active::before {
+    left: -10px;
+
+    height: 28px;
+}
+
+
+/* ================================
+   TOOLTIP - CLOSED STATE
+================================ */
+
+.sidebar.closed .sidebar-menu a::after,
+.sidebar.closed .logout::after {
+    content: attr(title);
+
+    position: absolute;
+
+    left: 62px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    padding: 7px 10px;
+
+    background: #111c2b;
+
+    border: 1px solid #243348;
+
+    border-radius: 6px;
+
+    color: #ffffff;
+
+    font-size: 12px;
+
+    white-space: nowrap;
+
+    opacity: 0;
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition: opacity 0.15s ease;
+
+    z-index: 2000;
+}
+
+
+/* SHOW TOOLTIP */
+
+.sidebar.closed .sidebar-menu a:hover::after,
+.sidebar.closed .logout:hover::after {
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+/* ================================
+   950px
+================================ */
+
+@media (max-width: 950px) {
+
+    .sidebar {
+        width: 220px;
+
+        padding: 20px 12px;
+    }
+
+    .sidebar.closed {
+        width: 80px;
+    }
+
+    .sidebar-header {
+        padding: 0 6px;
+    }
+
+    .sidebar-menu a,
+    .logout {
+        padding: 0 14px;
+    }
+}
+
+
+/* ================================
+   768px
+================================ */
+
+@media (max-width: 768px) {
+
+    .sidebar {
+        width: 210px;
+
+        padding: 18px 10px;
+    }
+
+    .sidebar.closed {
+        width: 80px;
+    }
+
+    .sidebar-header {
+        margin-bottom: 20px;
+    }
+
+    .sidebar-header h2 {
+        font-size: 20px;
+    }
+
+    .sidebar-menu a,
+    .logout {
+        height: 46px;
+
+        gap: 16px;
+    }
+
+    .sidebar-menu a i,
+    .logout i {
+        font-size: 18px;
+    }
+}
+
+
+/* ================================
+   480px - PHONE
+================================ */
+
+@media (max-width: 480px) {
+
+    .sidebar.closed {
+        width: 0;
+        padding: 0;
+    }
+
+    .sidebar.closed .sidebar-header {
+        position: fixed;
+        top: 16px;
+        left: 10px;
+        z-index: 2001;
+    }
 }

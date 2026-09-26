@@ -17,10 +17,16 @@ public class DashboardController {
         model.addAttribute("totalMovies", dashboardService.getTotalMovies());
         model.addAttribute("totalSeries", dashboardService.getTotalSeries());
         model.addAttribute("totalEpisodes", dashboardService.getTotalEpisodes());
+        model.addAttribute("totalUsers", dashboardService.getTotalUsers());
 
         model.addAttribute("recentMovies", dashboardService.getRecentMovies());
         model.addAttribute("recentSeries", dashboardService.getRecentSeries());
 
         return "Admin/Dashboard";
+    }
+
+    @GetMapping("/admin/profile")
+    public String profile() {
+        return "Admin/AdminProfile";
     }
 }

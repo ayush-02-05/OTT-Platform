@@ -1,0 +1,596 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background: #080c14;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================
+   PROFILE PAGE
+========================= */
+
+.profile-page {
+    min-height: 100vh;
+    margin-left: 80px;
+    padding: 50px 70px 60px;
+    width: calc(100% - 80px);
+}
+
+
+/* =========================
+   PAGE HEADER
+========================= */
+
+.profile-heading {
+    margin-bottom: 32px;
+}
+
+.profile-heading h1 {
+    margin-bottom: 8px;
+    color: #ffffff;
+    font-size: 38px;
+    font-weight: 700;
+}
+
+.profile-heading p {
+    color: #9aaabd;
+    font-size: 15px;
+}
+
+
+/* =========================
+   PROFILE CONTENT
+========================= */
+
+.profile-content {
+    width: 100%;
+    max-width: 1250px;
+
+    display: grid;
+    grid-template-columns: 360px minmax(0, 1fr);
+
+    gap: 25px;
+}
+
+
+/* =========================
+   PROFILE SUMMARY
+========================= */
+
+.profile-summary {
+    width: 100%;
+    padding: 38px 25px;
+
+    background: #101722;
+    border: 1px solid #1b293a;
+    border-radius: 14px;
+
+    text-align: center;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================
+   PROFILE AVATAR
+========================= */
+
+.profile-avatar {
+    width: 118px;
+    height: 118px;
+
+    margin: 0 auto 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #36b9ff,
+            #2454e8
+        );
+
+    box-shadow:
+        0 0 28px rgba(54, 185, 255, 0.25);
+}
+
+.profile-avatar span {
+    color: #ffffff;
+    font-size: 46px;
+    font-weight: 700;
+}
+
+
+/* =========================
+   PROFILE NAME
+========================= */
+
+.profile-summary h2 {
+    margin-bottom: 7px;
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+
+/* =========================
+   PROFILE EMAIL
+========================= */
+
+.profile-summary > p {
+    color: #9aaabd;
+    font-size: 14px;
+}
+
+
+/* =========================
+   DIVIDER
+========================= */
+
+.profile-divider {
+    width: 100%;
+    height: 1px;
+
+    margin: 28px 0 20px;
+
+    background: #1b293a;
+}
+
+
+/* =========================
+   PROFILE MENU BUTTONS
+========================= */
+
+.profile-menu-btn {
+    width: 100%;
+    min-height: 55px;
+
+    margin-bottom: 10px;
+    padding: 0 17px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    border: 1px solid #29384a;
+    border-radius: 8px;
+
+    background: #111c2a;
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: 0.25s ease;
+
+    text-align: left;
+}
+
+
+/* LEFT ICON */
+
+.profile-menu-btn > i:first-child {
+    width: 20px;
+
+    color: #aebed0;
+
+    font-size: 16px;
+
+    text-align: center;
+}
+
+
+/* TEXT */
+
+.profile-menu-btn span {
+    flex: 1;
+}
+
+
+/* RIGHT ARROW */
+
+.profile-menu-btn > i:last-child {
+    color: #718399;
+    font-size: 12px;
+
+    transition: 0.25s ease;
+}
+
+
+/* =========================
+   HOVER
+========================= */
+
+.profile-menu-btn:hover {
+    border-color: #36b9ff;
+    background: rgba(54, 185, 255, 0.08);
+}
+
+.profile-menu-btn:hover > i:first-child {
+    color: #36b9ff;
+}
+
+.profile-menu-btn:hover > i:last-child {
+    color: #36b9ff;
+    transform: translateX(3px);
+}
+
+
+/* =========================
+   ACTIVE
+========================= */
+
+.profile-menu-btn.active {
+    border-color: #36b9ff;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(54, 185, 255, 0.18),
+            rgba(54, 185, 255, 0.06)
+        );
+}
+
+.profile-menu-btn.active > i:first-child {
+    color: #36b9ff;
+}
+
+.profile-menu-btn.active > i:last-child {
+    color: #36b9ff;
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+.profile-menu-btn.logout-btn {
+    margin-top: 18px;
+
+    border: none;
+    background: transparent;
+
+    color: #ffffff;
+}
+
+.profile-menu-btn.logout-btn > i:first-child {
+    color: #ffffff;
+}
+
+.profile-menu-btn.logout-btn:hover {
+    border-color: transparent;
+    background: rgba(255, 70, 90, 0.08);
+    color: #ff6675;
+}
+
+.profile-menu-btn.logout-btn:hover > i:first-child {
+    color: #ff6675;
+}
+
+
+/* =========================
+   PROFILE INFORMATION
+========================= */
+
+.profile-information {
+    width: 100%;
+    min-height: 500px;
+
+    padding: 35px 40px;
+
+    background: #101722;
+    border: 1px solid #1b293a;
+    border-radius: 14px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================
+   CHANGE PASSWORD
+========================= */
+
+.change-password-section {
+    width: 100%;
+    min-height: 500px;
+
+    padding: 35px 40px;
+
+    background: #101722;
+    border: 1px solid #1b293a;
+    border-radius: 14px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.25);
+
+    display: none;
+}
+
+.password-form {
+    padding-top: 30px;
+}
+
+
+/* =========================
+   SECTION HEADING
+========================= */
+
+.section-heading {
+    padding-bottom: 25px;
+
+    border-bottom: 1px solid #1b293a;
+}
+
+.section-heading h2 {
+    margin-bottom: 7px;
+
+    color: #ffffff;
+
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.section-heading p {
+    color: #9aaabd;
+    font-size: 14px;
+}
+
+
+/* =========================
+   PROFILE FORM
+========================= */
+
+.profile-form {
+    padding-top: 30px;
+}
+
+
+/* =========================
+   FORM GROUP
+========================= */
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    margin-bottom: 10px;
+
+    color: #dce3eb;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.form-group label i {
+    color: #36b9ff;
+    font-size: 15px;
+}
+
+
+/* =========================
+   INPUT
+========================= */
+
+.form-group input {
+    width: 100%;
+    height: 52px;
+
+    padding: 0 16px;
+
+    border: 1px solid #29384a;
+    border-radius: 8px;
+
+    outline: none;
+
+    background: #111c2a;
+    color: #ffffff;
+
+    font-size: 14px;
+
+    transition: 0.25s ease;
+}
+
+.form-group input::placeholder {
+    color: #607287;
+}
+
+.form-group input:focus {
+    border-color: #36b9ff;
+
+    background: #121f2e;
+
+    box-shadow:
+        0 0 0 3px rgba(54, 185, 255, 0.08);
+}
+
+
+/* =========================
+   FORM ACTIONS
+========================= */
+
+.form-actions {
+    margin-top: 35px;
+
+    display: flex;
+    justify-content: flex-end;
+
+    gap: 12px;
+}
+
+
+/* =========================
+   COMMON BUTTON
+========================= */
+
+.form-actions button {
+    height: 46px;
+
+    padding: 0 21px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+
+/* =========================
+   CANCEL
+========================= */
+
+.cancel-btn {
+    border: 1px solid #29384a;
+
+    background: transparent;
+    color: #b7c2ce;
+}
+
+.cancel-btn:hover {
+    border-color: #607287;
+
+    background: rgba(255, 255, 255, 0.05);
+
+    color: #ffffff;
+}
+
+
+/* =========================
+   SAVE
+========================= */
+
+.save-btn {
+    border: 1px solid #36b9ff;
+
+    background: #36b9ff;
+    color: #ffffff;
+}
+
+.save-btn:hover {
+    background: #249fdc;
+    border-color: #249fdc;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(54, 185, 255, 0.2);
+}
+
+.save-btn i {
+    margin-right: 7px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1100px) {
+
+    .profile-page {
+        padding-left: 45px;
+        padding-right: 45px;
+    }
+
+    .profile-content {
+        grid-template-columns: 320px minmax(0, 1fr);
+    }
+
+    .profile-information,
+    .change-password-section {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
+
+@media (max-width: 850px) {
+
+    .profile-page {
+        padding: 40px 30px 50px;
+    }
+
+    .profile-content {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-summary {
+        max-width: 600px;
+    }
+
+    .profile-information,
+    .change-password-section {
+        max-width: 600px;
+    }
+}
+
+
+@media (max-width: 550px) {
+
+    .profile-page {
+        margin-left: 70px;
+        width: calc(100% - 70px);
+
+        padding: 30px 20px 40px;
+    }
+
+    .profile-heading h1 {
+        font-size: 30px;
+    }
+
+    .profile-summary {
+        padding: 30px 20px;
+    }
+
+    .profile-information,
+    .change-password-section {
+        padding: 25px 20px;
+    }
+
+    .section-heading h2 {
+        font-size: 21px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions button {
+        width: 100%;
+    }
+}

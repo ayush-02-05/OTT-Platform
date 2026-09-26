@@ -245,7 +245,7 @@
 
 
                     <div class="sidebar-actions">
-                        <button type="button" id="cancelEpisodeBtn"></button>
+                        <button type="button" id="cancelEpisodeBtn">Cancel</button>
                         <button type="submit" id="saveEpisodeBtn">
                             <i class="fa-solid fa-floppy-disk"></i>
                             Save Episode

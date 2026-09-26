@@ -1,20 +1,76 @@
-/* =========================
-   HEADER
-========================= */
-
-fetch("/HTML/header.html")
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById("header-container").innerHTML = data;
-    });
-
-
-/* =========================
-   SERIES ID
-========================= */
-
 const seriesId = window.location.pathname.split("/").pop();
+const myListButton = document.querySelector(".my-list-btn");
 
+
+/* =========================
+   CHECK MY LIST
+========================= */
+
+function checkMyList() {
+
+    fetch("/api/my-list")
+        .then(response => {
+
+            if (!response.ok) {
+                throw new Error("Failed to check My List");
+            }
+
+            return response.json();
+        })
+        .then(myList => {
+
+            const alreadyAdded = myList.some(item =>
+                item.contentType === "SERIES" &&
+                item.contentId === Number(seriesId)
+            );
+            if (alreadyAdded) {
+                myListButton.innerHTML = `
+                    <i class="fa-solid fa-check"></i>
+                    Added
+                `;
+            }
+        })
+        .catch(error => {
+            console.error("Error checking My List:", error);
+        });
+}
+
+
+checkMyList();
+
+
+myListButton.addEventListener("click", () => {
+
+    fetch("/api/my-list", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            contentType: "SERIES",
+            contentId: Number(seriesId)
+        })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Failed to add series to My List");
+        }
+
+        return response.json();
+    })
+    .then(data => {
+
+        console.log("Series added to My List:", data);
+
+        myListButton.innerHTML = `
+            <i class="fa-solid fa-check"></i>
+            Added
+        `;
+    })
+    .catch(error => {
+        console.error("Error adding series to My List:", error);
+    });
+});
 
 /* =========================
    SERIES DETAILS

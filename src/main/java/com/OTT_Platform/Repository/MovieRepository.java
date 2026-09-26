@@ -10,4 +10,6 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
     List<Movie> findTop5ByOrderByMovieIdDesc();
 
     List<Movie> findByRatingGreaterThan(float Rating);
+
+    List<Movie> findByTitleContainingIgnoreCase(String title);
 }
