@@ -63,7 +63,7 @@ public class SecurityConfig {
                                 "/HTML/register.html",
                                 "/CSS/**",
                                 "/JavaScript/**",
-                                "/images/**"
+                                "/Images/**"
                         ).permitAll()
 
 
