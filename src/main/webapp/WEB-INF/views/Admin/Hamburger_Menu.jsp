@@ -2,7 +2,6 @@
 
 <div class="sidebar closed" id="sidebar">
 
-    <!-- SIDEBAR HEADER -->
     <div class="sidebar-header">
         <h2>Cine<span>VAULT</span></h2>
         <button id="closeSidebar">
@@ -11,7 +10,6 @@
     </div>
 
 
-    <!-- MAIN MENU -->
     <nav class="sidebar-menu">
         <a href="/admin/dashboard" class="active" title="Home">
             <i class="fa-solid fa-house"></i>
