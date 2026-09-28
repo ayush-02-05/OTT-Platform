@@ -9,6 +9,10 @@
 
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Manage Episodes</title>
+
         <link rel="stylesheet" href="/CSS/Admin/Manage_Episodes.css">
         <link rel="stylesheet" href="/CSS/Admin/Hamburger_Menu.css">
         <link rel="stylesheet" href="/CSS/Style.css">

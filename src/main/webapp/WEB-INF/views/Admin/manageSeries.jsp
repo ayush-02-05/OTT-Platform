@@ -5,6 +5,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <html>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Series</title>
     <link rel="stylesheet" href="/CSS/Admin/Manage_Series.css">
     <link rel="stylesheet" href="/CSS/Admin/Hamburger_Menu.css">
     <link rel="stylesheet" href="/CSS/Style.css">
