@@ -33,7 +33,7 @@ public class PageController {
 
     @GetMapping("/MyList")
     public String myList() {
-        return "forward:/HTML/myList.html";
+        return "forward:/HTML/MyList.html";
     }
 
     @GetMapping("/login")

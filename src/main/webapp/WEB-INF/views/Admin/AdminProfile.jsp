@@ -8,15 +8,15 @@
 
         <link rel="stylesheet" href="/CSS/Admin/Hamburger_Menu.css">
         <link rel="stylesheet" href="/CSS/Admin/AdminProfile.css">
-
-        <link rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        <link rel="stylesheet" href="../CSS/header.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     </head>
 
     <body>
 
         <%@ include file="Hamburger_Menu.jsp" %>
+        <div id="header-container"></div>
 
         <main class="profile-page">
 
@@ -324,14 +324,9 @@
 
         </main>
 
-
-        <!-- =========================
-             JAVASCRIPT
-        ========================= -->
-
         <script src="/JavaScript/Admin/AdminProfile.js"></script>
-
         <script src="/JavaScript/Admin/Hamburger_Menu.js"></script>
+        <script src="../JavaScript/header.js"></script>
 
     </body>
 

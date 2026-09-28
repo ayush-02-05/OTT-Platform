@@ -11,17 +11,18 @@
         <title>Manage Users - CineVAULT</title>
         <link rel="stylesheet" href="/CSS/Admin/Hamburger_Menu.css">
         <link rel="stylesheet" href="/CSS/Admin/manageUsers.css">
-
+        <link rel="stylesheet" href="../CSS/header.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     </head>
 
     <body>
         <%@ include file="Hamburger_Menu.jsp" %>
+        <div id="header-container"></div>
         <main class="users-page">
             <div class="page-heading">
                 <h1>Manage Users</h1>
                 <p>View and manage all registered users on the platform.</p>
-            </div
+            </div>
 
             <% String error = request.getParameter("error"); %>
             <% if ("selfDelete".equals(error)) { %>
@@ -154,5 +155,6 @@
         </div>
         <script src="/JavaScript/Admin/manageUsers.js"></script>
         <script src="/JavaScript/Admin/Hamburger_Menu.js"></script>
+        <script src="../JavaScript/header.js"></script>
     </body>
 </html>

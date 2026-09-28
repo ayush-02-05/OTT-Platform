@@ -1,13 +1,9 @@
-/* =========================
-   GLOBAL
-========================= */
-
+/* GLOBAL */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
 
 body {
     background: #080c14;
@@ -15,596 +11,270 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-
-/* =========================
-   HERO
-========================= */
-
+/* HERO */
 .hero-page {
     height: 720px;
-
-    /*
-        Sidebar closed = 80px
-        Extra breathing space = 25px
-    */
     margin: 25px 85px 25px 105px;
-
     overflow: hidden;
-
     border-radius: 18px;
-
     background: #080c14;
 }
-
 
 .hero-slider {
     width: 100%;
     height: 100%;
-
     overflow: hidden;
 }
 
-
 .hero-track {
-    height: 100%;
-
     display: flex;
-
     gap: 20px;
-
+    height: 100%;
     transition: transform .9s cubic-bezier(.4, 0, .2, 1);
 }
 
-
 .hero-slide {
     position: relative;
-    cursor: pointer;
     flex: 0 0 70%;
-
     height: 100%;
-
+    cursor: pointer;
     border-radius: 18px;
-
     background-size: cover;
     background-position: center -100px;
     background-repeat: no-repeat;
-
     opacity: .4;
-
     filter: blur(6px);
-
     transform: scale(.94);
-
     transition: .9s ease;
 }
 
-
 .hero-slide.active {
     opacity: 1;
-
     filter: none;
-
     transform: scale(1);
 }
 
-
-/* =========================
-   HERO OVERLAY
-========================= */
-
 .hero-slide::before {
     content: "";
-
     position: absolute;
-
     inset: 0;
-
     border-radius: inherit;
-
     background:
-        linear-gradient(
-            90deg,
-            rgba(8, 12, 20, .98),
-            rgba(8, 12, 20, .85) 25%,
-            rgba(8, 12, 20, .45) 55%,
-            rgba(8, 12, 20, .1)
-        ),
-        linear-gradient(
-            0deg,
-            rgba(8, 12, 20, .85),
-            transparent 45%
-        );
+        linear-gradient(90deg, rgba(8,12,20,.98), rgba(8,12,20,.85) 25%, rgba(8,12,20,.45) 55%, rgba(8,12,20,.1)),
+        linear-gradient(0deg, rgba(8,12,20,.85), transparent 45%);
 }
-
-
-/* =========================
-   HERO CONTENT
-========================= */
 
 .hero-content {
     position: absolute;
-
     z-index: 2;
-
     left: 60px;
     bottom: 50px;
-
     width: 55%;
     max-width: 700px;
 }
 
-
 .hero-type {
     margin-bottom: 14px;
-
     color: #b8c0cc;
-
     font-size: 14px;
     font-weight: 700;
-
     letter-spacing: 2px;
-
     text-transform: uppercase;
 }
 
-
 .hero-title {
     margin-bottom: 16px;
-
     font-size: clamp(42px, 5vw, 68px);
-
     line-height: 1.05;
 }
 
-
 .hero-info {
     margin-bottom: 18px;
-
     color: #d5d9df;
 }
 
-
 .hero-description {
     max-width: 620px;
-
     margin-bottom: 30px;
-
     color: #c7ccd4;
-
     line-height: 1.65;
 }
 
-
-/* =========================
-   HERO BUTTONS
-========================= */
-
+/* HERO BUTTONS */
 .hero-buttons {
     display: flex;
-
     gap: 14px;
 }
 
-
 .hero-buttons button {
     padding: 13px 24px;
-
     border: 0;
-
     border-radius: 8px;
-
     font-weight: 600;
-
     cursor: pointer;
-
     transition: .25s;
 }
 
-
 .hero-buttons button:first-child {
     background: white;
-
     color: #11151c;
 }
 
-
 .hero-buttons button:first-child:hover {
     background: #36b9ff;
-
-    color: #ffffff;
+    color: white;
 }
-
 
 .hero-buttons button:last-child {
-    background: rgba(255, 255, 255, .12);
-
+    background: rgba(255,255,255,.12);
     color: white;
-
-    border: 1px solid rgba(255, 255, 255, .25);
+    border: 1px solid rgba(255,255,255,.25);
 }
-
 
 .hero-buttons button:last-child:hover {
-    background: rgba(255, 255, 255, .2);
+    background: rgba(255,255,255,.2);
 }
-
-
-/* =========================
-   HERO LOOP RESET
-========================= */
 
 .hero-track.no-slide-transition .hero-slide {
     transition: none !important;
 }
 
-
-/* =========================
-   MOVIES SECTION
-========================= */
-
-.movies {
+/* MOVIES + SERIES */
+.movies,
+.series {
     margin: 45px 85px 0 105px;
 }
 
-
-/* =========================
-   SECTION HEADER
-========================= */
-
 .section-header {
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
     margin-bottom: 20px;
 }
 
-
 .section-header h2 {
-    margin: 0;
-
-    color: #ffffff;
-
+    color: white;
     font-size: 26px;
-
     font-weight: 700;
 }
 
-
 .section-header a {
     color: #36b9ff;
-
     font-size: 14px;
-
     font-weight: 600;
-
     text-decoration: none;
-
     transition: .2s ease;
 }
 
-
 .section-header a:hover {
-    color: #ffffff;
+    color: white;
 }
 
-
-/* =========================
-   MOVIE GRID
-========================= */
-
-.movie-data {
+/* GRIDS */
+.movie-data,
+.series-data {
     display: grid;
-
-    grid-template-columns: repeat(5, 1fr);
-
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 20px;
 }
 
-
-/* =========================
-   MOVIE CARD
-========================= */
-
-.movie-card {
+/* CARDS */
+.movie-card,
+.series-card {
     overflow: hidden;
-
-    border-radius: 10px;
-
-    background: #101722;
-
     border: 1px solid #1b293a;
-
-    transition: .25s;
-
+    border-radius: 10px;
+    background: #101722;
     cursor: pointer;
+    transition: .25s;
 }
 
-
-.movie-card:hover {
+.movie-card:hover,
+.series-card:hover {
     transform: translateY(-6px);
-
     border-color: #36b9ff;
-
-    box-shadow: 0 10px 25px rgba(0, 0, 0, .35);
+    box-shadow: 0 10px 25px rgba(0,0,0,.35);
 }
 
-
-/* =========================
-   MOVIE POSTER
-========================= */
-
-.movie-card img {
-    width: 100%;
-
-    height: 300px;
-
+/* POSTERS */
+.movie-card img,
+.series-card img {
     display: block;
-
+    width: 100%;
+    height: 300px;
     object-fit: cover;
 }
 
-
-/* =========================
-   MOVIE TITLE
-========================= */
-
-.movie-card h3 {
-    margin: 12px 12px 6px;
-
+/* TITLES */
+.movie-card h3,
+.series-card h3 {
     overflow: hidden;
-
-    color: #ffffff;
-
+    margin: 12px 12px 6px;
+    color: white;
     font-size: 16px;
-
     font-weight: 600;
-
     white-space: nowrap;
-
     text-overflow: ellipsis;
 }
 
-
-/* =========================
-   MOVIE META
-========================= */
-
-.movie-meta {
+/* META + RATING */
+.movie-meta,
+.series-meta {
     display: flex;
-
-    justify-content: space-between;
-
     align-items: center;
-
+    justify-content: space-between;
     margin: 0 12px 14px;
-
     color: #9aaabd;
-
     font-size: 13px;
 }
 
-
-.movie-meta i {
+.movie-meta i,
+.series-meta .rating i {
     color: #f5c518;
-
     font-size: 11px;
 }
 
-
-/* =========================
-   RATING
-========================= */
-
-.rating {
+.rating,
+.series-meta .rating {
     display: flex;
-
     align-items: center;
-
     gap: 4px;
 }
-
 
 .rating span {
     transform: translateY(1px);
 }
 
-
-/* =========================
-   HOME MY LIST BUTTON
-========================= */
-
+/* MY LIST BUTTON */
 .home-my-list-btn {
     width: calc(100% - 24px);
-
     margin: 0 12px 14px;
-
     padding: 9px 12px;
-
-    border: 1px solid rgba(255, 255, 255, 0.2);
-
+    border: 1px solid rgba(255,255,255,.2);
     border-radius: 6px;
-
-    background: rgba(255, 255, 255, 0.08);
-
-    color: #ffffff;
-
+    background: rgba(255,255,255,.08);
+    color: white;
     font-size: 13px;
-
     font-weight: 600;
-
     cursor: pointer;
-
-    transition: 0.2s ease;
+    transition: .2s ease;
 }
-
 
 .home-my-list-btn:hover {
-    background: rgba(54, 185, 255, 0.2);
-
+    background: rgba(54,185,255,.2);
     border-color: #36b9ff;
 }
-
 
 .home-my-list-btn i {
     margin-right: 5px;
 }
 
-
-/* =========================
-   SERIES SECTION
-========================= */
-
-.series {
-    margin: 45px 85px 0 105px;
-}
-
-
-.series .section-header {
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    margin-bottom: 20px;
-}
-
-
-/* =========================
-   SERIES GRID
-========================= */
-
-.series-data {
-    display: grid;
-
-    grid-template-columns: repeat(5, 1fr);
-
-    gap: 20px;
-}
-
-
-/* =========================
-   SERIES CARD
-========================= */
-
-.series-card {
-    overflow: hidden;
-
-    border-radius: 10px;
-
-    background: #101722;
-
-    border: 1px solid #1b293a;
-
-    transition: .25s;
-
-    cursor: pointer;
-}
-
-
-.series-card:hover {
-    transform: translateY(-6px);
-
-    border-color: #36b9ff;
-
-    box-shadow: 0 10px 25px rgba(0, 0, 0, .35);
-}
-
-
-/* =========================
-   SERIES POSTER
-========================= */
-
-.series-card img {
-    width: 100%;
-
-    height: 300px;
-
-    display: block;
-
-    object-fit: cover;
-}
-
-
-/* =========================
-   SERIES TITLE
-========================= */
-
-.series-card h3 {
-    margin: 12px 12px 6px;
-
-    overflow: hidden;
-
-    color: #ffffff;
-
-    font-size: 16px;
-
-    font-weight: 600;
-
-    white-space: nowrap;
-
-    text-overflow: ellipsis;
-}
-
-
-/* =========================
-   SERIES META
-========================= */
-
-.series-meta {
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    margin: 0 12px 14px;
-
-    color: #9aaabd;
-
-    font-size: 13px;
-}
-
-
-/* =========================
-   SERIES RATING
-========================= */
-
-.series-meta .rating {
-    display: flex;
-
-    align-items: center;
-
-    gap: 4px;
-}
-
-
-.series-meta .rating i {
-    color: #f5c518;
-
-    font-size: 11px;
-}
-
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-
-/* =========================
-   1200px
-========================= */
-
+/* 1200px */
 @media (max-width: 1200px) {
-
     .hero-page {
         margin-right: 50px;
         margin-left: 95px;
     }
-
 
     .movies,
     .series {
@@ -612,146 +282,101 @@ body {
         margin-left: 95px;
     }
 
-
     .movie-data,
     .series-data {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(4, minmax(0, 1fr));
     }
-
 
     .movie-card img,
     .series-card img {
         height: 280px;
     }
-
 }
 
-
-/* =========================
-   1000px
-========================= */
-
+/* 1000px */
 @media (max-width: 1000px) {
-
     .hero-page {
         height: 620px;
-
         margin-right: 35px;
         margin-left: 95px;
     }
 
-
     .hero-content {
         left: 45px;
         bottom: 40px;
-
         width: 60%;
     }
-
 
     .hero-title {
         font-size: clamp(38px, 5vw, 58px);
     }
 
-
     .movies,
     .series {
         margin-right: 35px;
         margin-left: 95px;
     }
 
-
     .movie-data,
     .series-data {
-        grid-template-columns: repeat(3, 1fr);
-
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 18px;
     }
-
 
     .movie-card img,
     .series-card img {
         height: 280px;
     }
-
 }
 
-
-/* =========================
-   750px
-========================= */
-
+/* 750px */
 @media (max-width: 750px) {
-
     .hero-page {
         height: 560px;
-
-        margin-top: 20px;
-        margin-right: 20px;
-        margin-left: 90px;
-
+        margin: 20px 20px 0 90px;
         border-radius: 14px;
     }
-
 
     .hero-slide {
         flex-basis: 90%;
-
         border-radius: 14px;
     }
-
 
     .hero-content {
         left: 35px;
         bottom: 35px;
-
         width: 70%;
     }
 
-
     .hero-type {
         font-size: 12px;
-
         letter-spacing: 1.5px;
     }
 
-
     .hero-title {
         margin-bottom: 12px;
-
         font-size: 42px;
     }
 
-
     .hero-info {
         margin-bottom: 14px;
-
         font-size: 14px;
     }
-
 
     .hero-description {
         margin-bottom: 22px;
-
         font-size: 14px;
-
         line-height: 1.5;
     }
-
 
     .hero-buttons {
         gap: 10px;
     }
 
-
     .hero-buttons button {
         padding: 11px 18px;
-
         font-size: 13px;
     }
-
-
-    /* MOVIES + SERIES */
 
     .movies,
     .series {
@@ -759,102 +384,71 @@ body {
         margin-left: 90px;
     }
 
-
     .section-header {
         margin-bottom: 16px;
     }
-
 
     .section-header h2 {
         font-size: 22px;
     }
 
-
     .section-header a {
         font-size: 13px;
     }
 
-
     .movie-data,
     .series-data {
-        grid-template-columns: repeat(2, 1fr);
-
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 15px;
     }
-
 
     .movie-card img,
     .series-card img {
         height: 260px;
     }
 
-
     .home-my-list-btn {
         padding: 8px 10px;
-
         font-size: 12px;
     }
-
 }
 
-
-/* =========================
-   550px
-========================= */
-
+/* 550px */
 @media (max-width: 550px) {
-
     .hero-page {
         height: 500px;
-
-        margin-top: 15px;
-        margin-right: 15px;
-        margin-left: 85px;
-
+        margin: 15px 15px 0 85px;
         border-radius: 12px;
     }
-
 
     .hero-slide {
         flex-basis: 100%;
-
         border-radius: 12px;
     }
-
 
     .hero-content {
         left: 25px;
         bottom: 25px;
-
         width: 78%;
     }
-
 
     .hero-title {
         font-size: 34px;
     }
 
-
     .hero-info {
         font-size: 13px;
     }
 
-
     .hero-description {
         font-size: 13px;
-
         line-height: 1.45;
     }
 
-
     .hero-buttons button {
         padding: 10px 15px;
-
         font-size: 12px;
     }
-
-
-    /* MOVIES + SERIES */
 
     .movies,
     .series {
@@ -862,119 +456,149 @@ body {
         margin-left: 85px;
     }
 
-
     .section-header h2 {
         font-size: 20px;
     }
-
 
     .movie-data,
     .series-data {
         gap: 12px;
     }
 
-
     .movie-card img,
     .series-card img {
         height: 230px;
     }
-
 
     .movie-card h3,
     .series-card h3 {
         font-size: 14px;
     }
 
+    .movie-meta,
+    .series-meta {
+        font-size: 12px;
+    }
+
+    .home-my-list-btn {
+        width: calc(100% - 20px);
+        margin: 0 10px 14px;
+        padding: 8px;
+        font-size: 11px;
+    }
+}
+
+/* 450px: CENTER LAYOUT */
+@media (max-width: 450px) {
+    .hero-page {
+        height: 500px;
+        margin: 15px;
+    }
+
+    .hero-slide {
+        flex-basis: 100%;
+    }
+
+    .hero-content {
+        top: 50%;
+        left: 50%;
+        bottom: auto;
+        width: calc(100% - 30px);
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: clamp(28px, 8vw, 34px);
+    }
+
+    .hero-description {
+        margin-right: auto;
+        margin-left: auto;
+        margin-bottom: 18px;
+        line-height: 1.45;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .hero-buttons button {
+        padding: 10px 12px;
+        font-size: 12px;
+    }
+
+    .movies,
+    .series {
+        margin: 35px 15px 0;
+    }
+
+    .movie-data,
+    .series-data {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .movie-card img,
+    .series-card img {
+        height: 210px;
+    }
+
+    .movie-card h3,
+    .series-card h3 {
+        font-size: 14px;
+    }
 
     .movie-meta,
     .series-meta {
         font-size: 12px;
     }
 
-
     .home-my-list-btn {
         width: calc(100% - 20px);
-
-        margin-left: 10px;
-        margin-right: 10px;
-
-        padding: 8px 8px;
-
+        margin: 0 10px 12px;
+        padding: 8px;
         font-size: 11px;
     }
-
 }
 
-
-/* =========================
-   400px
-========================= */
-
+/* 400px */
 @media (max-width: 400px) {
-
     .hero-page {
         height: 450px;
-
-        margin-left: 82px;
-        margin-right: 10px;
     }
-
 
     .hero-content {
-        left: 20px;
-        bottom: 20px;
-
-        width: 82%;
+        width: calc(100% - 24px);
     }
-
 
     .hero-title {
         font-size: 29px;
     }
 
-
     .hero-description {
         font-size: 12px;
-
         margin-bottom: 18px;
     }
-
 
     .hero-buttons {
         gap: 7px;
     }
 
-
     .hero-buttons button {
         padding: 9px 12px;
-
         font-size: 11px;
     }
 
-
     .movies,
     .series {
-        margin-left: 82px;
-        margin-right: 10px;
+        margin-right: 15px;
+        margin-left: 15px;
     }
-
-
-    .movie-data,
-    .series-data {
-        grid-template-columns: 1fr;
-    }
-
 
     .movie-card img,
     .series-card img {
-        height: 300px;
+        height: 190px;
     }
-
-
-    .home-my-list-btn {
-        font-size: 13px;
-
-        padding: 9px 12px;
-    }
-
 }

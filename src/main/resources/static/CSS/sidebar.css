@@ -1,21 +1,21 @@
+
 /* ================================
    SIDEBAR
 ================================ */
 
 .sidebar {
     position: fixed;
-
     top: 0;
     left: 0;
-
     z-index: 1000;
 
     width: 240px;
     height: 100vh;
+    height: 100dvh;
 
     box-sizing: border-box;
-
     padding: 20px 14px;
+    padding-bottom: max(20px, env(safe-area-inset-bottom));
 
     background: #080f1b;
     border-right: 1px solid #172334;
@@ -25,7 +25,12 @@
 
     transition: width 0.3s ease;
 
-    overflow: hidden;
+    /* Important: sidebar scrolls independently */
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
 }
 
 
@@ -35,13 +40,13 @@
 
 .sidebar-header {
     height: 45px;
+    min-height: 45px;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     padding: 0 8px;
-
     margin-bottom: 25px;
 
     flex-shrink: 0;
@@ -55,11 +60,9 @@
 
     font-size: 22px;
     font-weight: 800;
-
     letter-spacing: -0.5px;
 
     color: #ffffff;
-
     white-space: nowrap;
 
     transition: opacity 0.2s ease;
@@ -90,7 +93,6 @@
     border-radius: 6px;
 
     background: #101c2c;
-
     color: #9eb0c8;
 
     cursor: pointer;
@@ -103,9 +105,7 @@
 
 .sidebar-header button:hover {
     background: #16283d;
-
     border-color: #36b9ff;
-
     color: #36b9ff;
 }
 
@@ -117,8 +117,9 @@
 .sidebar-menu {
     display: flex;
     flex-direction: column;
-
     gap: 6px;
+
+    flex-shrink: 0;
 }
 
 
@@ -128,22 +129,23 @@
 .logout {
     position: relative;
 
+    min-height: 48px;
     height: 48px;
 
     display: flex;
     align-items: center;
 
     gap: 18px;
-
     padding: 0 16px;
 
+    box-sizing: border-box;
     border-radius: 8px;
 
     color: #b9c5d7;
-
     text-decoration: none;
-
     white-space: nowrap;
+
+    flex-shrink: 0;
 
     transition:
         background 0.2s ease,
@@ -156,11 +158,9 @@
 .sidebar-menu a i,
 .logout i {
     width: 20px;
-
     flex-shrink: 0;
 
     text-align: center;
-
     font-size: 19px;
 }
 
@@ -178,7 +178,6 @@
 .sidebar-menu a:hover,
 .logout:hover {
     background: #10243a;
-
     color: #ffffff;
 }
 
@@ -189,7 +188,6 @@
 
 .sidebar-menu a.active {
     background: #0b4f82;
-
     color: #36b9ff;
 }
 
@@ -200,7 +198,6 @@
     content: "";
 
     position: absolute;
-
     left: -14px;
     top: 50%;
 
@@ -210,7 +207,6 @@
     height: 28px;
 
     border-radius: 0 4px 4px 0;
-
     background: #36b9ff;
 }
 
@@ -221,11 +217,11 @@
 
 .sidebar-divider {
     height: 1px;
+    min-height: 1px;
 
     margin: 25px 10px;
 
     background: #1b2a3c;
-
     flex-shrink: 0;
 }
 
@@ -238,12 +234,11 @@
     margin: 0 10px 10px;
 
     color: #8190a5;
-
     font-size: 12px;
-
     letter-spacing: 1px;
 
     white-space: nowrap;
+    flex-shrink: 0;
 }
 
 
@@ -253,6 +248,7 @@
 
 .logout {
     margin-top: auto;
+    margin-bottom: 4px;
 
     flex-shrink: 0;
 }
@@ -274,7 +270,6 @@
 
 .sidebar.closed .sidebar-header {
     justify-content: center;
-
     padding: 0;
 }
 
@@ -291,9 +286,7 @@
 .sidebar.closed .sidebar-menu a,
 .sidebar.closed .logout {
     justify-content: center;
-
     gap: 0;
-
     padding: 0;
 }
 
@@ -303,7 +296,6 @@
 .sidebar.closed .sidebar-menu a i,
 .sidebar.closed .logout i {
     width: auto;
-
     font-size: 19px;
 }
 
@@ -335,7 +327,6 @@
 
 .sidebar.closed .sidebar-menu a.active::before {
     left: -10px;
-
     height: 28px;
 }
 
@@ -349,7 +340,6 @@
     content: attr(title);
 
     position: absolute;
-
     left: 62px;
     top: 50%;
 
@@ -358,22 +348,17 @@
     padding: 7px 10px;
 
     background: #111c2b;
-
     border: 1px solid #243348;
-
     border-radius: 6px;
 
     color: #ffffff;
-
     font-size: 12px;
-
     white-space: nowrap;
 
     opacity: 0;
     visibility: hidden;
 
     pointer-events: none;
-
     transition: opacity 0.15s ease;
 
     z-index: 2000;
@@ -385,20 +370,18 @@
 .sidebar.closed .sidebar-menu a:hover::after,
 .sidebar.closed .logout:hover::after {
     opacity: 1;
-
     visibility: visible;
 }
 
 
 /* ================================
-   950px
+   TABLET / SMALL DESKTOP
 ================================ */
 
 @media (max-width: 950px) {
 
     .sidebar {
         width: 220px;
-
         padding: 20px 12px;
     }
 
@@ -418,14 +401,13 @@
 
 
 /* ================================
-   768px
+   SMALL TABLET
 ================================ */
 
 @media (max-width: 768px) {
 
     .sidebar {
         width: 210px;
-
         padding: 18px 10px;
     }
 
@@ -444,7 +426,7 @@
     .sidebar-menu a,
     .logout {
         height: 46px;
-
+        min-height: 46px;
         gap: 16px;
     }
 
@@ -456,20 +438,82 @@
 
 
 /* ================================
-   480px - PHONE
+   PHONE
 ================================ */
 
 @media (max-width: 480px) {
 
+    /* OPEN SIDEBAR */
+
+    .sidebar:not(.closed) {
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        width: 240px;
+
+        height: 100vh;
+        height: 100dvh;
+
+        max-height: 100vh;
+        max-height: 100dvh;
+
+        box-sizing: border-box;
+
+        padding: 18px 12px;
+        padding-bottom: max(20px, env(safe-area-inset-bottom));
+
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        overscroll-behavior-y: contain;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* CLOSED SIDEBAR */
+
     .sidebar.closed {
         width: 0;
+
+        height: 100vh;
+        height: 100dvh;
+
         padding: 0;
+        overflow: hidden;
     }
+
+    /* KEEP HAMBURGER VISIBLE WHEN CLOSED */
 
     .sidebar.closed .sidebar-header {
         position: fixed;
+
         top: 16px;
         left: 10px;
+
         z-index: 2001;
+
+        width: 30px;
+        height: 30px;
+        min-height: 30px;
+
+        margin: 0;
+        padding: 0;
+    }
+
+    /* KEEP LOGOUT IN THE SCROLLABLE CONTENT */
+
+    .sidebar:not(.closed) .logout {
+        margin-top: auto;
+        margin-bottom: 4px;
+
+        min-height: 46px;
+        flex-shrink: 0;
+    }
+
+    /* MENU ITEMS SHOULD NOT SHRINK */
+
+    .sidebar:not(.closed) .sidebar-menu a {
+        min-height: 46px;
+        flex-shrink: 0;
     }
 }

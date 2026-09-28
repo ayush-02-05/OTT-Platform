@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="/CSS/Admin/Manage_Series.css">
     <link rel="stylesheet" href="/CSS/Admin/Hamburger_Menu.css">
     <link rel="stylesheet" href="/CSS/Style.css">
-
+    <link rel="stylesheet" href="../CSS/header.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <body>
 
         <%@ include file="Hamburger_Menu.jsp" %>
+        <div id="header-container"></div>
 
         <div class="manage-series">
             <div class="series-header">
@@ -21,17 +22,14 @@
                     <h1>Manage Series</h1>
                     <p>Add, edit or delete series from the platform.</p>
                 </div>
-                <button type="button" class="add-series-btn" id="openAddSeries">
-                    <i class="fa-solid fa-plus"></i>
-                    Add Series
-                </button>
+
             </div>
 
             <div class="series-controls">
-                <div class="search-box">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text"id="seriesSearch" placeholder="Search series...">
-                </div>
+                <button type="button" class="add-series-btn" id="openAddSeries">
+                    <i class="fa-solid fa-plus"></i>
+                    Add series
+                </button>
 
                 <div class="genre-filter">
                     <select id="genreFilter">
@@ -202,6 +200,7 @@
 
         <script src="/JavaScript/Admin/manageSeries.js"></script>
         <script src="/JavaScript/Admin/Hamburger_Menu.js"></script>
+        <script src="../JavaScript/header.js"></script>
 
     </body>
 </html>

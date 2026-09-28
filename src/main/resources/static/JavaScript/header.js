@@ -1,282 +1,105 @@
-// ==================== LOAD HEADER ====================
-
 fetch("/HTML/header.html")
+    .then(response => {
+        if (!response.ok) throw new Error("Header load failed");
+        return response.text();
+    })
+    .then(html => {
+        document.getElementById("header-container").innerHTML = html;
 
-    .then(response => response.text())
+        const searchInput = document.getElementById("search-input");
+        const searchResults = document.getElementById("search-results");
+        const searchClear = document.querySelector(".search-clear");
 
-    .then(data => {
-
-        document.getElementById("header-container").innerHTML = data;
-
-
-        // ====================
         // SEARCH
-        // ====================
-
-        const searchInput =
-            document.getElementById("search-input");
-
-        const searchResults =
-            document.getElementById("search-results");
-
-        const searchClear =
-            document.querySelector(".search-clear");
-
-
         searchInput.addEventListener("input", () => {
+            const query = searchInput.value.trim();
 
-            const query =
-                searchInput.value.trim();
+            searchClear.style.display = query ? "block" : "none";
 
-            if (query.length === 0) {
-
+            if (!query) {
                 searchResults.innerHTML = "";
                 searchResults.style.display = "none";
-
                 return;
             }
 
-            fetch(
-                `/api/search?query=${encodeURIComponent(query)}`
-            )
-
-                .then(response => response.json())
-
+            fetch(`/api/search?query=${encodeURIComponent(query)}`)
+                .then(response => {
+                    if (!response.ok) throw new Error("Search failed");
+                    return response.json();
+                })
                 .then(data => {
+                    // Ignore results for an older search
+                    if (searchInput.value.trim() !== query) return;
 
                     searchResults.innerHTML = "";
 
-
-                    // ====================
-                    // MOVIES
-                    // ====================
-
                     data.movies.forEach(movie => {
-
-                        const result =
-                            document.createElement("div");
-
-                        result.className =
-                            "search-result";
-
+                        const result = document.createElement("div");
+                        result.className = "search-result";
                         result.innerHTML = `
-
-                            <img
-                                src="${movie.posterURL}"
-                                alt="${movie.title}"
-                            >
-
+                            <img src="${movie.posterURL}" alt="">
                             <div class="search-result-info">
-
-                                <h4>
-                                    ${movie.title}
-                                </h4>
-
-                                <p>
-                                    Movie •
-                                    ${movie.releaseYear} •
-                                    ⭐ ${movie.rating}
-                                </p>
-
+                                <h4>${movie.title}</h4>
+                                <p>Movie • ${movie.releaseYear} • ⭐ ${movie.rating}</p>
                             </div>
-
                         `;
 
-                        result.addEventListener(
-                            "click",
-                            () => {
-
-                                window.location.href =
-                                    `/movies/${movie.movieId}`;
-
-                            }
-                        );
+                        result.addEventListener("click", () => {
+                            window.location.href = `/movies/${movie.movieId}`;
+                        });
 
                         searchResults.appendChild(result);
-
                     });
-
-
-                    // ====================
-                    // SERIES
-                    // ====================
 
                     data.series.forEach(series => {
-
-                        const result =
-                            document.createElement("div");
-
-                        result.className =
-                            "search-result";
-
+                        const result = document.createElement("div");
+                        result.className = "search-result";
                         result.innerHTML = `
-
-                            <img
-                                src="${series.posterURL}"
-                                alt="${series.title}"
-                            >
-
+                            <img src="${series.posterURL}" alt="">
                             <div class="search-result-info">
-
-                                <h4>
-                                    ${series.title}
-                                </h4>
-
-                                <p>
-                                    Series •
-                                    ⭐ ${series.rating}
-                                </p>
-
+                                <h4>${series.title}</h4>
+                                <p>Series • ⭐ ${series.rating}</p>
                             </div>
-
                         `;
 
-                        result.addEventListener(
-                            "click",
-                            () => {
-
-                                window.location.href =
-                                    `/series/${series.seriesId}`;
-
-                            }
-                        );
+                        result.addEventListener("click", () => {
+                            window.location.href = `/series/${series.seriesId}`;
+                        });
 
                         searchResults.appendChild(result);
-
                     });
 
-
-                    // ====================
-                    // SHOW / HIDE RESULTS
-                    // ====================
-
-                    if (
-                        searchResults.children.length > 0
-                    ) {
-
-                        searchResults.style.display =
-                            "block";
-
-                    } else {
-
-                        searchResults.style.display =
-                            "none";
-
-                    }
-
+                    searchResults.style.display =
+                        searchResults.children.length ? "block" : "none";
                 })
-
-                .catch(error => {
-
-                    console.error(
-                        "Search error:",
-                        error
-                    );
-
-                });
-
+                .catch(error => console.error("Search error:", error));
         });
 
-
-        // ====================
         // CLEAR SEARCH
-        // ====================
+        searchClear.addEventListener("click", () => {
+            searchInput.value = "";
+            searchClear.style.display = "none";
+            searchResults.innerHTML = "";
+            searchResults.style.display = "none";
+            searchInput.focus();
+        });
 
-        searchClear.addEventListener(
-            "click",
-            () => {
-
-                searchInput.value = "";
-
-                searchResults.innerHTML = "";
-
-                searchResults.style.display =
-                    "none";
-
-                searchInput.focus();
-
-            }
-        );
-
-
-        // ====================
-        // PROFILE
-        // ====================
-
-        const profile =
-            document.getElementById("profile");
-
-
-        // ====================
-        // LOAD CURRENT USER
-        // ====================
-
+        // LOAD USER PROFILE
         fetch("/api/user/me")
-
             .then(response => {
-
-                if (!response.ok) {
-                    throw new Error(
-                        "Failed to load user"
-                    );
-                }
-
+                if (!response.ok) throw new Error("Failed to load user");
                 return response.json();
-
             })
-
             .then(user => {
+                const profileImage = document.querySelector(".profile-image");
+                const username = document.querySelector(".username");
 
-                const profileImage =
-                    document.querySelector(
-                        ".profile-image"
-                    );
-
-                const username =
-                    document.querySelector(
-                        ".username"
-                    );
-
-
-                // ====================
-                // USERNAME
-                // ====================
-
-                username.textContent =
-                    user.name;
-
-
-                // ====================
-                // PROFILE INITIAL
-                // ====================
+                username.textContent = user.name || "";
 
                 if (user.name) {
-
-                    profileImage.textContent =
-                        user.name
-                            .charAt(0)
-                            .toUpperCase();
-
+                    profileImage.textContent = user.name.charAt(0).toUpperCase();
                 }
-
             })
-
-            .catch(error => {
-
-                console.error(
-                    "User profile error:",
-                    error
-                );
-
-            });
-
+            .catch(error => console.error("User profile error:", error));
     })
-
-    .catch(error => {
-
-        console.error(
-            "Error loading header:",
-            error
-        );
-
-    });
+    .catch(error => console.error("Header load error:", error));

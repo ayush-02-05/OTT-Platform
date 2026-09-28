@@ -8,12 +8,13 @@
         <link rel="stylesheet" href="/CSS/Admin/Movies.css">
         <link rel="stylesheet" href="/CSS/Admin/Hamburger_Menu.css">
         <link rel="stylesheet" href="/CSS/Style.css">
-
+        <link rel="stylesheet" href="../CSS/header.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     </head>
     
     <body>
         <%@ include file="Hamburger_Menu.jsp" %>
+        <div id="header-container"></div>
         <div class="movie-page">
 
             <div class="movie-header">
@@ -21,17 +22,14 @@
                     <h1>Manage Movies</h1>
                     <p>Add, edit or delete movies from the platform.</p>
                 </div>
+
+            </div>
+            
+            <div class="movie-controls">
                 <button type="button" class="add-movie-btn" id="openAddMovie">
                     <i class="fa-solid fa-plus"></i>
                     Add Movie
                 </button>
-            </div>
-            
-            <div class="movie-controls">
-                <div class="search-box">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text"id="moviesSearch" placeholder="Search movies...">
-                </div>
 
                 <div class="genre-filter">
                     <select id="genreFilter">
@@ -44,14 +42,11 @@
                         <option value="Thriller">Thriller</option>
                     </select>
                 </div>
-
             </div>
 
 
             <div class="movie-table-container">
-
                 <table class="movie-table">
-
                     <thead>
                         <tr>
                             <th>#</th>
@@ -197,5 +192,6 @@
 
         <script src="/JavaScript/Admin/Movies.js"></script>
         <script src="/JavaScript/Admin/Hamburger_Menu.js"></script>
+        <script src="../JavaScript/header.js"></script>
     </body>
 </html>

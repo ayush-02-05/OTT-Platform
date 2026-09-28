@@ -1,46 +1,37 @@
-/* =========================================================
-   GLOBAL
-========================================================= */
+/* GLOBAL */
+* {
+    box-sizing: border-box;
+}
 
 html,
 body {
     margin: 0;
     padding: 0;
     background: #080c14;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-
-/* =========================================================
-   MY LIST PAGE
-========================================================= */
-
+/* MY LIST PAGE */
 .my-list-page {
+    min-height: 100vh;
     margin-left: 80px;
     padding: 25px 35px 40px;
-
     background: #080c14;
-    min-height: 100vh;
-
-    color: #ffffff;
-    box-sizing: border-box;
+    color: #fff;
 }
 
-
-/* =========================================================
-   HEADER / TITLE
-========================================================= */
-
+/* HEADER */
 .my-list-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    gap: 15px;
     margin-bottom: 25px;
 }
 
 .my-list-title h1 {
     margin: 0;
-
     font-size: 44px;
     font-weight: 700;
     letter-spacing: -1px;
@@ -48,66 +39,45 @@ body {
 
 .my-list-title p {
     margin: 6px 0 0;
-
     color: #8994aa;
     font-size: 16px;
 }
 
-
-/* =========================================================
-   LIST COUNT
-========================================================= */
-
+/* COUNT */
 .list-count {
+    flex-shrink: 0;
     width: 105px;
     height: 75px;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    background: #0d1728;
-
     border: 1px solid #1d3557;
     border-radius: 15px;
-
-    box-sizing: border-box;
+    background: #0d1728;
 }
 
 .list-count span {
     color: #1677ff;
-
     font-size: 32px;
     font-weight: 700;
-
     line-height: 1;
 }
 
 .list-count p {
     margin: 5px 0 0;
-
     color: #8994aa;
     font-size: 13px;
 }
 
-
-/* =========================================================
-   CONTROLS
-========================================================= */
-
+/* CONTROLS */
 .my-list-controls {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    gap: 15px;
     margin-bottom: 25px;
 }
-
-
-/* =========================================================
-   FILTER BUTTONS
-========================================================= */
 
 .content-filters {
     display: flex;
@@ -117,20 +87,14 @@ body {
 .filter-btn {
     min-width: 105px;
     height: 44px;
-
     padding: 0 20px;
-
     border: 1px solid #1d3557;
     border-radius: 12px;
-
     background: #0c1728;
     color: #d7deeb;
-
     font-size: 15px;
-
     cursor: pointer;
-
-    transition: 0.2s;
+    transition: .2s;
 }
 
 .filter-btn:hover {
@@ -141,30 +105,20 @@ body {
 .filter-btn.active {
     background: #126cff;
     border-color: #126cff;
-
-    color: #ffffff;
+    color: #fff;
 }
 
-
-/* =========================================================
-   SORT
-========================================================= */
-
+/* SORT */
 .sort-container select {
     width: 230px;
     height: 44px;
-
     padding: 0 15px;
-
     border: 1px solid #1d3557;
     border-radius: 12px;
-
+    outline: none;
     background: #0c1728;
     color: #e4e9f2;
-
     font-size: 14px;
-
-    outline: none;
     cursor: pointer;
 }
 
@@ -176,261 +130,173 @@ body {
     border-color: #126cff;
 }
 
-
-/* =========================================================
-   MY LIST GRID
-========================================================= */
-
+/* GRID */
 .my-list-grid {
     display: grid;
-
     grid-template-columns: repeat(6, minmax(0, 1fr));
-
     gap: 18px;
 }
 
-
-/* =========================================================
-   MY LIST CARD
-========================================================= */
-
+/* CARDS */
 .my-list-card {
     position: relative;
-
     min-width: 0;
-
-    background: #0c1523;
-
+    overflow: hidden;
     border: 1px solid #1d2c41;
     border-radius: 12px;
-
-    overflow: hidden;
-
-    transition: 0.2s;
+    background: #0c1523;
+    transition: .2s;
 }
 
 .my-list-card:hover {
     transform: translateY(-4px);
-
     border-color: #315d91;
-
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .3);
 }
 
-
-/* =========================================================
-   POSTER
-========================================================= */
-
+/* POSTER */
 .my-list-poster {
     position: relative;
-
     width: 100%;
-
     aspect-ratio: 2 / 3;
-
     overflow: hidden;
-
     background: #111b2a;
 }
 
 .my-list-poster img {
     display: block;
-
     width: 100%;
     height: 100%;
-
     object-fit: cover;
-
-    transition: 0.25s;
+    transition: .25s;
 }
 
 .my-list-card:hover .my-list-poster img {
     transform: scale(1.04);
 }
 
-
-/* =========================================================
-   MOVIE / SERIES BADGE
-========================================================= */
-
+/* TYPE BADGE */
 .content-type {
     position: absolute;
-
+    z-index: 2;
     top: 10px;
     left: 10px;
-
     padding: 5px 10px;
-
     border-radius: 20px;
-
     background: #126cff;
-    color: #ffffff;
-
+    color: #fff;
     font-size: 11px;
     font-weight: 600;
-
-    z-index: 2;
 }
 
 .content-type.series {
     background: #4234c9;
 }
 
-
-/* =========================================================
-   REMOVE BUTTON
-========================================================= */
-
+/* REMOVE BUTTON */
 .remove-btn {
     position: absolute;
-
+    z-index: 3;
     top: 9px;
     right: 9px;
-
     width: 28px;
     height: 28px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     border: none;
     border-radius: 50%;
-
-    background: rgba(5, 10, 18, 0.9);
-    color: #ffffff;
-
+    background: rgba(5, 10, 18, .9);
+    color: #fff;
     font-size: 17px;
-
     cursor: pointer;
-
-    z-index: 3;
-
-    transition: 0.2s;
+    transition: .2s;
 }
 
 .remove-btn:hover {
-    background: #e63946;
-
     transform: scale(1.08);
+    background: #e63946;
 }
 
-
-/* =========================================================
-   CARD DETAILS
-========================================================= */
-
+/* CARD DETAILS */
 .my-list-details {
     padding: 10px 11px 11px;
 }
 
 .my-list-details h3 {
+    overflow: hidden;
     margin: 0 0 7px;
-
-    color: #ffffff;
-
+    color: #fff;
     font-size: 14px;
     font-weight: 600;
-
     white-space: nowrap;
-    overflow: hidden;
     text-overflow: ellipsis;
 }
 
-
-/* =========================================================
-   YEAR + RATING
-========================================================= */
-
+/* YEAR + RATING */
 .card-meta {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     color: #9ba7bb;
-
     font-size: 13px;
 }
 
 .card-rating {
     display: flex;
     align-items: center;
-
     gap: 4px;
-
-    color: #ffffff;
+    color: #fff;
 }
 
 .card-rating .star {
     color: #ffb000;
-
     font-size: 15px;
 }
 
-
-/* =========================================================
-   EMPTY STATE
-========================================================= */
-
+/* EMPTY STATE */
 .empty-list {
     min-height: 350px;
-
     display: flex;
     flex-direction: column;
-
     justify-content: center;
     align-items: center;
-
     text-align: center;
 }
 
 .empty-icon {
     width: 65px;
     height: 65px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     margin-bottom: 15px;
-
     border-radius: 50%;
-
     background: #0d1b2e;
-
     font-size: 28px;
 }
 
 .empty-list h2 {
     margin: 0 0 7px;
-
     font-size: 23px;
 }
 
 .empty-list p {
     margin: 0;
-
     color: #8994aa;
-
     font-size: 14px;
+    line-height: 1.5;
 }
 
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
+/* 1400px */
 @media (max-width: 1400px) {
-
     .my-list-grid {
         grid-template-columns: repeat(5, minmax(0, 1fr));
     }
 }
 
-
+/* 1100px */
 @media (max-width: 1100px) {
-
     .my-list-grid {
         grid-template-columns: repeat(4, minmax(0, 1fr));
     }
@@ -440,12 +306,10 @@ body {
     }
 }
 
-
+/* 850px */
 @media (max-width: 850px) {
-
     .my-list-page {
         margin-left: 70px;
-
         padding: 25px 20px 40px;
     }
 
@@ -463,14 +327,11 @@ body {
     }
 }
 
-
+/* 650px */
 @media (max-width: 650px) {
-
     .my-list-controls {
         flex-direction: column;
-
         align-items: stretch;
-
         gap: 12px;
     }
 
@@ -480,8 +341,8 @@ body {
 
     .filter-btn {
         flex: 1;
-
         min-width: 0;
+        padding: 0 10px;
     }
 
     .sort-container select {
@@ -490,22 +351,22 @@ body {
 
     .my-list-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-
         gap: 15px;
     }
 }
 
-
+/* 450px */
 @media (max-width: 450px) {
-
     .my-list-page {
-        margin-left: 60px;
-
-        padding: 20px 12px;
+        width: 100%;
+        margin-left: 0;
+        padding: 20px 15px;
     }
 
     .my-list-header {
-        gap: 15px;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 22px;
     }
 
     .my-list-title h1 {
@@ -513,12 +374,13 @@ body {
     }
 
     .my-list-title p {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     .list-count {
-        width: 80px;
-        height: 65px;
+        width: 75px;
+        height: 62px;
+        border-radius: 12px;
     }
 
     .list-count span {
@@ -526,6 +388,105 @@ body {
     }
 
     .list-count p {
+        font-size: 11px;
+    }
+
+    .my-list-controls {
+        align-items: center;
+    }
+
+    .content-filters {
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .filter-btn {
+        height: 40px;
+        padding: 0 8px;
+        border-radius: 9px;
+        font-size: 13px;
+    }
+
+    .sort-container select {
+        height: 42px;
+    }
+
+    .my-list-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .my-list-details {
+        padding: 9px;
+    }
+
+    .my-list-details h3 {
+        font-size: 13px;
+    }
+
+    .card-meta {
+        font-size: 11px;
+    }
+
+    .card-rating .star {
+        font-size: 13px;
+    }
+
+    .empty-list {
+        min-height: 280px;
+        padding: 0 10px;
+    }
+
+    .empty-list h2 {
+        font-size: 20px;
+    }
+
+    .empty-list p {
+        font-size: 13px;
+    }
+}
+
+/* 350px */
+@media (max-width: 350px) {
+    .my-list-page {
+        padding: 18px 10px;
+    }
+
+    .my-list-title h1 {
+        font-size: 25px;
+    }
+
+    .my-list-title p {
         font-size: 12px;
+    }
+
+    .list-count {
+        width: 65px;
+        height: 58px;
+    }
+
+    .list-count span {
+        font-size: 22px;
+    }
+
+    .filter-btn {
+        padding: 0 5px;
+        font-size: 12px;
+    }
+
+    .my-list-grid {
+        gap: 9px;
+    }
+
+    .my-list-details {
+        padding: 7px;
+    }
+
+    .my-list-details h3 {
+        font-size: 12px;
+    }
+
+    .card-meta {
+        font-size: 10px;
     }
 }

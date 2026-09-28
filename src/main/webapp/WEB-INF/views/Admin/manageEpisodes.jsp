@@ -8,14 +8,17 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <html>
-    <link rel="stylesheet" href="/CSS/Admin/Manage_Episodes.css">
-    <link rel="stylesheet" href="/CSS/Admin/Hamburger_Menu.css">
-    <link rel="stylesheet" href="/CSS/Style.css">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <head>
+        <link rel="stylesheet" href="/CSS/Admin/Manage_Episodes.css">
+        <link rel="stylesheet" href="/CSS/Admin/Hamburger_Menu.css">
+        <link rel="stylesheet" href="/CSS/Style.css">
+        <link rel="stylesheet" href="/CSS/header.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    </head>
 
     <body>
         <%@ include file="Hamburger_Menu.jsp" %>
+        <div id="header-container"></div>
         <% if (request.getAttribute("successMessage") != null) { %>
 
             <div id="success-message">
@@ -43,7 +46,7 @@
                         <p>View, edit, delete and add episodes for this series.</p>
                     </div>
 
-                    <button type="button" onclick="window.location.href='/admin/dashboard/manageSeries'">
+                    <button type="button" onclick="window.location.href='/admin/series'">
                         <i class="fa-solid fa-arrow-left"></i>
                         Back to Manage Series
                     </button>
@@ -259,5 +262,6 @@
 
         <script src="/JavaScript/Admin/Hamburger_Menu.js"></script>
         <script src="/JavaScript/Admin/manageEpisodes.js"></script>
+        <script src="/JavaScript/header.js"></script>
     </body>
 </html>
