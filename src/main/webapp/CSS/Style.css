@@ -1,3 +1,7 @@
 body{
     background-color:rgb(11, 11, 23);
 }
+
+.search-box {
+    display: none;
+}

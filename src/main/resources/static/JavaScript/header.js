@@ -10,6 +10,11 @@ fetch("/HTML/header.html")
         const searchResults = document.getElementById("search-results");
         const searchClear = document.querySelector(".search-clear");
 
+        if (window.location.pathname.startsWith("/admin")) {
+            document.querySelector("#header-container .search-box")
+                ?.remove();
+        }
+
         // SEARCH
         searchInput.addEventListener("input", () => {
             const query = searchInput.value.trim();
