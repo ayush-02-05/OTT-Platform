@@ -4,11 +4,8 @@
 
     <div class="sidebar-header">
         <h2>Cine<span>VAULT</span></h2>
-        <button id="closeSidebar">
-            <i class="fa-solid fa-bars"></i>
-        </button>
+        <button id="closeSidebar"><i class="fa-solid fa-bars"></i></button>
     </div>
-
 
     <nav class="sidebar-menu">
         <a href="/admin/dashboard" class="active" title="Home">
@@ -30,24 +27,16 @@
             <i class="fa-solid fa-users"></i>
             <span>Users</span>
         </a>
-    </nav>
 
-    <!-- DIVIDER -->
-    <div class="sidebar-divider"></div>
+        <div class="sidebar-divider"></div>
+        <p class="sidebar-title">ACCOUNT</p>
 
-
-    <!-- ACCOUNT -->
-    <p class="sidebar-title">ACCOUNT</p>
-
-    <nav class="sidebar-menu">
         <a href="/admin/profile" title="Profile">
             <i class="fa-regular fa-user"></i>
             <span>Profile</span>
         </a>
     </nav>
 
-
-    <!-- LOGOUT -->
     <a href="/logout" class="logout" title="Logout">
         <i class="fa-solid fa-right-from-bracket"></i>
         <span>Logout</span>

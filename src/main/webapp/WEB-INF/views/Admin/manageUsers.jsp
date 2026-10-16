@@ -124,22 +124,22 @@
                     <span class="modal-role" id="modal-role"><i class="fa-solid fa-user"></i>USER</span>
                     <div class="user-details">
                         <div class="detail-row">
-                            <span>User ID</span>
+                            <span>User ID: </span>
                             <strong id="modal-user-id"></strong>
                         </div>
 
                         <div class="detail-row">
-                            <span>Name</span>
+                            <span>Name: </span>
                             <strong id="modal-user-name"></strong>
                         </div>
 
                         <div class="detail-row">
-                            <span>Email</span>
+                            <span>Email: </span>
                             <strong id="modal-email"></strong>
                         </div>
 
                         <div class="detail-row">
-                            <span>Role</span>
+                            <span>Role: </span>
                             <strong id="modal-user-role"></strong>
                         </div>
                     </div>

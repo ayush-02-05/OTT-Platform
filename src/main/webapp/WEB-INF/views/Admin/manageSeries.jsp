@@ -139,7 +139,7 @@
             </div>
 
             <div class="drawer-form">
-                <form:form action="/dashboard/manageSeries" method="post" modelAttribute="series">
+                <form:form action="/admin/series" method="post" modelAttribute="series">
                     <input type="hidden" id="seriesId" name="seriesId">
                     <div class="form-group">
                         <label for="seriesTitle"> Series Title </label>

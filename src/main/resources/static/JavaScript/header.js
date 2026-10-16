@@ -11,7 +11,7 @@ fetch("/HTML/header.html")
         const searchClear = document.querySelector(".search-clear");
 
         if (window.location.pathname.startsWith("/admin")) {
-            document.querySelector("#header-container .search-box")
+            document.querySelector("#header-container .search-wrapper")
                 ?.remove();
         }
 

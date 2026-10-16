@@ -12,52 +12,26 @@ const profileInfoButton = document.getElementById("profile-info-btn");
 const changePasswordButton = document.getElementById("change-password-btn");
 const myListButton = document.getElementById("my-list-btn");
 const logoutButton = document.getElementById("logout-btn");
-
-const profileInformation =
-    document.getElementById("profile-information");
-
-const changePasswordSection =
-    document.getElementById("change-password-section");
-
-const cancelPasswordButton =
-    document.getElementById("cancel-password-btn");
-
-const currentPasswordInput =
-    document.getElementById("current-password");
-
-const newPasswordInput =
-    document.getElementById("new-password");
-
-const confirmPasswordInput =
-    document.getElementById("confirm-password");
-
-const changePasswordSubmit =
-    document.getElementById("change-password-submit");
+const profileInformation = document.getElementById("profile-information");
+const changePasswordSection = document.getElementById("change-password-section");
+const cancelPasswordButton = document.getElementById("cancel-password-btn");
+const currentPasswordInput = document.getElementById("current-password");
+const newPasswordInput = document.getElementById("new-password");
+const confirmPasswordInput = document.getElementById("confirm-password");
+const changePasswordSubmit = document.getElementById("change-password-submit");
 
 
-/* =========================
-   LOAD PROFILE
-========================= */
-
+//LOAD PROFILE
 function loadProfile() {
-
     fetch("/api/user/me")
         .then(response => {
-
-            if (!response.ok) {
-                throw new Error("Failed to load profile");
-            }
-
+            if (!response.ok) throw new Error("Failed to load profile");
             return response.json();
         })
         .then(user => {
-
             profileName.textContent = user.name;
             profileEmail.textContent = user.email;
-
-            profileInitial.textContent =
-                user.name.charAt(0).toUpperCase();
-
+            profileInitial.textContent = user.name.charAt(0).toUpperCase();
             nameInput.value = user.name;
             emailInput.value = user.email;
         })
@@ -66,41 +40,27 @@ function loadProfile() {
         });
 }
 
-
-/* =========================
-   PROFILE INFORMATION
-========================= */
-
+// PROFILE INFORMATION
 profileInfoButton.addEventListener("click", () => {
-
     profileInfoButton.classList.add("active");
     changePasswordButton.classList.remove("active");
-
     profileInformation.style.display = "block";
     changePasswordSection.style.display = "none";
 });
 
 
-/* =========================
-   CHANGE PASSWORD
-========================= */
-
+// CHANGE PASSWORD
 changePasswordButton.addEventListener("click", () => {
-
     changePasswordButton.classList.add("active");
     profileInfoButton.classList.remove("active");
-
     profileInformation.style.display = "none";
     changePasswordSection.style.display = "block";
 });
 
 
-/* =========================
-   SAVE PROFILE
-========================= */
+// SAVE PROFILE
 
 saveProfileButton.addEventListener("click", () => {
-
     const updatedProfile = {
         name: nameInput.value.trim(),
         email: emailInput.value.trim()
@@ -112,75 +72,49 @@ saveProfileButton.addEventListener("click", () => {
     }
 
     fetch("/api/user/me", {
-
         method: "PUT",
-
         headers: {
             "Content-Type": "application/json"
         },
-
         body: JSON.stringify(updatedProfile)
     })
     .then(response => {
-
         if (!response.ok) {
             return response.text().then(message => {
                 throw new Error(message);
             });
         }
-
         return response.json();
     })
     .then(user => {
-
         profileName.textContent = user.name;
         profileEmail.textContent = user.email;
-
-        profileInitial.textContent =
-            user.name.charAt(0).toUpperCase();
-
+        profileInitial.textContent = user.name.charAt(0).toUpperCase();
         nameInput.value = user.name;
         emailInput.value = user.email;
-
         alert("Profile updated successfully");
     })
     .catch(error => {
-
         alert(error.message);
     });
 });
 
 
-/* =========================
-   CANCEL PROFILE EDIT
-========================= */
-
+// CANCEL PROFILE EDIT
 cancelButton.addEventListener("click", () => {
-
     loadProfile();
 });
 
-
-/* =========================
-   CANCEL PASSWORD
-========================= */
-
+// CANCEL PASSWORD
 cancelPasswordButton.addEventListener("click", () => {
-
     currentPasswordInput.value = "";
     newPasswordInput.value = "";
     confirmPasswordInput.value = "";
-
     profileInfoButton.click();
 });
 
-
-/* =========================
-   CHANGE PASSWORD SUBMIT
-========================= */
-
+// CHANGE PASSWORD SUBMIT
 changePasswordSubmit.addEventListener("click", () => {
-
     const currentPassword = currentPasswordInput.value;
     const newPassword = newPasswordInput.value;
     const confirmPassword = confirmPasswordInput.value;
@@ -201,77 +135,53 @@ changePasswordSubmit.addEventListener("click", () => {
     }
 
     fetch("/api/user/change-password", {
-
         method: "PUT",
-
         headers: {
             "Content-Type": "application/json"
         },
-
         body: JSON.stringify({
             currentPassword: currentPassword,
             newPassword: newPassword
         })
     })
     .then(response => {
-
         if (!response.ok) {
             return response.text().then(message => {
                 throw new Error(message);
             });
         }
-
         return response.text();
     })
     .then(message => {
-
         alert(message);
-
         currentPasswordInput.value = "";
         newPasswordInput.value = "";
         confirmPasswordInput.value = "";
-
         profileInfoButton.click();
     })
     .catch(error => {
-
         alert(error.message);
     });
 });
 
-
-/* =========================
-   MY LIST
-========================= */
-
+// MY LIST
 myListButton.addEventListener("click", () => {
-
     window.location.href = "/MyList";
 });
 
-
-/* =========================
-   LOGOUT
-========================= */
-
+// LOGOUT
 logoutButton.addEventListener("click", () => {
-
     fetch("/logout", {
         method: "POST"
     })
     .then(() => {
-
         window.location.href = "/login";
     })
     .catch(() => {
-
         window.location.href = "/login";
     });
 });
 
 
-/* =========================
-   INITIAL LOAD
-========================= */
-
+// INITIAL  LOAD
 loadProfile();

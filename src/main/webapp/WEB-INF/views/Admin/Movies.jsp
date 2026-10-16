@@ -84,8 +84,7 @@
                                 <td>
                                     <div class="movie-actions">
 
-                                        <button type="button"
-                                                class="edit-btn"
+                                        <button type="button" class="edit-btn"
                                                 data-movie-id="<%= movie.getMovieId() %>"
                                                 data-title="<%= movie.getTitle() %>"
                                                 data-genre="<%= movie.getGenre() %>"
@@ -114,11 +113,6 @@
         </div>
 
 
-        
-
-
-
-
 
         <div class="add-movie-drawer">
 
@@ -135,7 +129,7 @@
 
             <div class="drawer-form">
 
-                <form:form action="/admin/dashboard/movies" method="post" modelAttribute="movie">
+                <form:form action="/admin/movies" method="post" modelAttribute="movie">
                     <form:hidden path="movieId"/>
                     <div class="form-group">
                         <label for="movieTitle">Movie Title</label>

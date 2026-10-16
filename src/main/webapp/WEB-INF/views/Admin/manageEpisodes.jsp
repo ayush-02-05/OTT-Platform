@@ -209,7 +209,7 @@
                 </div>
 
 
-                <form:form id="addEpisodeForm" method="post" action="/admin/dashboard/manageEpisodes/<%= series.getSeriesId() %>/addEpisode" modelAttribute="episode">
+                <form:form id="addEpisodeForm" method="post" action="/admin/episodes/<%= series.getSeriesId() %>/addEpisode" modelAttribute="episode">
                     <div class="form-group">
                         <label for="season">
                             Season <span>*</span>

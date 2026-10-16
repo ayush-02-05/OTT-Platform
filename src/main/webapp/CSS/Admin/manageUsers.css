@@ -1,7 +1,5 @@
-
-* {
-    box-sizing: border-box;
-}
+/* GLOBAL */
+* { box-sizing: border-box; }
 
 html, body {
     margin: 0;
@@ -12,17 +10,14 @@ html, body {
 }
 
 /* PAGE */
-
 .users-page {
-    margin-left: 80px;
     min-height: 100vh;
+    margin-left: 80px;
     padding: 35px 40px;
     background: #080c14;
 }
 
-.page-heading {
-    margin-bottom: 25px;
-}
+.page-heading { margin-bottom: 25px; }
 
 .page-heading h1 {
     margin: 0 0 8px;
@@ -37,17 +32,16 @@ html, body {
     line-height: 1.5;
 }
 
-/* ERROR MESSAGE */
-
+/* ERROR */
 .user-error {
     margin-bottom: 18px;
     padding: 12px 15px;
     border: 1px solid #7f3038;
     border-radius: 7px;
-    background: rgba(239, 68, 68, 0.1);
+    background: rgba(239,68,68,.1);
     color: #f87171;
     font-size: 13px;
-    transition: opacity 0.4s ease, transform 0.4s ease;
+    transition: opacity .4s, transform .4s;
 }
 
 .user-error.hide {
@@ -56,18 +50,16 @@ html, body {
 }
 
 /* CONTAINER */
-
 .users-container {
     width: 100%;
     min-width: 0;
     overflow: hidden;
-    background: #0d1522;
     border: 1px solid #1d2a3a;
     border-radius: 12px;
+    background: #0d1522;
 }
 
 /* TOOLBAR */
-
 .users-toolbar {
     display: flex;
     align-items: center;
@@ -96,27 +88,19 @@ html, body {
 .search-users input,
 #role-filter {
     height: 42px;
-    background: #111c2a;
     border: 1px solid #29384a;
     border-radius: 7px;
-    color: #fff;
     outline: none;
+    background: #111c2a;
+    color: #fff;
     font-size: 13px;
 }
 
-.search-users input {
-    width: 100%;
-    padding: 0 14px 0 40px;
-}
-
-.search-users input::placeholder {
-    color: #68788d;
-}
+.search-users input { width: 100%; padding: 0 14px 0 40px; }
+.search-users input::placeholder { color: #68788d; }
 
 .search-users input:focus,
-#role-filter:focus {
-    border-color: #36b9ff;
-}
+#role-filter:focus { border-color: #36b9ff; }
 
 #role-filter {
     min-width: 140px;
@@ -125,7 +109,6 @@ html, body {
 }
 
 /* TABLE */
-
 .table-wrapper {
     width: 100%;
     overflow-x: auto;
@@ -140,64 +123,50 @@ html, body {
 
 .users-table th {
     padding: 15px 20px;
+    border-bottom: 1px solid #1d2a3a;
     background: #101a29;
     color: #8494a8;
     font-size: 12px;
     font-weight: 600;
     text-align: left;
     text-transform: uppercase;
-    letter-spacing: 0.4px;
-    border-bottom: 1px solid #1d2a3a;
+    letter-spacing: .4px;
 }
 
 .users-table td {
     padding: 15px 20px;
+    border-bottom: 1px solid #192638;
     color: #d7dee8;
     font-size: 13px;
-    border-bottom: 1px solid #192638;
 }
 
-.users-table tbody tr {
-    transition: background 0.2s ease;
-}
-
-.users-table tbody tr:hover {
-    background: rgba(54, 185, 255, 0.04);
-}
-
-.users-table tbody tr:last-child td {
-    border-bottom: none;
-}
+.users-table tbody tr { transition: background .2s; }
+.users-table tbody tr:hover { background: rgba(54,185,255,.04); }
+.users-table tbody tr:last-child td { border-bottom: 0; }
 
 /* USER NAME */
-
 .user-name {
     display: flex;
     align-items: center;
     gap: 11px;
 }
 
-.user-avatar {
+.user-avatar,
+.modal-avatar {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    width: 36px;
-    height: 36px;
     border-radius: 50%;
     background: #1c3d64;
     color: #5fc4ff;
-    font-size: 13px;
     font-weight: 700;
 }
 
-.user-name span {
-    color: #fff;
-    font-weight: 600;
-}
+.user-avatar { width: 36px; height: 36px; font-size: 13px; }
+.user-name span { color: #fff; font-weight: 600; }
 
-/* ROLE BADGES */
-
+/* ROLE */
 .role-badge {
     display: inline-flex;
     align-items: center;
@@ -209,17 +178,16 @@ html, body {
 }
 
 .role-badge.admin {
-    background: rgba(54, 185, 255, 0.12);
+    background: rgba(54,185,255,.12);
     color: #36b9ff;
 }
 
 .role-badge.user {
-    background: rgba(34, 197, 94, 0.1);
+    background: rgba(34,197,94,.1);
     color: #4ade80;
 }
 
-/* ACTION BUTTONS */
-
+/* ACTIONS */
 .action-buttons {
     display: flex;
     align-items: center;
@@ -239,31 +207,26 @@ html, body {
     font-size: 12px;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.2s ease;
+    transition: background .2s;
 }
 
 .view-btn {
     border: 1px solid #245b88;
-    background: rgba(54, 185, 255, 0.08);
+    background: rgba(54,185,255,.08);
     color: #36b9ff;
 }
 
-.view-btn:hover {
-    background: rgba(54, 185, 255, 0.18);
-}
+.view-btn:hover { background: rgba(54,185,255,.18); }
 
 .delete-btn {
     border: 1px solid #6b2930;
-    background: rgba(239, 68, 68, 0.08);
+    background: rgba(239,68,68,.08);
     color: #f87171;
 }
 
-.delete-btn:hover {
-    background: rgba(239, 68, 68, 0.18);
-}
+.delete-btn:hover { background: rgba(239,68,68,.18); }
 
-/* USER MODAL */
-
+/* MODAL */
 .user-modal-overlay {
     position: fixed;
     inset: 0;
@@ -272,21 +235,19 @@ html, body {
     align-items: center;
     justify-content: center;
     padding: 15px;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0,0,0,.7);
 }
 
-.user-modal-overlay.show {
-    display: flex;
-}
+.user-modal-overlay.show { display: flex; }
 
 .user-modal {
     width: 420px;
     max-width: 100%;
     overflow: hidden;
-    background: #0d1928;
     border: 1px solid #1d3045;
     border-radius: 9px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    background: #0d1928;
+    box-shadow: 0 20px 50px rgba(0,0,0,.45);
 }
 
 .modal-header,
@@ -298,27 +259,18 @@ html, body {
     padding: 14px 15px;
 }
 
-.modal-header {
-    border-bottom: 1px solid #1d3045;
-}
-
-.modal-header h3 {
-    margin: 0;
-    color: #fff;
-    font-size: 14px;
-}
+.modal-header { border-bottom: 1px solid #1d3045; }
+.modal-header h3 { margin: 0; color: #fff; font-size: 14px; }
 
 .modal-close {
-    border: none;
+    border: 0;
     background: transparent;
     color: #7fa0bd;
     font-size: 18px;
     cursor: pointer;
 }
 
-.modal-close:hover {
-    color: #fff;
-}
+.modal-close:hover { color: #fff; }
 
 .modal-body {
     padding: 20px 15px 15px;
@@ -326,17 +278,10 @@ html, body {
 }
 
 .modal-avatar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 48px;
     height: 48px;
     margin: 0 auto 9px;
-    border-radius: 50%;
-    background: #1c3d64;
-    color: #5fc4ff;
     font-size: 18px;
-    font-weight: 700;
 }
 
 .modal-body > h3 {
@@ -352,7 +297,7 @@ html, body {
     gap: 5px;
     padding: 5px 9px;
     border-radius: 5px;
-    background: rgba(34, 197, 94, 0.12);
+    background: rgba(34,197,94,.12);
     color: #4ade80;
     font-size: 10px;
     font-weight: 700;
@@ -367,31 +312,29 @@ html, body {
 
 .detail-row {
     display: grid;
-    grid-template-columns: 80px minmax(0, 1fr);
+    grid-template-columns: 80px minmax(0,1fr);
     gap: 10px;
     padding: 8px 0;
     font-size: 12px;
 }
 
 .detail-row span {
-    color: #7d94aa;
+    color: #dce5ee;
+    font-weight: 500;
 }
 
 .detail-row strong {
-    color: #dce5ee;
-    font-weight: 500;
+    color: #7d94aa;
     overflow-wrap: anywhere;
 }
 
 .modal-footer {
-    background: #0b1624;
     border-top: 1px solid #1d3045;
+    background: #0b1624;
 }
 
 .modal-delete-btn,
-.modal-close-btn {
-    font-size: 11px;
-}
+.modal-close-btn { font-size: 11px; }
 
 .modal-delete-btn {
     border: 1px solid #8d2932;
@@ -399,9 +342,7 @@ html, body {
     color: #fff;
 }
 
-.modal-delete-btn:hover {
-    background: #d92f3c;
-}
+.modal-delete-btn:hover { background: #d92f3c; }
 
 .modal-close-btn {
     border: 1px solid #243c56;
@@ -409,16 +350,13 @@ html, body {
     color: #d6e2ee;
 }
 
-.modal-close-btn:hover {
-    background: #1a3552;
-}
+.modal-close-btn:hover { background: #1a3552; }
 
 /* TABLET */
-
-@media (max-width: 900px) {
+@media (max-width: 770px) {
     .users-page {
-        margin-left: 0;
         width: 100%;
+        margin-left: 0;
         padding: 25px 20px;
     }
 
@@ -428,46 +366,34 @@ html, body {
     }
 
     .search-users,
-    #role-filter {
-        width: 100%;
-    }
+    #role-filter { width: 100%; }
+}
+
+/* SMALL TABLET */
+@media (max-width: 600px) {
+    .users-page { padding: 22px 16px; }
+    .users-toolbar { gap: 12px; }
 }
 
 /* MOBILE */
+@media (max-width: 480px) {
+    .users-page { padding: 20px 12px; }
+    .page-heading { margin-bottom: 22px; }
+    .page-heading h1 { font-size: 24px; }
+    .page-heading p { font-size: 13px; }
+    .users-toolbar { padding: 14px; }
 
-@media (max-width: 500px) {
-    .users-page {
-        margin-left: 0;
-        width: 100%;
-        padding: 20px 12px;
-    }
-
-    .page-heading {
-        margin-bottom: 22px;
-    }
-
-    .page-heading h1 {
-        font-size: 24px;
-    }
-
-    .page-heading p {
-        font-size: 13px;
-    }
-
-    .users-toolbar {
-        padding: 14px;
-    }
-
-    .users-table {
-        min-width: 650px;
-    }
-
+    .users-table { min-width: 650px; }
     .users-table th,
-    .users-table td {
-        padding: 12px 14px;
-    }
+    .users-table td { padding: 12px 14px; }
 
-    .modal-footer {
-        flex-wrap: wrap;
-    }
+    .modal-footer { flex-wrap: wrap; }
+}
+
+/* SMALL MOBILE */
+@media (max-width: 350px) {
+    .users-page { padding: 18px 10px; }
+    .users-toolbar { padding: 12px; }
+    .modal-header,
+    .modal-footer { padding: 12px; }
 }

@@ -38,11 +38,11 @@ public class EpisodeController {
 
             model.addAttribute("series", series);
             model.addAttribute("episodes", episodes);
-            return "Admin/episodes";
+            return "Admin/manageEpisodes";
         }
 
         episodeService.saveEpisode(seriesId, seasonId, episode.getEpisodeNumber(), episode.getDuration(), episode.getEpisodeTitle());
-        return "redirect:/episodes/" + seriesId;
+        return "redirect:/admin/episodes/" + seriesId;
     }
 
     @PostMapping("/admin/episodes/{seriesId}/updateEpisode/{episodeId}")
@@ -53,17 +53,17 @@ public class EpisodeController {
             List<Episode> episodes = episodeService.getEpisodeDetails(seriesId);
             model.addAttribute("series", series);
             model.addAttribute("episodes", episodes);
-            return "Admin/episodes";
+            return "Admin/manageEpisodes";
         }
 
         episodeService.updateEpisode(episodeId, seasonId, episode.getEpisodeNumber(), episode.getDuration(), episode.getEpisodeTitle());
-        return "redirect:/episodes/" + seriesId;
+        return "redirect:/admin/episodes/" + seriesId;
     }
 
     @PostMapping("/admin/episodes/{seriesId}/deleteEpisode/{episodeId}")
     public String deleteEpisode(@PathVariable int seriesId, @PathVariable int episodeId) {
         episodeService.deleteEpisode(episodeId);
 
-        return "redirect:/episodes/" + seriesId;
+        return "redirect:/admin/episodes/" + seriesId;
     }
 }

@@ -6,7 +6,7 @@ const genreFilter = document.getElementById("genreFilter");
 
 // OPEN ADD MOVIE DRAWER
 openAddMovie.addEventListener("click", function () {
-    document.getElementById("movieId").value = "";
+    document.getElementById("movieId").value = "0";
     document.getElementById("movieTitle").value = "";
     document.getElementById("movieGenre").value = "";
     document.getElementById("movieRating").value = "";
@@ -32,9 +32,11 @@ function filterMovies() {
 
     rows.forEach(function (row) {
         const genre = row.children[3].textContent.toLowerCase().trim();
-
-        row.style.display =
-            selectedGenre === "" || genre === selectedGenre ? "" : "none";
+        if (selectedGenre === "" || genre === selectedGenre) {
+            row.style.display = "";
+        } else {
+            row.style.display = "none";
+        }
     });
 }
 
@@ -60,18 +62,15 @@ editButtons.forEach(function (button) {
 
 // DELETE MOVIE
 const deleteButtons = document.querySelectorAll(".delete-btn");
-
 deleteButtons.forEach(function (button) {
     button.addEventListener("click", function () {
         const movieId = button.dataset.movieId;
 
-        if (!confirm("Are you sure you want to delete this movie?")) {
-            return;
-        }
+        if (!confirm("Are you sure you want to delete this movie?")) return;
 
         const form = document.createElement("form");
         form.method = "POST";
-        form.action = "/dashboard/movies/delete";
+        form.action = "/admin/movies/delete";
 
         const input = document.createElement("input");
         input.type = "hidden";

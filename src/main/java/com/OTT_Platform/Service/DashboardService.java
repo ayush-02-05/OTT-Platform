@@ -37,6 +37,10 @@ public class DashboardService {
         return episodesRepository.count();
     }
 
+    public long getTotalUsers() {
+        return userRepository.count();
+    }
+
     public List<Movie> getRecentMovies() {
         return movieRepository.findTop5ByOrderByMovieIdDesc();
     }
@@ -53,9 +57,5 @@ public class DashboardService {
             }
         }
         return count;
-    }
-
-    public long getTotalUsers() {
-        return userRepository.count();
     }
 }

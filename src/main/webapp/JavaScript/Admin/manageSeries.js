@@ -68,7 +68,6 @@ numberOfSeasons.addEventListener("input", function () {
                 required
             >
         `;
-
         seasonDetails.appendChild(seasonGroup);
     }
 });
@@ -147,18 +146,6 @@ function filterSeries() {
 
 genreFilter.addEventListener("change", filterSeries);
 
-// CLOSE DRAWER WHEN CLICKING OUTSIDE
-document.addEventListener("click", function (event) {
-    if (
-        drawer.style.right === "0px" &&
-        !drawer.contains(event.target) &&
-        !openAddSeries.contains(event.target) &&
-        !event.target.closest(".edit-btn")
-    ) {
-        drawer.style.right = "-500px";
-    }
-});
-
 // DELETE SERIES
 const deleteButtons = document.querySelectorAll(".delete-btn");
 
@@ -166,28 +153,20 @@ deleteButtons.forEach(function (button) {
     button.addEventListener("click", function () {
         const id = button.dataset.seriesId;
 
-        const confirmDelete = confirm(
-            "Are you sure you want to delete this series?"
-        );
-
+        const confirmDelete = confirm("Are you sure you want to delete this series?");
         if (!confirmDelete) return;
 
-        fetch(`/admin/dashboard/manageSeries/${id}`, {
+        fetch(`/admin/series/${id}`, {
             method: "DELETE"
+        }).then(function (response) {
+            if (!response.ok) throw new Error("Failed to delete series");
+            return response.text();
+        }).then(function () {
+            window.location.href = "/admin/series";
         })
-            .then(function (response) {
-                if (!response.ok) {
-                    throw new Error("Failed to delete series");
-                }
-
-                return response.text();
-            })
-            .then(function () {
-                window.location.href = "/admin/dashboard/manageSeries";
-            })
-            .catch(function (error) {
-                console.error(error);
-                alert("Failed to delete series.");
-            });
+        .catch(function (error) {
+            console.error(error);
+            alert("Failed to delete series.");
+        });
     });
 });

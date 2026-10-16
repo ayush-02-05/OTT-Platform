@@ -1,30 +1,20 @@
 const addEpisodeSidebar = document.getElementById("addEpisodeSidebar");
 const closeSidebarBtn = document.getElementById("closeSidebarBtn");
 const cancelEpisodeBtn = document.getElementById("cancelEpisodeBtn");
-
 const addEpisodeButtons = document.querySelectorAll(".add-episode-btn");
 const editEpisodeButtons = document.querySelectorAll(".edit-episode-btn");
-
 const seasonSelect = document.getElementById("season");
 const episodeNumberInput = document.getElementById("episodeNumber");
 const durationInput = document.getElementById("duration");
 const episodeTitleInput = document.getElementById("episodeTitle");
-
 const addEpisodeForm = document.getElementById("addEpisodeForm");
 const sidebarTitle = document.getElementById("sidebarTitle");
 const saveEpisodeBtn = document.getElementById("saveEpisodeBtn");
-
 const seriesId = addEpisodeForm.dataset.seriesId;
 
-
-// =========================
 // ADD EPISODE
-// =========================
-
 addEpisodeButtons.forEach(button => {
-
     button.addEventListener("click", function () {
-
         const seasonId = this.dataset.seasonId;
 
         // Sidebar title
@@ -34,8 +24,7 @@ addEpisodeButtons.forEach(button => {
         saveEpisodeBtn.innerHTML = '<i class="fa-solid fa-floppy-disk"></i> Save Episode';
 
         // Form action
-        addEpisodeForm.action =
-            `/admin/dashboard/manageEpisodes/${seriesId}/addEpisode`;
+        addEpisodeForm.action =`/admin/episodes/${seriesId}/addEpisode`;
 
         // Clear previous data
         episodeNumberInput.value = "";
@@ -47,18 +36,11 @@ addEpisodeButtons.forEach(button => {
 
         // Open sidebar
         addEpisodeSidebar.classList.add("active");
-
     });
-
 });
 
-
-// =========================
 // EDIT EPISODE
-// =========================
-
 editEpisodeButtons.forEach(button => {
-
     button.addEventListener("click", function () {
 
         const episodeId = this.dataset.episodeId;
@@ -66,7 +48,6 @@ editEpisodeButtons.forEach(button => {
         const episodeNumber = this.dataset.episodeNumber;
         const duration = this.dataset.duration;
         const episodeTitle = this.dataset.episodeTitle;
-
 
         // Sidebar title
         sidebarTitle.textContent = "Edit Episode";
@@ -80,42 +61,25 @@ editEpisodeButtons.forEach(button => {
         durationInput.value = duration;
         episodeTitleInput.value = episodeTitle;
 
-
         // Form action
-        addEpisodeForm.action =`/admin/dashboard/manageEpisodes/${seriesId}/updateEpisode/${episodeId}`;
-
+        addEpisodeForm.action =`/admin/episodes/${seriesId}/updateEpisode/${episodeId}`;
 
         // Open same sidebar
         addEpisodeSidebar.classList.add("active");
-
     });
-
 });
 
-
-// =========================
 // CLOSE SIDEBAR
-// =========================
-
 closeSidebarBtn.addEventListener("click", function () {
     addEpisodeSidebar.classList.remove("active");
 });
 
-
-// =========================
 // CANCEL
-// =========================
-
 cancelEpisodeBtn.addEventListener("click", function () {
     addEpisodeSidebar.classList.remove("active");
 });
 
-
-
-// =========================
 // DELETE EPISODE
-// =========================
-
 const deleteEpisodeButtons = document.querySelectorAll(".delete-episode-btn");
 deleteEpisodeButtons.forEach(button => {
     button.addEventListener("click", function () {
@@ -126,9 +90,8 @@ deleteEpisodeButtons.forEach(button => {
         // Create temporary form
         const form = document.createElement("form");
         form.method = "post";
-        form.action = `/admin/dashboard/manageEpisodes/${seriesId}/deleteEpisode/${episodeId}`;
+        form.action = `/admin/episodes/${seriesId}/deleteEpisode/${episodeId}`;
         document.body.appendChild(form);
         form.submit();
     });
-
 });

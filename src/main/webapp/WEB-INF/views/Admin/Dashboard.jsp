@@ -25,16 +25,9 @@
                     <h1>Dashboard</h1>
                     <p>Welcome back, Admin!</p>
                 </div>
-
-                <div class="current-date">
-                    <%= java.time.ZonedDateTime.now(java.time.ZoneId.of("Asia/Kolkata"))
-                        .format(java.time.format.DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy")) %>
-                </div>
             </div>
 
-
             <div class="stats">
-
                 <div class="total-movies">
                     <div class="stat-icon">
                         <i class="fa-solid fa-film"></i>
@@ -78,12 +71,9 @@
                         <h2>${totalEpisodes}</h2>
                     </div>
                 </div>
-
             </div>
 
-
             <div class="recent-content">
-
                 <div class="recent-movie">
                     <div class="section-header">
                         <h2>Recent Movies</h2>
@@ -93,10 +83,8 @@
                     <div class="movie-list">
                         <%
                             List<Movie> recentMovies = (List<Movie>) request.getAttribute("recentMovies");
-
                             for (Movie movie : recentMovies) {
                         %>
-
                             <div class="movie-item">
                                 <div class="movie-poster">
                                     <img src="<%= movie.getPosterURL() %>" alt="<%= movie.getTitle() %>">
@@ -115,30 +103,23 @@
                         <%
                             }
                         %>
-
                     </div>
-                    
                 </div>
 
                 <div class="recent-series">
-
                     <div class="section-header">
                         <h2>Recent Series</h2>
                         <a href="/admin/series">View All</a>
                     </div>
 
                     <div class="series-list">
-
                         <%
                             List<Series> recentSeries = (List<Series>) request.getAttribute("recentSeries");
                             for (Series series : recentSeries) {
                         %>
-
                             <div class="series-item">
-
                                 <div class="series-poster">
-                                    <img src="<%= series.getPosterURL() %>"
-                                        alt="<%= series.getTitle() %>">
+                                    <img src="<%= series.getPosterURL() %>" alt="<%= series.getTitle() %>">
                                 </div>
 
                                 <div class="series-info">
@@ -149,16 +130,13 @@
                                     <i class="fa-solid fa-layer-group"></i>
                                     <span><%= series.getSeasons().size() %> Seasons</span>
                                 </div>
-
                             </div>
-
                         <%
                             }
                         %>
                     </div>
                 </div>
             </div>
-            
         </div>
         
         <script src="/JavaScript/Admin/Hamburger_Menu.js"></script>

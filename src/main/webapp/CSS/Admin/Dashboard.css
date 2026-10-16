@@ -1,11 +1,9 @@
-
 * {
     box-sizing: border-box;
 }
 
-html, body {
+html,body {
     margin: 0;
-    padding: 0;
     min-height: 100%;
     background: #080c14;
     color: #fff;
@@ -17,16 +15,13 @@ body {
 }
 
 /* DASHBOARD */
-
 .dashboard {
     min-height: 100vh;
-    min-width: 0;
     margin-left: 84px;
     padding: 25px 38px;
 }
 
 /* HEADER */
-
 .dashboard-header {
     display: flex;
     flex-direction: column;
@@ -38,33 +33,28 @@ body {
 
 .header-content {
     width: 100%;
-    min-width: 0;
 }
 
 .header-content h1 {
     margin: 0;
     font-size: 2rem;
-    line-height: 1.3;
 }
 
 .header-content p {
     margin: 6px 0 0;
     color: #b8c5d9;
     font-size: 1.05rem;
-    line-height: 1.5;
 }
 
 .current-date {
     color: #b8c5d9;
-    font-size: 0.95rem;
-    line-height: 1.5;
+    font-size: .95rem;
 }
 
 /* STAT CARDS */
-
 .stats {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 18px;
     margin-bottom: 22px;
 }
@@ -73,7 +63,6 @@ body {
     display: flex;
     align-items: center;
     gap: 16px;
-    min-width: 0;
     min-height: 115px;
     padding: 18px;
     background: #111e2f;
@@ -82,9 +71,8 @@ body {
 }
 
 .stat-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    place-items: center;
     flex: 0 0 72px;
     width: 72px;
     height: 72px;
@@ -92,56 +80,47 @@ body {
     font-size: 2rem;
 }
 
-.stat-details {
-    min-width: 0;
-}
-
 .stat-details p {
     margin: 0 0 8px;
     color: #d0d9e8;
-    font-size: 0.95rem;
-    line-height: 1.4;
-    overflow-wrap: anywhere;
+    font-size: .95rem;
 }
 
 .stat-details h2 {
     margin: 0;
     font-size: 1.8rem;
-    line-height: 1.2;
 }
 
 .total-movies .stat-icon {
-    background: rgba(111, 76, 255, 0.25);
+    background: rgba(111, 76, 255, .25);
     color: #9b7cff;
 }
 
 .total-series .stat-icon {
-    background: rgba(0, 220, 130, 0.18);
+    background: rgba(0, 220, 130, .18);
     color: #43e58b;
 }
 
 .total-users .stat-icon {
-    background: rgba(0, 130, 255, 0.2);
+    background: rgba(0, 130, 255, .2);
     color: #3d9bff;
 }
 
 .total-episodes .stat-icon {
-    background: rgba(255, 160, 0, 0.2);
+    background: rgba(255, 160, 0, .2);
     color: #ffad24;
 }
 
 /* RECENT CONTENT */
-
 .recent-content {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 22px;
     margin-bottom: 22px;
 }
 
 .recent-movie,
 .recent-series {
-    min-width: 0;
     overflow: hidden;
     background: #111e2f;
     border: 1px solid #1d3149;
@@ -165,9 +144,8 @@ body {
 
 .section-header a {
     color: #16a9ff;
-    font-size: 0.95rem;
+    font-size: .95rem;
     text-decoration: none;
-    white-space: nowrap;
 }
 
 .section-header a:hover {
@@ -175,10 +153,8 @@ body {
 }
 
 /* MOVIE / SERIES LIST */
-
 .movie-list,
 .series-list {
-    min-width: 0;
     padding: 0 18px;
 }
 
@@ -186,7 +162,6 @@ body {
 .series-item {
     display: flex;
     align-items: center;
-    min-width: 0;
     min-height: 76px;
     padding: 8px 0;
     border-bottom: 1px solid #1d3149;
@@ -194,7 +169,7 @@ body {
 
 .movie-item:last-child,
 .series-item:last-child {
-    border-bottom: none;
+    border-bottom: 0;
 }
 
 .movie-poster,
@@ -208,7 +183,6 @@ body {
 
 .movie-poster img,
 .series-poster img {
-    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -217,17 +191,14 @@ body {
 .movie-info,
 .series-info {
     flex: 1;
-    min-width: 0;
     margin-left: 14px;
 }
 
 .movie-info h3,
 .series-info h3 {
     margin: 0;
-    font-size: 0.95rem;
+    font-size: .95rem;
     font-weight: 500;
-    line-height: 1.4;
-    overflow-wrap: anywhere;
 }
 
 .movie-info h3 {
@@ -237,18 +208,16 @@ body {
 .movie-info p {
     margin: 0;
     color: #aebbd0;
-    font-size: 0.85rem;
-    line-height: 1.4;
+    font-size: .85rem;
 }
 
 .movie-rating {
     display: flex;
     align-items: center;
     gap: 6px;
-    flex-shrink: 0;
     margin-left: 8px;
     color: #f5b800;
-    font-size: 0.9rem;
+    font-size: .9rem;
 }
 
 .series-episodes {
@@ -257,8 +226,7 @@ body {
     gap: 6px;
     margin-top: 5px;
     color: #aebbd0;
-    font-size: 0.85rem;
-    line-height: 1.4;
+    font-size: .85rem;
 }
 
 .series-episodes i {
@@ -266,24 +234,22 @@ body {
 }
 
 /* TABLET */
-
 @media (max-width: 1100px) {
     .dashboard {
         padding: 22px 25px;
     }
 
     .stats {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(2, 1fr);
         gap: 16px;
     }
 
     .recent-content {
-        grid-template-columns: minmax(0, 1fr);
+        grid-template-columns: 1fr;
     }
 }
 
 /* MOBILE */
-
 @media (max-width: 600px) {
     .dashboard {
         width: 100%;
@@ -301,15 +267,15 @@ body {
     }
 
     .header-content p {
-        font-size: 0.95rem;
+        font-size: .95rem;
     }
 
     .current-date {
-        font-size: 0.85rem;
+        font-size: .85rem;
     }
 
     .stats {
-        grid-template-columns: minmax(0, 1fr);
+        grid-template-columns: 1fr;
         gap: 12px;
         margin-bottom: 18px;
     }
@@ -329,7 +295,7 @@ body {
 
     .stat-details p {
         margin-bottom: 6px;
-        font-size: 0.9rem;
+        font-size: .9rem;
     }
 
     .stat-details h2 {
@@ -337,7 +303,6 @@ body {
     }
 
     .recent-content {
-        grid-template-columns: minmax(0, 1fr);
         gap: 16px;
         margin-bottom: 16px;
     }
@@ -351,7 +316,7 @@ body {
     }
 
     .section-header a {
-        font-size: 0.85rem;
+        font-size: .85rem;
     }
 
     .movie-list,
@@ -373,23 +338,22 @@ body {
 
     .movie-info h3,
     .series-info h3 {
-        font-size: 0.88rem;
+        font-size: .88rem;
     }
 
     .movie-info p,
     .series-episodes {
-        font-size: 0.78rem;
+        font-size: .78rem;
     }
 
     .movie-rating {
         gap: 4px;
         margin-left: 5px;
-        font-size: 0.78rem;
+        font-size: .78rem;
     }
 }
 
 /* SMALL PHONES */
-
 @media (max-width: 380px) {
     .dashboard {
         padding: 16px 10px 20px;
@@ -400,11 +364,11 @@ body {
     }
 
     .header-content p {
-        font-size: 0.88rem;
+        font-size: .88rem;
     }
 
     .current-date {
-        font-size: 0.8rem;
+        font-size: .8rem;
     }
 
     .stats > div {
@@ -421,7 +385,7 @@ body {
     }
 
     .stat-details p {
-        font-size: 0.82rem;
+        font-size: .82rem;
     }
 
     .stat-details h2 {
@@ -433,7 +397,7 @@ body {
     }
 
     .section-header h2 {
-        font-size: 0.95rem;
+        font-size: .95rem;
     }
 
     .movie-list,
@@ -456,11 +420,11 @@ body {
     .movie-rating {
         gap: 3px;
         margin-left: 4px;
-        font-size: 0.72rem;
+        font-size: .72rem;
     }
 
     .series-episodes {
         gap: 4px;
-        font-size: 0.7rem;
+        font-size: .7rem;
     }
 }
