@@ -92,6 +92,7 @@ deleteEpisodeButtons.forEach(button => {
         form.method = "post";
         form.action = `/admin/episodes/${seriesId}/deleteEpisode/${episodeId}`;
         document.body.appendChild(form);
+        addCsrfInput(form);
         form.submit();
     });
 });

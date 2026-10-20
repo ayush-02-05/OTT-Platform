@@ -11,4 +11,6 @@ public interface MyListRepository extends JpaRepository<MyList, Integer> {
     List<MyList> findByUser(User user);
 
     boolean existsByUserAndContentTypeAndContentId(User user, ContentType contentType, int contentId);
+
+    void deleteByContentTypeAndContentId(ContentType contentType, int contentId);
 }

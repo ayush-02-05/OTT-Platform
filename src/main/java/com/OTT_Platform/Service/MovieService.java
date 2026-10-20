@@ -1,7 +1,10 @@
 package com.OTT_Platform.Service;
 
+import com.OTT_Platform.Model.ContentType;
 import com.OTT_Platform.Model.Movie;
 import com.OTT_Platform.Repository.MovieRepository;
+import com.OTT_Platform.Repository.MyListRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,8 +12,10 @@ import java.util.List;
 @Service
 public class MovieService {
     private final MovieRepository movieRepository;
-    public MovieService(MovieRepository movieRepository) {
+    private final MyListRepository myListRepository;
+    public MovieService(MovieRepository movieRepository, MyListRepository myListRepository) {
         this.movieRepository = movieRepository;
+        this.myListRepository = myListRepository;
     }
 
     public void saveMovie(Movie movie){
@@ -21,9 +26,6 @@ public class MovieService {
         return movieRepository.findAll();
     }
 
-    public void deleteMovie(int movieId){
-        movieRepository.deleteById(movieId);
-    }
 
     public List<Movie> latestRelease(){
         return movieRepository.findTop5ByOrderByMovieIdDesc();
@@ -31,5 +33,11 @@ public class MovieService {
 
     public Movie movieDetails(int movieId){
         return movieRepository.findById(movieId).orElseThrow(() -> new RuntimeException("Movie not found"));
+    }
+
+    @Transactional
+    public void deleteMovie(int movieId){
+        myListRepository.deleteByContentTypeAndContentId(ContentType.MOVIE, movieId);
+        movieRepository.deleteById(movieId);
     }
 }

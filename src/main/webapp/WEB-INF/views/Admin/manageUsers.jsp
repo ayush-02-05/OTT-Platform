@@ -1,6 +1,7 @@
 <%@ page language="java" %>
 <%@ page import="com.OTT_Platform.Model.User" %>
 <%@ page import="java.util.List" %>
+<%@ page import="org.springframework.web.util.HtmlUtils" %>
 
 <% List<User> users = (List<User>) request.getAttribute("users"); %>
 
@@ -70,12 +71,12 @@
                             <td>
                                 <div class="user-name">
                                     <div class="user-avatar">
-                                        <%= user.getName().substring(0, 1).toUpperCase() %>
+                                        <%= HtmlUtils.htmlEscape(user.getName().substring(0, 1).toUpperCase()) %>
                                     </div>
-                                    <span><%= user.getName() %></span>
+                                    <span><%= HtmlUtils.htmlEscape(user.getName()) %></span>
                                 </div>
                             </td>
-                            <td><%= user.getEmail() %></td>
+                            <td><%= HtmlUtils.htmlEscape(user.getEmail()) %></td>
                             <td>
                                 <% if (user.getRole().name().equals("ADMIN")) { %>
                                     <span class="role-badge admin"><i class="fa-solid fa-shield-halved"></i>ADMIN</span>

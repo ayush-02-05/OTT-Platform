@@ -1,269 +1,132 @@
-// =========================================================
 // LOAD SIDEBAR
-// =========================================================
-
 fetch("/HTML/sidebar.html")
     .then(response => response.text())
     .then(data => {
         document.getElementById("sidebar-container").innerHTML = data;
     });
 
-
-// =========================================================
 // VARIABLES
-// =========================================================
-
 let myList = [];
 let currentFilter = "ALL";
 let currentSort = "recent";
 
-
-// =========================================================
 // ELEMENTS
-// =========================================================
+const myListGrid = document.getElementById("my-list-grid");
+const emptyList = document.getElementById("empty-list");
+const listCount = document.getElementById("list-count");
+const filterButtons = document.querySelectorAll(".filter-btn");
+const sortFilter = document.getElementById("sort-filter");
 
-const myListGrid =
-    document.getElementById("my-list-grid");
-
-const emptyList =
-    document.getElementById("empty-list");
-
-const listCount =
-    document.getElementById("list-count");
-
-const filterButtons =
-    document.querySelectorAll(".filter-btn");
-
-const sortFilter =
-    document.getElementById("sort-filter");
-
-
-// =========================================================
 // LOAD MY LIST
-// =========================================================
-
 function loadMyList() {
-
     fetch("/api/my-list")
         .then(response => {
-
             if (!response.ok) {
                 throw new Error("Failed to load My List");
             }
-
             return response.json();
         })
         .then(data => {
-
             myList = data;
-
             loadContentDetails();
-
         })
         .catch(error => {
-
             console.error("Error loading My List:", error);
-
         });
 }
 
-
-// =========================================================
 // LOAD MOVIE / SERIES DETAILS
-// =========================================================
-
 function loadContentDetails() {
-
     const requests = myList.map(item => {
-
         if (item.contentType === "MOVIE") {
-
             return fetch(`/api/movies/${item.contentId}`)
-                .then(response => response.json())
-                .then(content => {
-
-                    return {
-                        ...item,
-                        content: content
-                    };
-
-                });
-
+                .then(response => response.ok ? response.json() : null)
+                .then(content => content ? { ...item, content: content } : null);
         }
-
-
         if (item.contentType === "SERIES") {
-
             return fetch(`/api/series/${item.contentId}`)
                 .then(response => response.json())
                 .then(content => {
-
                     return {
-                        ...item,
-                        content: content
+                        ...item,content: content
                     };
-
                 });
-
         }
-
     });
-
 
     Promise.all(requests)
         .then(result => {
-
             myList = result.filter(item => item);
-
             displayMyList();
-
         })
         .catch(error => {
-
-            console.error(
-                "Error loading content details:",
-                error
-            );
-
+            console.error("Error loading content details:", error);
         });
 }
 
-// =========================================================
 // DISPLAY MY LIST
-// =========================================================
-
 function displayMyList() {
-
     myListGrid.innerHTML = "";
 
-
-    // -----------------------------------------------------
     // FILTER
-    // -----------------------------------------------------
-
     let filteredList = myList.filter(item => {
-
         if (currentFilter === "ALL") {
             return true;
         }
-
         return item.contentType === currentFilter;
-
     });
 
-
-    // -----------------------------------------------------
     // SORT
-    // -----------------------------------------------------
-
     if (currentSort === "title") {
-
         filteredList.sort((a, b) => {
-
             const titleA = getTitle(a.content);
             const titleB = getTitle(b.content);
-
             return titleA.localeCompare(titleB);
-
         });
-
     }
-
-
     if (currentSort === "rating") {
-
         filteredList.sort((a, b) => {
-
             const ratingA = getRating(a.content);
             const ratingB = getRating(b.content);
-
             return ratingB - ratingA;
-
         });
-
     }
-
-
     if (currentSort === "oldest") {
-
         filteredList.reverse();
-
     }
 
-
-    // -----------------------------------------------------
     // COUNT
-    // -----------------------------------------------------
-
     listCount.textContent = filteredList.length;
 
-
-    // -----------------------------------------------------
     // EMPTY STATE
-    // -----------------------------------------------------
-
     if (filteredList.length === 0) {
-
         emptyList.style.display = "flex";
-
         return;
-
     }
-
     emptyList.style.display = "none";
 
-
-    // -----------------------------------------------------
     // CREATE CARDS
-    // -----------------------------------------------------
-
     filteredList.forEach(item => {
-
         const card = createCard(item);
-
         myListGrid.appendChild(card);
-
     });
-
 }
 
-
-// =========================================================
 // CREATE CARD
-// =========================================================
-
 function createCard(item) {
-
     const content = item.content;
-
-    const card =
-        document.createElement("div");
-
+    const card = document.createElement("div");
     card.className = "my-list-card";
 
-
     // Content information
-
-    const title =
-        getTitle(content);
-
-    const poster =
-        getPoster(content);
-
-    const year =
-        getYear(content);
-
-    const rating =
-        getRating(content);
-
-    const type =
-        item.contentType;
-
+    const title = getTitle(content);
+    const poster = getPoster(content);
+    const year = getYear(content);
+    const rating = getRating(content);
+    const type = item.contentType;
 
     card.innerHTML = `
-
         <div class="my-list-poster">
-
             <img
                 src="${poster}"
                 alt="${title}"
@@ -300,44 +163,27 @@ function createCard(item) {
     return card;
 }
 
-
-// =========================================================
 // GET TITLE
-// =========================================================
-
 function getTitle(content) {
     return content.title || "Untitled";
 }
 
-// =========================================================
 // GET POSTER
-// =========================================================
-
 function getPoster(content) {
     return content.posterURL || "/Images/default-poster.jpg";
 }
 
-
-// =========================================================
 // GET YEAR
-// =========================================================
 function getYear(content) {
     return content.releaseYear || "N/A";
 }
 
-
-// =========================================================
 // GET RATING
-// =========================================================
 function getRating(content) {
     return content.rating ?? "N/A";
 }
 
-
-// =========================================================
 // REMOVE FROM MY LIST
-// =========================================================
-
 function removeFromMyList(myListId) {
     fetch(`/api/my-list/${myListId}`, {
         method: "DELETE"
@@ -360,11 +206,7 @@ function removeFromMyList(myListId) {
     });
 }
 
-
-// =========================================================
 // FILTER BUTTONS
-// =========================================================
-
 filterButtons.forEach(button => {
     button.addEventListener("click", () => {
         filterButtons.forEach(btn => {
@@ -376,11 +218,7 @@ filterButtons.forEach(button => {
     });
 });
 
-
-// =========================================================
 // SORT
-// =========================================================
-
 sortFilter.addEventListener("change", () => {
     currentSort = sortFilter.value;
     displayMyList();

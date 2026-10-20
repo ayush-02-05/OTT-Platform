@@ -1,3 +1,34 @@
+function getCsrfToken() {
+    const m = document.cookie.match(/(?:^|;\s*)XSRF-TOKEN=([^;]+)/);
+    return m ? decodeURIComponent(m[1]) : "";
+}
+
+// har POST/PUT/DELETE fetch mein token apne aap lag jaayega
+const originalFetch = window.fetch;
+window.fetch = function (url, options = {}) {
+    const method = (options.method || "GET").toUpperCase();
+    if (!["GET", "HEAD", "OPTIONS"].includes(method)) {
+        options.headers = { ...(options.headers || {}), "X-XSRF-TOKEN": getCsrfToken() };
+    }
+    return originalFetch(url, options);
+};
+
+// JS se bane forms ke liye
+function addCsrfInput(form) {
+    const input = document.createElement("input");
+    input.type = "hidden";
+    input.name = "_csrf";
+    input.value = getCsrfToken();
+    form.appendChild(input);
+}
+
+// sidebar ka Logout link GET hai; CSRF ke saath logout sirf POST se hota hai
+document.addEventListener("click", e => {
+    const link = e.target.closest("a.logout");
+    if (!link) return;
+    e.preventDefault();
+    fetch("/logout", { method: "POST" }).then(() => window.location.href = "/login");
+});
 fetch("/HTML/header.html")
     .then(response => {
         if (!response.ok) throw new Error("Header load failed");

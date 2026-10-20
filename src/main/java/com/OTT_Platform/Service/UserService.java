@@ -1,10 +1,12 @@
 package com.OTT_Platform.Service;
 
 import com.OTT_Platform.DTO.ChangePasswordDTO;
+import com.OTT_Platform.DTO.RegisterDTO;
 import com.OTT_Platform.DTO.UserProfileDTO;
 import com.OTT_Platform.Model.Role;
 import com.OTT_Platform.Model.User;
 import com.OTT_Platform.Repository.UserRepository;
+import jakarta.validation.Valid;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -22,15 +24,6 @@ public class UserService implements UserDetailsService{
     public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder){
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
-    }
-
-    public void saveUser(User user) {
-        if (userRepository.findByEmail(user.getEmail()).isPresent()) {
-            throw new RuntimeException("Email already registered");
-        }
-        user.setRole(Role.USER);
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
     }
 
     public List<User> getUsers(){
@@ -96,5 +89,18 @@ public class UserService implements UserDetailsService{
             throw new RuntimeException("User not found");
         }
         userRepository.deleteById(id);
+    }
+
+    public void registerUser(RegisterDTO dto) {
+        String email = dto.getEmail().trim();
+        if (userRepository.findByEmail(email).isPresent()) {
+            throw new IllegalStateException("Email already registered");
+        }
+        User user = new User();
+        user.setName(dto.getName().trim());
+        user.setEmail(email);
+        user.setPassword(passwordEncoder.encode(dto.getPassword()));
+        user.setRole(Role.USER);
+        userRepository.save(user);
     }
 }

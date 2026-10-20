@@ -61,6 +61,7 @@ function deleteUser(userId) {
     form.method = "POST";
     form.action = `/admin/users/delete/${userId}`;
     document.body.appendChild(form);
+    addCsrfInput(form);
     form.submit();
 }
 

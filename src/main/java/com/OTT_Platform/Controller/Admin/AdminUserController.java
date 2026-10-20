@@ -21,13 +21,6 @@ public class AdminUserController {
         return "Admin/manageUsers";
     }
 
-    @GetMapping("/{id}")
-    public String viewUser(@PathVariable int id, Model model) {
-        User user = userService.getUserById(id);
-        model.addAttribute("user", user);
-        return "Admin/viewUser";
-    }
-
     @PostMapping("/delete/{id}")
     public String deleteUser(@PathVariable int id, Authentication authentication) {
         User user = userService.getUserById(id);

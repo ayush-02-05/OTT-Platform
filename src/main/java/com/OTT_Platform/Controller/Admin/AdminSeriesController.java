@@ -31,15 +31,6 @@ public class AdminSeriesController {
         return "Admin/manageSeries";
     }
 
-    @GetMapping("/admin/series/{id}")
-    public String manageSeries(@PathVariable int id, Model model) {
-        Series series = episodeService.getSeriesDetails(id);
-        List<Episode> episodes =  episodeService.getEpisodeDetails(id);
-        model.addAttribute("series", series);
-        model.addAttribute("episodes", episodes);
-        return "/Admin/manageEpisodes";
-    }
-
     @PostMapping("/admin/series")
     public String saveSeries(@Valid @ModelAttribute("series") Series series, BindingResult result, @RequestParam int numberOfSeasons, @RequestParam List<Integer> seasonReleaseYears, Model model) {
         if (result.hasErrors()) return "Admin/manageSeries";

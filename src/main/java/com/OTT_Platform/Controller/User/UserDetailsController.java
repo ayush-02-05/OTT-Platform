@@ -1,17 +1,20 @@
 package com.OTT_Platform.Controller.User;
 
 import com.OTT_Platform.DTO.ChangePasswordDTO;
+import com.OTT_Platform.DTO.RegisterDTO;
 import com.OTT_Platform.DTO.UserProfileDTO;
 import com.OTT_Platform.Model.User;
 import com.OTT_Platform.Service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,11 +28,16 @@ public class UserDetailsController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody User user) {
+    public ResponseEntity<String> register(@Valid @RequestBody RegisterDTO dto,
+                                           BindingResult result) {
+        if (result.hasErrors()) {
+            return ResponseEntity.badRequest()
+                    .body(result.getAllErrors().get(0).getDefaultMessage());
+        }
         try {
-            userService.saveUser(user);
+            userService.registerUser(dto);
             return ResponseEntity.ok("Registration successful");
-        } catch (RuntimeException e) {
+        } catch (IllegalStateException e) {
             return ResponseEntity.status(409).body(e.getMessage());
         }
     }

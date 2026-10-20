@@ -209,7 +209,8 @@
                 </div>
 
 
-                <form:form id="addEpisodeForm" method="post" action="/admin/episodes/<%= series.getSeriesId() %>/addEpisode" modelAttribute="episode">
+                <form:form id="addEpisodeForm" method="post" data-series-id="<%= series.getSeriesId() %>"
+                        action="/admin/episodes/<%= series.getSeriesId() %>/addEpisode" modelAttribute="episode">
                     <div class="form-group">
                         <label for="season">
                             Season <span>*</span>
@@ -218,7 +219,6 @@
                         <select id="season" name="seasonId" required>
 
                             <% for (Season season : series.getSeasons()) { %>
-
                                 <option value="<%= season.getSeasonId() %>">
                                     Season <%= season.getSeasonNumber() %>
                                 </option>

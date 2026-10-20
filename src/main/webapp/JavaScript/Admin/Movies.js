@@ -79,6 +79,7 @@ deleteButtons.forEach(function (button) {
 
         form.appendChild(input);
         document.body.appendChild(form);
+        addCsrfInput(form);
         form.submit();
     });
 });
