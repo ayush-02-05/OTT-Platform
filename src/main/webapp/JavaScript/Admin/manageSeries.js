@@ -19,7 +19,7 @@ const genreFilter = document.getElementById("genreFilter");
 // OPEN ADD SERIES DRAWER
 openAddSeries.addEventListener("click", function () {
     seriesForm.reset();
-    seriesId.value = "0";
+    numberOfSeasons.min = 1;
     seasonDetails.innerHTML = "";
 
     drawerTitle.textContent = "Add Series";
@@ -95,7 +95,7 @@ editButtons.forEach(function (button) {
         seriesRating.value = rating;
         seriesSynopsis.value = synopsis;
         seriesPoster.value = posterURL;
-        numberOfSeasons.value = seasonCount;
+        numberOfSeasons.min = seasonCount;
 
         seasonDetails.innerHTML = "";
 
@@ -169,4 +169,12 @@ deleteButtons.forEach(function (button) {
             alert("Failed to delete series.");
         });
     });
+
 });
+
+// If the server sent back an error, reopen the drawer so the message is visible
+const hasServerError = Array.from(document.querySelectorAll(".drawer-form .error"))
+    .some(el => el.textContent.trim() !== "");
+if (hasServerError) {
+    drawer.style.right = "0";
+}

@@ -1,5 +1,6 @@
 <%@ page language = "java" %>
 <%@ page import="java.util.List" %>
+<%@ page import="org.springframework.web.util.HtmlUtils" %>
 <%@ page import="com.OTT_Platform.Model.Season" %>
 <%@ page import="com.OTT_Platform.Model.Series" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -95,11 +96,11 @@
                                     <div class="series-actions">
                                         <button type="button" class="edit-btn"
                                                 data-series-id="<%= series.getSeriesId() %>"
-                                                data-title="<%= series.getTitle() %>"
-                                                data-genre="<%= series.getGenre() %>"
+                                                data-title="<%= HtmlUtils.htmlEscape(series.getTitle()) %>"
+                                                data-genre="<%= HtmlUtils.htmlEscape(series.getGenre()) %>"
                                                 data-rating="<%= series.getRating() %>"
-                                                data-synopsis="<%= series.getSynopsis() %>"
-                                                data-poster-url="<%= series.getPosterURL() %>"
+                                                data-synopsis="<%= HtmlUtils.htmlEscape(series.getSynopsis()) %>"
+                                                data-poster-url="<%= HtmlUtils.htmlEscape(series.getPosterURL()) %>"
                                                 data-season-release-years="<%
                                                     for (int i = 0; i < series.getSeasons().size(); i++) {
                                                         if (i > 0) out.print(",");

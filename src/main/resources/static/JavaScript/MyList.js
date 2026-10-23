@@ -1,18 +1,10 @@
-// LOAD SIDEBAR
-fetch("/HTML/sidebar.html")
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById("sidebar-container").innerHTML = data;
-    });
-
 // VARIABLES
 let myList = [];
 let currentFilter = "ALL";
 let currentSort = "recent";
 
 // Placeholder poster (inline SVG, so there is no file that can go missing)
-const DEFAULT_POSTER =
-    "data:image/svg+xml;utf8," +
+const DEFAULT_POSTER = "data:image/svg+xml;utf8," +
     encodeURIComponent(
         "<svg xmlns='http://www.w3.org/2000/svg' width='300' height='450'>" +
         "<rect width='100%' height='100%' fill='#1f1f1f'/>" +
@@ -97,8 +89,11 @@ function displayMyList() {
             return ratingB - ratingA;
         });
     }
+    if (currentSort === "recent") {
+        filteredList.sort((a, b) => b.id - a.id);
+    }
     if (currentSort === "oldest") {
-        filteredList.reverse();
+        filteredList.sort((a, b) => a.id - b.id);
     }
 
     // COUNT
@@ -133,23 +128,14 @@ function createCard(item) {
 
     card.innerHTML = `
         <div class="my-list-poster">
-            <img
-                src="${poster}"
-                alt="${title}"
-            >
-
+            <img src="${escapeHtml(poster)}" alt="${escapeHtml(title)}">
             <span class="content-type ${type === "SERIES" ? "series" : ""}">
                 ${type === "MOVIE" ? "Movie" : "Series"}
             </span>
-            <button
-                class="remove-btn"
-                data-id="${item.id}"
-                title="Remove from My List">
-                ×
-            </button>
+            <button class="remove-btn" data-id="${item.id}" title="Remove from My List"> × </button>
         </div>
         <div class="my-list-details">
-            <h3>${title}</h3>
+            <h3>${escapeHtml(title)}</h3>
             <div class="card-meta">
                 <span> ${year} </span>
                 <span class="card-rating">

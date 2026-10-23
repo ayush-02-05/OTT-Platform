@@ -44,6 +44,12 @@ public class AdminSeriesController {
             return "Admin/manageSeries";
         }
 
+        if (seasonReleaseYears.size() != numberOfSeasons) {
+            model.addAttribute("seriesList", seriesService.getAllSeries());
+            model.addAttribute("seasonError", "Enter a release year for every season");
+            return "Admin/manageSeries";
+        }
+
         if (series.getSeriesId() == 0) {
             List<Season> seasons = new ArrayList<>();
             for (int i = 0; i < numberOfSeasons; i++) {
@@ -57,7 +63,13 @@ public class AdminSeriesController {
             seriesService.saveSeries(series);
         } else {
             //Edit
-            seriesService.updateSeries(series,numberOfSeasons, seasonReleaseYears);
+            try {
+                seriesService.updateSeries(series, numberOfSeasons, seasonReleaseYears);
+            } catch (IllegalArgumentException e) {
+                model.addAttribute("seriesList", seriesService.getAllSeries());
+                model.addAttribute("seasonError", e.getMessage());
+                return "Admin/manageSeries";
+            }
         }
         return "redirect:/admin/series";
     }

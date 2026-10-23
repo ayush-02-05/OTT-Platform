@@ -1,5 +1,6 @@
 <%@ page language = "java" %>
 <%@ page import="java.util.List" %>
+<%@ page import="org.springframework.web.util.HtmlUtils" %>
 <%@ page import="com.OTT_Platform.Model.Movie" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
@@ -86,12 +87,12 @@
 
                                         <button type="button" class="edit-btn"
                                                 data-movie-id="<%= movie.getMovieId() %>"
-                                                data-title="<%= movie.getTitle() %>"
-                                                data-genre="<%= movie.getGenre() %>"
+                                                data-title="<%= HtmlUtils.htmlEscape(movie.getTitle()) %>"
+                                                data-genre="<%= HtmlUtils.htmlEscape(movie.getGenre()) %>"
                                                 data-rating="<%= movie.getRating() %>"
                                                 data-release-year="<%= movie.getReleaseYear() %>"
-                                                data-synopsis="<%= movie.getSynopsis() %>"
-                                                data-poster-url="<%= movie.getPosterURL() %>">
+                                                data-synopsis="<%= HtmlUtils.htmlEscape(movie.getSynopsis()) %>"
+                                                data-poster-url="<%= HtmlUtils.htmlEscape(movie.getPosterURL()) %>">
                                             <i class="fa-solid fa-pen"></i>
                                             Edit
                                         </button>
@@ -182,11 +183,8 @@
                         <button type="submit" class="save-movie-btn" id="drawerSubmit">Add Movie</button>
                     </div>
                 </form:form>
-
             </div>
-
         </div>
-
 
         <script src="/JavaScript/Admin/Movies.js"></script>
         <script src="/JavaScript/Admin/Hamburger_Menu.js"></script>

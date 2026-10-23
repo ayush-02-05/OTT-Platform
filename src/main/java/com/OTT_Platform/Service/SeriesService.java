@@ -36,6 +36,11 @@ public class SeriesService {
         Series existingSeries = seriesRepository.findById(series.getSeriesId())
                 .orElseThrow(() -> new RuntimeException("Series not found"));
 
+        int currentSeasons = existingSeries.getSeasons().size();
+        if (numberOfSeasons < currentSeasons) {
+            throw new IllegalArgumentException("Seasons can't be reduced (this series already has " + currentSeasons + ")");
+        }
+
         existingSeries.setTitle(series.getTitle());
         existingSeries.setGenre(series.getGenre());
         existingSeries.setRating(series.getRating());

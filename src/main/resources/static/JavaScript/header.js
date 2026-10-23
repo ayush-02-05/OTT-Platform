@@ -73,9 +73,9 @@ fetch("/HTML/header.html")
                         const result = document.createElement("div");
                         result.className = "search-result";
                         result.innerHTML = `
-                            <img src="${movie.posterURL}" alt="">
+                            <img src="${escapeHtml(movie.posterURL)}" alt="">
                             <div class="search-result-info">
-                                <h4>${movie.title}</h4>
+                                <h4>${escapeHtml(movie.title)}</h4>
                                 <p>Movie • ${movie.releaseYear} • ⭐ ${movie.rating}</p>
                             </div>
                         `;
@@ -91,9 +91,9 @@ fetch("/HTML/header.html")
                         const result = document.createElement("div");
                         result.className = "search-result";
                         result.innerHTML = `
-                            <img src="${series.posterURL}" alt="">
+                            <img src="${escapeHtml(series.posterURL)}" alt="">
                             <div class="search-result-info">
-                                <h4>${series.title}</h4>
+                                <h4>${escapeHtml(series.title)}</h4>
                                 <p>Series • ⭐ ${series.rating}</p>
                             </div>
                         `;

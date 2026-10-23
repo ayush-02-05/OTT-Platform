@@ -1,10 +1,9 @@
 <%@ page language = "java" %>
-
-
 <%@ page import="com.OTT_Platform.Model.Series" %>
 <%@ page import="com.OTT_Platform.Model.Episode" %>
 <%@ page import="com.OTT_Platform.Model.Season" %>
 <%@ page import="java.util.List" %>
+<%@ page import="org.springframework.web.util.HtmlUtils" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <html>
@@ -147,7 +146,7 @@
                                                     data-season-id="<%= episode.getSeason().getSeasonId() %>"
                                                     data-episode-number="<%= episode.getEpisodeNumber() %>"
                                                     data-duration="<%= episode.getDuration() %>"
-                                                    data-episode-title="<%= episode.getEpisodeTitle() %>">
+                                                    data-episode-title="<%= HtmlUtils.htmlEscape(episode.getEpisodeTitle()) %>">
 
                                                     <i class="fa-solid fa-pen"></i>
                                                     Edit
