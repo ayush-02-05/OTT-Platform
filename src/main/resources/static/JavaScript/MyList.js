@@ -10,6 +10,16 @@ let myList = [];
 let currentFilter = "ALL";
 let currentSort = "recent";
 
+// Placeholder poster (inline SVG, so there is no file that can go missing)
+const DEFAULT_POSTER =
+    "data:image/svg+xml;utf8," +
+    encodeURIComponent(
+        "<svg xmlns='http://www.w3.org/2000/svg' width='300' height='450'>" +
+        "<rect width='100%' height='100%' fill='#1f1f1f'/>" +
+        "<text x='50%' y='50%' fill='#888' font-family='Arial,sans-serif' font-size='20' " +
+        "text-anchor='middle' dominant-baseline='middle'>No Poster</text></svg>"
+    );
+
 // ELEMENTS
 const myListGrid = document.getElementById("my-list-grid");
 const emptyList = document.getElementById("empty-list");
@@ -45,12 +55,8 @@ function loadContentDetails() {
         }
         if (item.contentType === "SERIES") {
             return fetch(`/api/series/${item.contentId}`)
-                .then(response => response.json())
-                .then(content => {
-                    return {
-                        ...item,content: content
-                    };
-                });
+                .then(response => response.ok ? response.json() : null)
+                .then(content => content ? { ...item, content: content } : null);
         }
     });
 
@@ -130,7 +136,6 @@ function createCard(item) {
             <img
                 src="${poster}"
                 alt="${title}"
-                onerror="this.src='/Images/default-poster.jpg'"
             >
 
             <span class="content-type ${type === "SERIES" ? "series" : ""}">
@@ -154,6 +159,13 @@ function createCard(item) {
             </div>
         </div>
     `;
+
+    // Poster fallback: { once: true } means it runs a single time, so it can never loop
+    const posterImg = card.querySelector(".my-list-poster img");
+    posterImg.addEventListener("error", () => {
+        posterImg.src = DEFAULT_POSTER;
+    }, { once: true });
+
     // Remove button
     const removeButton = card.querySelector(".remove-btn");
     removeButton.addEventListener("click", () => {
@@ -170,7 +182,7 @@ function getTitle(content) {
 
 // GET POSTER
 function getPoster(content) {
-    return content.posterURL || "/Images/default-poster.jpg";
+    return content.posterURL || DEFAULT_POSTER;
 }
 
 // GET YEAR

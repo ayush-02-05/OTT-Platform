@@ -3,8 +3,10 @@ package com.OTT_Platform.Service;
 import com.OTT_Platform.DTO.EpisodeDTO;
 import com.OTT_Platform.DTO.SeasonDTO;
 import com.OTT_Platform.DTO.SeriesDTO;
+import com.OTT_Platform.Model.ContentType;
 import com.OTT_Platform.Model.Season;
 import com.OTT_Platform.Model.Series;
+import com.OTT_Platform.Repository.MyListRepository;
 import com.OTT_Platform.Repository.SeriesRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
@@ -14,9 +16,11 @@ import java.util.List;
 @Service
 public class SeriesService {
     private final SeriesRepository seriesRepository;
+    private final MyListRepository myListRepository;
 
-    public SeriesService(SeriesRepository seriesRepository) {
+    public SeriesService(SeriesRepository seriesRepository, MyListRepository myListRepository) {
         this.seriesRepository = seriesRepository;
+        this.myListRepository = myListRepository;
     }
 
     public void saveSeries(Series series){
@@ -59,7 +63,9 @@ public class SeriesService {
         seriesRepository.save(existingSeries);
     }
 
+    @Transactional
     public void deleteSeries(int seriesId) {
+        myListRepository.deleteByContentTypeAndContentId(ContentType.SERIES, seriesId);
         seriesRepository.deleteById(seriesId);
     }
 

@@ -33,7 +33,10 @@ public class AdminSeriesController {
 
     @PostMapping("/admin/series")
     public String saveSeries(@Valid @ModelAttribute("series") Series series, BindingResult result, @RequestParam int numberOfSeasons, @RequestParam List<Integer> seasonReleaseYears, Model model) {
-        if (result.hasErrors()) return "Admin/manageSeries";
+        if (result.hasErrors()) {
+            model.addAttribute("seriesList", seriesService.getAllSeries());
+            return "Admin/manageSeries";
+        }
 
         if (numberOfSeasons < 1) {
             model.addAttribute("seriesList", seriesService.getAllSeries());

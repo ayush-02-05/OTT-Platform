@@ -17,8 +17,6 @@ import org.springframework.security.web.context.HttpSessionSecurityContextReposi
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/api/user")
 public class UserDetailsController {
@@ -49,9 +47,19 @@ public class UserDetailsController {
     }
 
     @PutMapping("/me")
-    public UserProfileDTO updateProfile(@RequestBody UserProfileDTO profile, Authentication authentication, HttpServletRequest request, HttpServletResponse response) {
+    public ResponseEntity<?> updateProfile(@Valid @RequestBody UserProfileDTO profile, BindingResult result, Authentication authentication, HttpServletRequest request, HttpServletResponse response) {
+
+        if (result.hasErrors()) {
+            return ResponseEntity.badRequest().body(result.getAllErrors().get(0).getDefaultMessage());
+        }
+
         String currentEmail = authentication.getName();
-        UserProfileDTO updated = userService.updateProfile(currentEmail, profile);
+        UserProfileDTO updated;
+        try {
+            updated = userService.updateProfile(currentEmail, profile);
+        } catch (IllegalStateException e) {
+            return ResponseEntity.status(409).body(e.getMessage());
+        }
 
         if (!currentEmail.equals(updated.getEmail())) {
             Authentication newAuthentication = new UsernamePasswordAuthenticationToken(updated.getEmail(), null, authentication.getAuthorities());
@@ -60,7 +68,7 @@ public class UserDetailsController {
             SecurityContextHolder.setContext(securityContext);
             new HttpSessionSecurityContextRepository().saveContext(securityContext, request, response);
         }
-        return updated;
+        return ResponseEntity.ok(updated);
     }
 
     @PutMapping("/change-password")

@@ -51,7 +51,7 @@ public class UserService implements UserDetailsService{
 
         if (!currentEmail.equals(profile.getEmail())) {
             if (userRepository.findByEmail(profile.getEmail()).isPresent()) {
-                throw new RuntimeException("Email already registered");
+                throw new IllegalStateException("Email already registered");
             }
             user.setEmail(profile.getEmail());
         }
