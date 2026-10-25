@@ -19,6 +19,7 @@ const genreFilter = document.getElementById("genreFilter");
 // OPEN ADD SERIES DRAWER
 openAddSeries.addEventListener("click", function () {
     seriesForm.reset();
+    seriesId.value = "0";
     numberOfSeasons.min = 1;
     seasonDetails.innerHTML = "";
 
@@ -95,6 +96,7 @@ editButtons.forEach(function (button) {
         seriesRating.value = rating;
         seriesSynopsis.value = synopsis;
         seriesPoster.value = posterURL;
+        numberOfSeasons.value = seasonCount;
         numberOfSeasons.min = seasonCount;
 
         seasonDetails.innerHTML = "";

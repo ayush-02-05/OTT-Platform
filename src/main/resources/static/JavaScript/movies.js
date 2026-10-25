@@ -16,7 +16,7 @@ function displayMovies(movieList) {
                 <img src="${escapeHtml(movie.posterURL)}" alt="${escapeHtml(movie.title)}">
                 <div class="movie-info">
                     <h3>${escapeHtml(movie.title)}</h3>
-                    <p>${escapeHtml(movie.genre)}</p><p>${movie.genre}</p>
+                    <p>${escapeHtml(movie.genre)}</p>
                     <div class="movie-bottom">
                         <span class="movie-year"> ${movie.releaseYear}</span>
                         <span class="movie-rating">⭐ ${movie.rating}</span>

@@ -96,3 +96,40 @@ deleteEpisodeButtons.forEach(button => {
         form.submit();
     });
 });
+
+
+// ---------- SERVER ERRORS ----------
+// The form inputs are plain HTML, so the page forgets what was typed when the server
+// rejects the form. Remember the values on submit and put them back after the reload.
+addEpisodeForm.addEventListener("submit", function () {
+    sessionStorage.setItem("lastEpisodeForm", JSON.stringify({
+        seasonId: seasonSelect.value,
+        episodeNumber: episodeNumberInput.value,
+        duration: durationInput.value,
+        episodeTitle: episodeTitleInput.value
+    }));
+});
+
+// If the server sent back an error, reopen the sidebar so the message is visible
+const hasServerError = Array.from(document.querySelectorAll("#addEpisodeSidebar .error"))
+    .some(el => el.textContent.trim() !== "");
+
+if (hasServerError) {
+    // Stay in "Edit" mode if the request that failed was an update
+    if (/\/updateEpisode\/\d+$/.test(window.location.pathname)) {
+        addEpisodeForm.action = window.location.pathname;
+        sidebarTitle.textContent = "Edit Episode";
+        saveEpisodeBtn.innerHTML = '<i class="fa-solid fa-floppy-disk"></i> Update Episode';
+    }
+
+    // Put back what the admin had typed
+    const saved = JSON.parse(sessionStorage.getItem("lastEpisodeForm") || "null");
+    if (saved) {
+        seasonSelect.value = saved.seasonId;
+        episodeNumberInput.value = saved.episodeNumber;
+        durationInput.value = saved.duration;
+        episodeTitleInput.value = saved.episodeTitle;
+    }
+
+    addEpisodeSidebar.classList.add("active");
+}
