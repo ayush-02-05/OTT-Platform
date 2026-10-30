@@ -1,90 +1,112 @@
-# OTT Platform
+# OTT Streaming Platform
 
-A full-stack OTT web application built using **Java, Spring Boot, and MySQL**, featuring movie and series browsing, user authentication, personal watchlists, and content management.
+A backend-focused OTT web application developed using **Java, Spring Boot, Spring Security, Hibernate, and MySQL**. The project focuses on managing movies, web series, episodes, user accounts, and administrative operations through a structured backend architecture.
 
-## Features
+## About the Project
 
-- **User Authentication** — User registration, login, and profile management.
-- **Movie Browsing** — Explore movies and view movie details.
-- **TV Series Management** — Browse series, seasons, and episodes.
-- **My List** — Add and manage movies and series in a personal watchlist.
-- **Search** — Search for available content.
-- **Admin Dashboard** — Manage movies, series, episodes, and users.
+The OTT Streaming Platform is designed to demonstrate the core backend functionality of a content-based streaming application. It provides functionality for managing movie and series information, organizing episodic content, handling user accounts, and controlling access to administrative operations.
 
-## Tech Stack
+The application uses Spring Boot to handle HTTP requests and business operations, Spring Security for authentication and authorization, and MySQL for persistent data storage.
 
-| Technology | Purpose |
+## Key Features
+
+- **Movie Management:** Create, retrieve, update, and delete movie records.
+- **Series Management:** Manage web series and their associated content.
+- **Episode Management:** Organize episodes under their respective series and seasons.
+- **User Management:** Handle user-related operations and account information.
+- **Authentication & Authorization:** Secure protected functionality using Spring Security.
+- **REST APIs:** Expose backend operations through HTTP endpoints.
+- **Database Integration:** Persist application data using Spring Data JPA, Hibernate, and MySQL.
+
+## Technology Stack
+
+| Technology | Usage |
 |---|---|
 | Java 21 | Backend development |
 | Spring Boot | Application framework |
-| Spring Security | Authentication and access control |
-| Spring Data JPA & Hibernate | Database operations and ORM |
-| MySQL | Relational database |
-| HTML, CSS & JavaScript | Frontend development |
-| Maven | Dependency management and build |
+| Spring MVC | Request handling |
+| Spring Security | Authentication and authorization |
+| Spring Data JPA | Data access |
+| Hibernate | Object-relational mapping |
+| MySQL | Database |
+| HTML, CSS, JavaScript | Frontend technologies |
+| Maven | Build and dependency management |
 
-## Architecture
+## Backend Architecture
 
-The application follows a layered architecture:
+The application follows a layered architecture that separates request handling, business logic, and database operations.
 
-`Controller → Service → Repository → MySQL`
-
-- **Controller:** Handles incoming requests.
-- **Service:** Contains business logic and validation.
-- **Repository:** Performs database operations using Spring Data JPA.
-- **Model:** Represents application entities stored in the database.
-- **Security Configuration:** Defines authentication and access-control rules.
-
-## Getting Started
-
-### Prerequisites
-
-- Java 21
-- MySQL
-- Maven
-
-### Installation
-
-**1. Clone the repository**
-
-```bash
-git clone https://github.com/ayush-02-05/OTT-Platform.git
-cd OTT-Platform
+```text
+Client
+  |
+  v
+Controller Layer
+  |
+  v
+Service Layer
+  |
+  v
+Repository Layer
+  |
+  v
+MySQL Database
 ```
 
-**2. Create a MySQL database**
+**Controller Layer:** Receives HTTP requests and coordinates application operations.
 
-```sql
-CREATE DATABASE ott_platform;
+**Service Layer:** Contains business logic and manages the application's operations.
+
+**Repository Layer:** Interacts with the database using Spring Data JPA.
+
+**Model Layer:** Represents application entities and their relationships.
+
+**Security Layer:** Applies authentication and authorization rules to protected resources.
+
+This architecture improves separation of concerns and makes the application easier to maintain and extend.
+
+## How It Works
+
+For example, when an administrator adds a movie, the request is handled by the appropriate controller. The service layer processes the operation, and the repository saves the movie information to MySQL through JPA/Hibernate.
+
+Similarly, movie and series information can be retrieved through the relevant endpoints. Security rules restrict access to protected operations based on the application's authentication and authorization configuration.
+
+## Database Design
+
+MySQL is used to store application data, while JPA/Hibernate maps Java entities to relational database tables.
+
+The core data model includes:
+
+- **User:** Represents application users.
+- **Movie:** Stores movie-related information.
+- **Series:** Represents web series.
+- **Episode:** Stores episodic content associated with series and seasons.
+- **Watchlist:** Represents users' saved content, where implemented.
+
+Entity relationships help organize content and maintain consistency across related records.
+
+## Project Structure
+
+```text
+com.OTT_Platform/
+├── Config/       # Application and security configuration
+├── Controller/   # Request handling and API endpoints
+├── DTO/          # Data transfer objects
+├── Model/        # Entity classes
+├── Repository/   # Database access layer
+└── Service/      # Business logic
 ```
 
-**3. Configure the database**
+## Key Learnings
 
-Update the database connection settings in the appropriate application profile configuration file under:
-
-`src/main/resources/`
-
-Use your own MySQL username, password, and database name. Keep credentials out of version control.
-
-**4. Run the application**
-
-```bash
-mvn spring-boot:run
-```
-
-Open the local URL configured for the application in your browser.
-
-## What I Learned
-
-- Building a Java web application using Spring Boot.
-- Implementing a layered Controller–Service–Repository architecture.
-- Working with relational databases using JPA and Hibernate.
-- Configuring application security with Spring Security.
-- Designing and managing relationships between movies, series, seasons, and episodes.
+- Designing a layered backend architecture using Spring Boot.
+- Developing REST APIs using Spring MVC.
+- Implementing authentication and authorization using Spring Security.
+- Integrating MySQL with Spring Data JPA and Hibernate.
+- Managing related entities and relational data.
+- Separating business logic from request handling and database operations.
 
 ## Author
 
 **Ayush Singh**
 
-- GitHub: [ayush-02-05](https://github.com/ayush-02-05)
-- Project Repository: [OTT Platform](https://github.com/ayush-02-05/OTT-Platform)
+[GitHub Profile](https://github.com/ayush-02-05) · [Project Repository](https://github.com/ayush-02-05/OTT-Platform)
