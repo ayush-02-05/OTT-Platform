@@ -1,112 +1,107 @@
-# OTT Streaming Platform
+# CineVAULT - OTT Platform
 
-A backend-focused OTT web application developed using **Java, Spring Boot, Spring Security, Hibernate, and MySQL**. The project focuses on managing movies, web series, episodes, user accounts, and administrative operations through a structured backend architecture.
+A full-stack OTT-style web application built with Spring Boot. Users can browse movies and series, search, and save titles to a personal My List. Admins manage movies, series, episodes and users from a separate dashboard.
 
-## About the Project
+## Features
 
-The OTT Streaming Platform is designed to demonstrate the core backend functionality of a content-based streaming application. It provides functionality for managing movie and series information, organizing episodic content, handling user accounts, and controlling access to administrative operations.
+**User**
+- Register, login and logout
+- Home page with hero slider and latest movies and series
+- Movies and Series pages with genre filter and sorting
+- Series details with season selector and episode list
+- Search movies and series by title
+- My List: add and remove movies and series
+- Profile: update name and email, change password
 
-The application uses Spring Boot to handle HTTP requests and business operations, Spring Security for authentication and authorization, and MySQL for persistent data storage.
+**Admin**
+- Dashboard
+- Add, edit and delete movies
+- Add, edit and delete series, and manage seasons and episodes
+- View, search and delete users
 
-## Key Features
+## Tech Stack
 
-- **Movie Management:** Create, retrieve, update, and delete movie records.
-- **Series Management:** Manage web series and their associated content.
-- **Episode Management:** Organize episodes under their respective series and seasons.
-- **User Management:** Handle user-related operations and account information.
-- **Authentication & Authorization:** Secure protected functionality using Spring Security.
-- **REST APIs:** Expose backend operations through HTTP endpoints.
-- **Database Integration:** Persist application data using Spring Data JPA, Hibernate, and MySQL.
+- Java 21, Spring Boot 4
+- Spring Web MVC, Spring Data JPA (Hibernate), Spring Security, Bean Validation
+- MySQL
+- HTML, CSS, JavaScript (user side), JSP (admin side)
+- Maven
 
-## Technology Stack
+## Security
 
-| Technology | Usage |
-|---|---|
-| Java 21 | Backend development |
-| Spring Boot | Application framework |
-| Spring MVC | Request handling |
-| Spring Security | Authentication and authorization |
-| Spring Data JPA | Data access |
-| Hibernate | Object-relational mapping |
-| MySQL | Database |
-| HTML, CSS, JavaScript | Frontend technologies |
-| Maven | Build and dependency management |
+- Login with BCrypt-hashed passwords
+- Role based access (USER and ADMIN)
+- CSRF protection
 
-## Backend Architecture
+## Exception Handling
 
-The application follows a layered architecture that separates request handling, business logic, and database operations.
+Services throw custom exceptions (`ResourceNotFoundException`, `DuplicateResourceException`, `BadRequestException`). A global `@RestControllerAdvice` converts them into JSON responses with the right HTTP status (404, 409, 400, 500).
 
-```text
-Client
-  |
-  v
-Controller Layer
-  |
-  v
-Service Layer
-  |
-  v
-Repository Layer
-  |
-  v
-MySQL Database
+```json
+{
+  "status": 404,
+  "message": "Series not found",
+  "timestamp": "2026-11-04T06:13:35.231"
+}
 ```
-
-**Controller Layer:** Receives HTTP requests and coordinates application operations.
-
-**Service Layer:** Contains business logic and manages the application's operations.
-
-**Repository Layer:** Interacts with the database using Spring Data JPA.
-
-**Model Layer:** Represents application entities and their relationships.
-
-**Security Layer:** Applies authentication and authorization rules to protected resources.
-
-This architecture improves separation of concerns and makes the application easier to maintain and extend.
-
-## How It Works
-
-For example, when an administrator adds a movie, the request is handled by the appropriate controller. The service layer processes the operation, and the repository saves the movie information to MySQL through JPA/Hibernate.
-
-Similarly, movie and series information can be retrieved through the relevant endpoints. Security rules restrict access to protected operations based on the application's authentication and authorization configuration.
-
-## Database Design
-
-MySQL is used to store application data, while JPA/Hibernate maps Java entities to relational database tables.
-
-The core data model includes:
-
-- **User:** Represents application users.
-- **Movie:** Stores movie-related information.
-- **Series:** Represents web series.
-- **Episode:** Stores episodic content associated with series and seasons.
-- **Watchlist:** Represents users' saved content, where implemented.
-
-Entity relationships help organize content and maintain consistency across related records.
 
 ## Project Structure
 
-```text
-com.OTT_Platform/
-├── Config/       # Application and security configuration
-├── Controller/   # Request handling and API endpoints
-├── DTO/          # Data transfer objects
-├── Model/        # Entity classes
-├── Repository/   # Database access layer
-└── Service/      # Business logic
+```
+src/main/java/com/OTT_Platform
+├── Config
+├── Controller (Admin, User)
+├── DTO
+├── Exception
+├── Model
+├── Repository
+└── Service
+src/main/resources/static     user pages (HTML, CSS, JavaScript)
+src/main/webapp               admin pages (JSP)
 ```
 
-## Key Learnings
+## How to Run
 
-- Designing a layered backend architecture using Spring Boot.
-- Developing REST APIs using Spring MVC.
-- Implementing authentication and authorization using Spring Security.
-- Integrating MySQL with Spring Data JPA and Hibernate.
-- Managing related entities and relational data.
-- Separating business logic from request handling and database operations.
+Requirements: Java 21, MySQL, Maven
+
+1. Clone the repository
+   ```
+   git clone https://github.com/ayush-02-05/OTT-Platform.git
+   ```
+2. Create a MySQL database named `OTT_Platform`
+3. Set your MySQL URL, username and password in `src/main/resources/application-dev.properties`
+4. Run the project
+   ```
+   ./mvnw spring-boot:run
+   ```
+5. Open `http://localhost:8080`
+
+Tables are created automatically on the first run.
+
+### Creating an admin
+
+New users get the `USER` role. To make an admin, register normally and then run:
+
+```sql
+UPDATE users SET role = 'ADMIN' WHERE email = 'your-email@example.com';
+```
+
+## Screenshots
+
+| Home | Series details |
+|---|---|
+| ![Home](docs/screenshots/home.png) | ![Series details](docs/screenshots/series-details.png) |
+
+| My List | Admin dashboard |
+|---|---|
+| ![My List](docs/screenshots/my-list.png) | ![Admin dashboard](docs/screenshots/admin-dashboard.png) |
+
+## Future Improvements
+
+- Pagination for movie and series lists
+- Unit and integration tests
+- Video playback
 
 ## Author
 
-**Ayush Singh**
-
-[GitHub Profile](https://github.com/ayush-02-05) · [Project Repository](https://github.com/ayush-02-05/OTT-Platform)
+[ayush-02-05](https://github.com/ayush-02-05)
