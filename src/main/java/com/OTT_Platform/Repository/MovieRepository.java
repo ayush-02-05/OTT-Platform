@@ -1,7 +1,6 @@
 package com.OTT_Platform.Repository;
 
 import com.OTT_Platform.Model.Movie;
-import com.OTT_Platform.Model.Series;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

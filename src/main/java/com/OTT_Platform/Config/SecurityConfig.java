@@ -49,8 +49,7 @@ public class SecurityConfig {
         csrfHandler.setCsrfRequestAttributeName(null); // token har request par load ho, cookie set hoti rahe
 
 
-        http.
-                csrf(csrf -> csrf
+        http.csrf(csrf -> csrf
                     .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                     .csrfTokenRequestHandler(csrfHandler)
                     .ignoringRequestMatchers("/api/user/register")

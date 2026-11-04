@@ -3,7 +3,6 @@ package com.OTT_Platform.Controller.User;
 import com.OTT_Platform.DTO.EpisodeDTO;
 import com.OTT_Platform.DTO.SeasonDTO;
 import com.OTT_Platform.DTO.SeriesDTO;
-import com.OTT_Platform.Model.Movie;
 import com.OTT_Platform.Service.SeriesService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

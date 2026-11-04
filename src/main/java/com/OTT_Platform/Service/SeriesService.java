@@ -3,13 +3,16 @@ package com.OTT_Platform.Service;
 import com.OTT_Platform.DTO.EpisodeDTO;
 import com.OTT_Platform.DTO.SeasonDTO;
 import com.OTT_Platform.DTO.SeriesDTO;
+import com.OTT_Platform.Exception.ResourceNotFoundException;
 import com.OTT_Platform.Model.ContentType;
 import com.OTT_Platform.Model.Season;
 import com.OTT_Platform.Model.Series;
 import com.OTT_Platform.Repository.MyListRepository;
 import com.OTT_Platform.Repository.SeriesRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -34,7 +37,7 @@ public class SeriesService {
     @Transactional
     public void updateSeries(Series series, int numberOfSeasons,List<Integer> seasonReleaseYears) {
         Series existingSeries = seriesRepository.findById(series.getSeriesId())
-                .orElseThrow(() -> new RuntimeException("Series not found"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Series not found"));
 
         int currentSeasons = existingSeries.getSeasons().size();
         if (numberOfSeasons < currentSeasons) {
@@ -85,7 +88,9 @@ public class SeriesService {
                     dto.setRating(series.getRating());
                     dto.setPosterURL(series.getPosterURL());
                     dto.setSynopsis(series.getSynopsis());
-                    dto.setReleaseYear(series.getSeasons().get(0).getReleaseYear());
+                    if (!series.getSeasons().isEmpty()) {
+                        dto.setReleaseYear(series.getSeasons().get(0).getReleaseYear());
+                    }
 
                     return dto;
                 })
@@ -111,7 +116,7 @@ public class SeriesService {
     }
 
     public SeriesDTO seriesDetails(int seriesId){
-        Series series = seriesRepository.findById(seriesId).orElseThrow(() -> new RuntimeException("Series not found"));
+        Series series = seriesRepository.findById(seriesId).orElseThrow(() -> new ResourceNotFoundException("Series not found"));
 
         SeriesDTO dto = new SeriesDTO();
 
@@ -129,10 +134,8 @@ public class SeriesService {
     }
 
 
-
-
     public List<SeasonDTO> getSeasons(int seriesId){
-        Series series = seriesRepository.findById(seriesId).orElseThrow(() -> new RuntimeException("Series Not Found"));
+        Series series = seriesRepository.findById(seriesId).orElseThrow(() -> new ResourceNotFoundException("Series not found"));
         return series.getSeasons()
                 .stream()
                 .map(season -> {
@@ -147,9 +150,6 @@ public class SeriesService {
                 })
                 .toList();
     }
-
-
-
 
     public List<EpisodeDTO> getEpisodes(int seasonId) {
         for (Series series : seriesRepository.findAll()) {
@@ -169,6 +169,6 @@ public class SeriesService {
                 }
             }
         }
-        throw new RuntimeException("Season not found");
+        throw new ResourceNotFoundException("Season not found");
     }
 }

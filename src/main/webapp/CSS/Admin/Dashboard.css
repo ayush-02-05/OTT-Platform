@@ -46,11 +46,6 @@ body {
     font-size: 1.05rem;
 }
 
-.current-date {
-    color: #b8c5d9;
-    font-size: .95rem;
-}
-
 /* STAT CARDS */
 .stats {
     display: grid;
@@ -270,10 +265,6 @@ body {
         font-size: .95rem;
     }
 
-    .current-date {
-        font-size: .85rem;
-    }
-
     .stats {
         grid-template-columns: 1fr;
         gap: 12px;
@@ -365,10 +356,6 @@ body {
 
     .header-content p {
         font-size: .88rem;
-    }
-
-    .current-date {
-        font-size: .8rem;
     }
 
     .stats > div {

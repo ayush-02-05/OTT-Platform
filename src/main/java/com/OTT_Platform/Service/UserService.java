@@ -3,10 +3,12 @@ package com.OTT_Platform.Service;
 import com.OTT_Platform.DTO.ChangePasswordDTO;
 import com.OTT_Platform.DTO.RegisterDTO;
 import com.OTT_Platform.DTO.UserProfileDTO;
+import com.OTT_Platform.Exception.DuplicateResourceException;
+import com.OTT_Platform.Exception.ResourceNotFoundException;
 import com.OTT_Platform.Model.Role;
 import com.OTT_Platform.Model.User;
 import com.OTT_Platform.Repository.UserRepository;
-import jakarta.validation.Valid;
+import com.OTT_Platform.Exception.BadRequestException;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -42,16 +44,16 @@ public class UserService implements UserDetailsService{
     }
 
     public User getUserByEmail(String email) {
-        return userRepository.findByEmail(email).orElseThrow();
+        return userRepository.findByEmail(email).orElseThrow(() -> new ResourceNotFoundException("User not found"));
     }
 
     public UserProfileDTO updateProfile(String currentEmail, UserProfileDTO profile) {
-        User user = userRepository.findByEmail(currentEmail).orElseThrow();
+        User user = userRepository.findByEmail(currentEmail).orElseThrow(() -> new ResourceNotFoundException("User not found"));
         user.setName(profile.getName());
 
         if (!currentEmail.equals(profile.getEmail())) {
             if (userRepository.findByEmail(profile.getEmail()).isPresent()) {
-                throw new IllegalStateException("Email already registered");
+                throw new DuplicateResourceException("Email already registered");
             }
             user.setEmail(profile.getEmail());
         }
@@ -61,19 +63,19 @@ public class UserService implements UserDetailsService{
     }
 
     public void changePassword(String email, ChangePasswordDTO passwordDTO) {
-        User user = userRepository.findByEmail(email).orElseThrow();
+        User user = userRepository.findByEmail(email).orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
         if (!passwordEncoder.matches(passwordDTO.getCurrentPassword(), user.getPassword())) {
-            throw new RuntimeException("Current password is incorrect");
+            throw new BadRequestException("Current password is incorrect");
         }
 
         String newPassword = passwordDTO.getNewPassword();
         if (newPassword == null || newPassword.length() < 8) {
-            throw new RuntimeException("Password must be at least 8 characters");
+            throw new BadRequestException("Password must be at least 8 characters");
         }
 
         if (passwordEncoder.matches(newPassword, user.getPassword())) {
-            throw new RuntimeException("New password must be different from current password");
+            throw new BadRequestException("New password must be different from current password");
         }
 
         user.setPassword(passwordEncoder.encode(passwordDTO.getNewPassword()));
@@ -81,7 +83,7 @@ public class UserService implements UserDetailsService{
     }
 
     public User getUserById(int id) {
-        return userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
+        return userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found"));
     }
 
     public void deleteUser(int id) {
@@ -94,7 +96,7 @@ public class UserService implements UserDetailsService{
     public void registerUser(RegisterDTO dto) {
         String email = dto.getEmail().trim();
         if (userRepository.findByEmail(email).isPresent()) {
-            throw new IllegalStateException("Email already registered");
+            throw new DuplicateResourceException("Email already registered");
         }
         User user = new User();
         user.setName(dto.getName().trim());

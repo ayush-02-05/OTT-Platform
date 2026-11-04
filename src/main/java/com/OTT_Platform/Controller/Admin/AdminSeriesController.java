@@ -1,9 +1,7 @@
 package com.OTT_Platform.Controller.Admin;
 
-import com.OTT_Platform.Model.Episode;
 import com.OTT_Platform.Model.Season;
 import com.OTT_Platform.Model.Series;
-import com.OTT_Platform.Service.EpisodeService;
 import com.OTT_Platform.Service.SeriesService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
@@ -17,10 +15,8 @@ import java.util.List;
 @Controller
 public class AdminSeriesController {
     private final SeriesService seriesService;
-    private final EpisodeService episodeService;
-    public AdminSeriesController(SeriesService seriesService, EpisodeService episodeService) {
+    public AdminSeriesController(SeriesService seriesService) {
         this.seriesService = seriesService;
-        this.episodeService = episodeService;
     }
 
     @GetMapping("/admin/series")

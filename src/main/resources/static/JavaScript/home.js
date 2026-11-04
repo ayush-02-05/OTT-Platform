@@ -136,7 +136,7 @@ function createSlide(item) {
         event.stopPropagation();
         if (item.type === "MOVIE") window.location.href = `/movies/${item.id}`;
         else if (item.type === "SERIES") window.location.href = `/series/${item.id}`;
-    )};
+    });
 
     /* MY LIST BUTTON */
     const myListButton =slide.querySelector(".hero-my-list-btn");

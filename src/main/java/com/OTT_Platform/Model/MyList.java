@@ -2,8 +2,6 @@ package com.OTT_Platform.Model;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
-
 @Entity
 @Table(name = "my_list")
 public class MyList {

@@ -2,13 +2,13 @@ package com.OTT_Platform.Service;
 
 import com.OTT_Platform.DTO.MyListRequestDTO;
 import com.OTT_Platform.DTO.MyListResponseDTO;
+import com.OTT_Platform.Exception.DuplicateResourceException;
+import com.OTT_Platform.Exception.ResourceNotFoundException;
 import com.OTT_Platform.Model.MyList;
 import com.OTT_Platform.Model.User;
 import com.OTT_Platform.Repository.MyListRepository;
 import com.OTT_Platform.Repository.UserRepository;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -24,11 +24,11 @@ public class MyListService {
     }
 
     public MyListResponseDTO addToMyList(MyListRequestDTO request, String email) {
-        User user = userRepository.findByEmail(email).orElseThrow();
+        User user = userRepository.findByEmail(email).orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
         if (myListRepository.existsByUserAndContentTypeAndContentId(
                 user, request.getContentType(), request.getContentId())) {
-            throw new ResponseStatusException(HttpStatus.CONFLICT, "Already in My List");
+            throw new DuplicateResourceException("Already in My List");
         }
 
         MyList myList = new MyList();   // hamesha naya object, to id client se aa hi nahi sakti
@@ -40,17 +40,16 @@ public class MyListService {
     }
 
     public List<MyListResponseDTO> getMyList(String email) {
-        User user = userRepository.findByEmail(email).orElseThrow();
+        User user = userRepository.findByEmail(email).orElseThrow(() -> new ResourceNotFoundException("User not found"));
         return myListRepository.findByUser(user).stream().map(this::toDTO).toList();
     }
 
     public void removeFromMyList(int myListId, String email) {
-        User user = userRepository.findByEmail(email).orElseThrow();
-        MyList myList = myListRepository.findById(myListId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Not found"));
+        User user = userRepository.findByEmail(email).orElseThrow(() -> new ResourceNotFoundException("User not found"));
+        MyList myList = myListRepository.findById(myListId).orElseThrow(() -> new ResourceNotFoundException("My List item not found"));
 
         if (myList.getUser().getUserId() != user.getUserId()) {
-            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Unauthorized");
+            throw new ResourceNotFoundException("My List item not found");
         }
         myListRepository.delete(myList);
     }

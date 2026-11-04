@@ -2,7 +2,6 @@ package com.OTT_Platform.Service;
 
 import com.OTT_Platform.DTO.SeriesDTO;
 import com.OTT_Platform.Model.Movie;
-import com.OTT_Platform.Model.Series;
 import com.OTT_Platform.Repository.MovieRepository;
 import com.OTT_Platform.Repository.SeriesRepository;
 import org.springframework.stereotype.Service;
@@ -39,7 +38,9 @@ public class SearchService {
                     dto.setRating(series.getRating());
                     dto.setPosterURL(series.getPosterURL());
                     dto.setSynopsis(series.getSynopsis());
-                    dto.setReleaseYear(series.getSeasons().get(0).getReleaseYear());
+                    if (!series.getSeasons().isEmpty()) {
+                        dto.setReleaseYear(series.getSeasons().get(0).getReleaseYear());
+                    }
                     return dto;
                 })
                 .toList();

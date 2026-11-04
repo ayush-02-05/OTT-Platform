@@ -11,11 +11,6 @@ import java.util.List;
 
 @Service
 public class EpisodeService {
-//    @Autowired
-//    private EpisodeRepository episodeRepository;
-//    @Autowired
-//    private SeriesRepository seriesRepository;
-
     private final EpisodeRepository episodeRepository;
     private final SeriesRepository seriesRepository;
     public EpisodeService(EpisodeRepository episodeRepository, SeriesRepository seriesRepository){

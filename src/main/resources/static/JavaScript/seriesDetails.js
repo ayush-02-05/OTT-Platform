@@ -46,8 +46,16 @@ myListButton.addEventListener("click", () => {
 
 // SERIES DETAILS
 fetch(`/api/series/${seriesId}`)
-    .then(response => response.json())
-    .then(series => {
+        .then(response => {
+            if (response.status === 404) {
+                window.location.replace("/series");
+                return null;
+            }
+            if (!response.ok) throw new Error("Failed to load series");
+            return response.json();
+        })
+        .then(series => {
+            if (!series) return;
         document.getElementById("series-poster").src = series.posterURL;
         document.getElementById("series-title").textContent = series.title;
         document.getElementById("series-year").textContent = series.releaseYear;

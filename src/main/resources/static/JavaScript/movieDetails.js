@@ -29,8 +29,16 @@ function checkMyList() {
 checkMyList();
 
 fetch(`/api/movies/${movieId}`)
-    .then(response => response.json())
-    .then(movie => {
+        .then(response => {
+            if (response.status === 404) {
+                window.location.replace("/movies");
+                return null;
+            }
+            if (!response.ok) throw new Error("Failed to load movie");
+            return response.json();
+        })
+        .then(movie => {
+            if (!movie) return;
 
         document.getElementById("movie-poster").src = movie.posterURL;
 

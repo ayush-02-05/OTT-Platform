@@ -253,32 +253,6 @@ body {
     border-color: #3b5575;
 }
 
-
-/* =========================
-   FAVORITE
-========================= */
-
-.favorite-btn {
-    width: 58px;
-
-    border: 1px solid #29405d;
-
-    background: #101b2c;
-
-    color: #dce5f2;
-}
-
-.favorite-btn i {
-    font-size: 21px;
-}
-
-.favorite-btn:hover {
-    background: #17263b;
-
-    border-color: #3b5575;
-}
-
-
 /* =========================
    RESPONSIVE
 ========================= */
@@ -363,7 +337,6 @@ body {
 
     .movie-actions {
         justify-content: center;
-
         flex-wrap: wrap;
     }
 }

@@ -1,5 +1,6 @@
 package com.OTT_Platform.Service;
 
+import com.OTT_Platform.Exception.ResourceNotFoundException;
 import com.OTT_Platform.Model.ContentType;
 import com.OTT_Platform.Model.Movie;
 import com.OTT_Platform.Repository.MovieRepository;
@@ -32,7 +33,7 @@ public class MovieService {
     }
 
     public Movie movieDetails(int movieId){
-        return movieRepository.findById(movieId).orElseThrow(() -> new RuntimeException("Movie not found"));
+        return movieRepository.findById(movieId).orElseThrow(() -> new ResourceNotFoundException("Movie not found"));
     }
 
     @Transactional

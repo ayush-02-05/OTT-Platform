@@ -32,12 +32,8 @@ public class UserDetailsController {
             return ResponseEntity.badRequest()
                     .body(result.getAllErrors().get(0).getDefaultMessage());
         }
-        try {
-            userService.registerUser(dto);
-            return ResponseEntity.ok("Registration successful");
-        } catch (IllegalStateException e) {
-            return ResponseEntity.status(409).body(e.getMessage());
-        }
+        userService.registerUser(dto);
+        return ResponseEntity.ok("Registration successful");
     }
 
     @GetMapping("/me")
@@ -54,12 +50,7 @@ public class UserDetailsController {
         }
 
         String currentEmail = authentication.getName();
-        UserProfileDTO updated;
-        try {
-            updated = userService.updateProfile(currentEmail, profile);
-        } catch (IllegalStateException e) {
-            return ResponseEntity.status(409).body(e.getMessage());
-        }
+        UserProfileDTO updated = userService.updateProfile(currentEmail, profile);
 
         if (!currentEmail.equals(updated.getEmail())) {
             Authentication newAuthentication = new UsernamePasswordAuthenticationToken(updated.getEmail(), null, authentication.getAuthorities());
@@ -73,10 +64,7 @@ public class UserDetailsController {
 
     @PutMapping("/change-password")
     public ResponseEntity<String> changePassword(@RequestBody ChangePasswordDTO passwordDTO, Authentication authentication) {
-        try {userService.changePassword(authentication.getName(), passwordDTO);
-            return ResponseEntity.ok("Password changed successfully");
-        } catch (RuntimeException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
+        userService.changePassword(authentication.getName(), passwordDTO);
+        return ResponseEntity.ok("Password changed successfully");
     }
 }
